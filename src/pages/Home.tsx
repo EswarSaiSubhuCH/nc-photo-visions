@@ -2,18 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Camera, Plane } from "lucide-react";
 import heroImage from "@/assets/hero-aerial.jpg";
-
 const Home = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 hero-parallax"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-          }}
-        />
+        <div className="absolute inset-0 hero-parallax" style={{
+        backgroundImage: `url(${heroImage})`
+      }} />
         <div className="absolute inset-0 photo-overlay" />
         
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
@@ -25,20 +20,12 @@ const Home = () => {
             Professional photography and aerial imagery services that tell your story with stunning clarity and artistic vision.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/galleries"
-              className="btn-hero flex items-center justify-center space-x-2"
-            >
+            <Link to="/galleries" className="btn-hero flex items-center justify-center space-x-2">
               <Camera size={20} />
               <span>View Our Work</span>
               <ArrowRight size={20} />
             </Link>
-            <Link
-              to="/contact"
-              className="btn-outline flex items-center justify-center space-x-2 text-white border-white hover:bg-white hover:text-primary"
-            >
-              <span>Book a Session</span>
-            </Link>
+            
           </div>
         </div>
 
@@ -69,10 +56,7 @@ const Home = () => {
               <p className="text-muted-foreground mb-6">
                 Professional portrait, wedding, and commercial photography with artistic flair and technical excellence.
               </p>
-              <Link
-                to="/galleries/portraits"
-                className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2"
-              >
+              <Link to="/galleries/portraits" className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2">
                 <span>View Portfolio</span>
                 <ArrowRight size={16} />
               </Link>
@@ -86,10 +70,7 @@ const Home = () => {
               <p className="text-muted-foreground mb-6">
                 Stunning drone photography and videography capturing unique perspectives from above.
               </p>
-              <Link
-                to="/galleries/aerial"
-                className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2"
-              >
+              <Link to="/galleries/aerial" className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2">
                 <span>View Aerials</span>
                 <ArrowRight size={16} />
               </Link>
@@ -103,10 +84,7 @@ const Home = () => {
               <p className="text-muted-foreground mb-6">
                 Professional commercial photography for businesses, products, and marketing campaigns.
               </p>
-              <Link
-                to="/galleries/commercial"
-                className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2"
-              >
+              <Link to="/galleries/commercial" className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2">
                 <span>View Work</span>
                 <ArrowRight size={16} />
               </Link>
@@ -124,16 +102,11 @@ const Home = () => {
           <p className="text-xl mb-8 opacity-90">
             Let's create something beautiful together. Contact us to discuss your vision.
           </p>
-          <Link
-            to="/contact"
-            className="btn-hero"
-          >
+          <Link to="/contact" className="btn-hero">
             Get In Touch
           </Link>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Home;
