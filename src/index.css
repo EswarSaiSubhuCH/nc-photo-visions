@@ -200,3 +200,10 @@
     transform: translateY(-1px);
   }
 }
+
+/* Use Alex Brush for the site title */
+.site-title {
+  font-family: 'Alex Brush', cursive;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
