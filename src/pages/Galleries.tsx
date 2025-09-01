@@ -82,33 +82,6 @@ const Galleries = () => {
           </p>
         </div>
 
-        {/* View Toggle */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-muted rounded-lg p-1 flex">
-            <button
-              onClick={() => setViewMode("grid")}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
-                viewMode === "grid"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <Grid size={16} />
-              <span>Grid View</span>
-            </button>
-            <button
-              onClick={() => setViewMode("list")}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
-                viewMode === "list"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <List size={16} />
-              <span>List View</span>
-            </button>
-          </div>
-        </div>
 
         {/* Featured Galleries */}
         <div className="mb-16">
@@ -155,83 +128,41 @@ const Galleries = () => {
         <div>
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">All Collections</h2>
           
-          {viewMode === "grid" ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allGalleries.map((gallery) => {
-                const IconComponent = gallery.icon;
-                return (
-                  <div
-                    key={gallery.id}
-                    className="gallery-item group cursor-pointer rounded-xl overflow-hidden border border-border hover:border-accent"
-                  >
-                    <div className={`relative h-48 bg-gradient-to-br ${gallery.gradient} flex items-center justify-center`}>
-                      <div className="absolute inset-0 bg-black/20" />
-                      <IconComponent size={48} className="text-white relative z-10" />
-                      
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <Eye size={24} className="mx-auto mb-1" />
-                          <p className="text-sm font-medium">View Gallery</p>
-                        </div>
-                      </div>
-                    </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allGalleries.map((gallery) => {
+              const IconComponent = gallery.icon;
+              return (
+                <div
+                  key={gallery.id}
+                  className="gallery-item group cursor-pointer rounded-xl overflow-hidden border border-border hover:border-accent"
+                >
+                  <div className={`relative h-48 bg-gradient-to-br ${gallery.gradient} flex items-center justify-center`}>
+                    <div className="absolute inset-0 bg-black/20" />
+                    <IconComponent size={48} className="text-white relative z-10" />
                     
-                    <div className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-semibold">{gallery.title}</h3>
-                        <span className="text-xs text-muted-foreground">
-                          {gallery.imageCount}
-                        </span>
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <Eye size={24} className="mx-auto mb-1" />
+                        <p className="text-sm font-medium">View Gallery</p>
                       </div>
-                      <p className="text-muted-foreground text-sm">
-                        {gallery.description}
-                      </p>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {allGalleries.map((gallery) => {
-                const IconComponent = gallery.icon;
-                return (
-                  <div
-                    key={gallery.id}
-                    className="group cursor-pointer flex items-center p-6 rounded-xl border border-border hover:border-accent hover:bg-muted/30 transition-all"
-                  >
-                    <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${gallery.gradient} flex items-center justify-center mr-6`}>
-                      <IconComponent size={24} className="text-white" />
+                  
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold">{gallery.title}</h3>
+                      <span className="text-xs text-muted-foreground">
+                        {gallery.imageCount}
+                      </span>
                     </div>
-                    
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-playfair font-semibold mb-1">{gallery.title}</h3>
-                        <div className="flex items-center space-x-4">
-                          <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                            {gallery.imageCount} photos
-                          </span>
-                          <Eye size={20} className="text-muted-foreground group-hover:text-accent transition-colors" />
-                        </div>
-                      </div>
-                      <p className="text-muted-foreground">{gallery.description}</p>
-                    </div>
+                    <p className="text-muted-foreground text-sm">
+                      {gallery.description}
+                    </p>
                   </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-16 bg-accent/5 rounded-2xl p-12">
-          <h2 className="text-3xl font-playfair font-bold mb-4">Like What You See?</h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Ready to create your own stunning photography collection? Let's discuss your vision and bring it to life.
-          </p>
-          <button className="btn-hero">
-            Start Your Project
-          </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

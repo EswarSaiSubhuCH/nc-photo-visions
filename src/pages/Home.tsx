@@ -24,7 +24,7 @@ const Home = () => {
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
             Professional photography and aerial imagery services that tell your story with stunning clarity and artistic vision.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link
               to="/galleries"
               className="btn-hero flex items-center justify-center space-x-2"
@@ -32,12 +32,6 @@ const Home = () => {
               <Camera size={20} />
               <span>View Our Work</span>
               <ArrowRight size={20} />
-            </Link>
-            <Link
-              to="/contact"
-              className="btn-outline flex items-center justify-center space-x-2 text-white border-white hover:bg-white hover:text-primary"
-            >
-              <span>Book a Session</span>
             </Link>
           </div>
         </div>
@@ -99,12 +93,12 @@ const Home = () => {
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
                 <Camera size={32} />
               </div>
-              <h3 className="text-2xl font-playfair font-semibold mb-4">Commercial Work</h3>
+              <h3 className="text-2xl font-playfair font-semibold mb-4">Wedding & Event Photography</h3>
               <p className="text-muted-foreground mb-6">
-                Professional commercial photography for businesses, products, and marketing campaigns.
+                Capturing your special moments and celebrations with artistic vision and professional expertise.
               </p>
               <Link
-                to="/galleries/commercial"
+                to="/galleries/weddings"
                 className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2"
               >
                 <span>View Work</span>

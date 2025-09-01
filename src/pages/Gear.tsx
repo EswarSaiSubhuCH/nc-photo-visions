@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Camera, Zap, Settings, Smartphone, Search, ShoppingCart, Heart } from "lucide-react";
+import { Camera, Zap, Settings, Smartphone, Search, Eye } from "lucide-react";
 
 const Gear = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [wishlist, setWishlist] = useState<string[]>([]);
 
   const categories = [
     { id: "all", name: "All Equipment", icon: Settings },
@@ -19,66 +18,54 @@ const Gear = () => {
       id: "1",
       name: "Canon EOS R5",
       category: "cameras",
-      price: "$3,899",
       image: "/api/placeholder/300/300",
       description: "Professional full-frame mirrorless camera with 45MP resolution",
       specifications: ["45MP Full Frame", "8K Video Recording", "In-Body Image Stabilization"],
-      inStock: true,
       featured: true
     },
     {
       id: "2",
       name: "Canon RF 24-70mm f/2.8L",
       category: "lenses",
-      price: "$2,299",
       image: "/api/placeholder/300/300",
       description: "Professional standard zoom lens with constant f/2.8 aperture",
       specifications: ["24-70mm Focal Range", "f/2.8 Constant Aperture", "Weather Sealed"],
-      inStock: true,
       featured: true
     },
     {
       id: "3",
       name: "DJI Mavic 3 Pro",
       category: "drones",
-      price: "$2,199",
       image: "/api/placeholder/300/300",
       description: "Professional drone with Hasselblad camera and 43min flight time",
       specifications: ["4/3 CMOS Sensor", "43min Flight Time", "15km Transmission"],
-      inStock: false,
       featured: true
     },
     {
       id: "4",
       name: "Canon RF 70-200mm f/2.8L",
       category: "lenses",
-      price: "$2,699",
       image: "/api/placeholder/300/300",
       description: "Professional telephoto zoom lens for portraits and wildlife",
       specifications: ["70-200mm Focal Range", "f/2.8 Constant Aperture", "IS Technology"],
-      inStock: true,
       featured: false
     },
     {
       id: "5",
       name: "Manfrotto Carbon Fiber Tripod",
       category: "accessories",
-      price: "$449",
       image: "/api/placeholder/300/300",
       description: "Professional carbon fiber tripod with ball head",
       specifications: ["Carbon Fiber Construction", "Max Load 8kg", "Compact Design"],
-      inStock: true,
       featured: false
     },
     {
       id: "6",
       name: "Godox AD600Pro",
       category: "accessories",
-      price: "$899",
       image: "/api/placeholder/300/300",
       description: "Portable flash with HSS and TTL support",
       specifications: ["600Ws Power", "HSS Support", "Wireless Control"],
-      inStock: true,
       featured: false
     }
   ];
@@ -90,13 +77,6 @@ const Gear = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const toggleWishlist = (itemId: string) => {
-    setWishlist(prev => 
-      prev.includes(itemId) 
-        ? prev.filter(id => id !== itemId)
-        : [...prev, itemId]
-    );
-  };
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -157,35 +137,10 @@ const Gear = () => {
               >
                 <div className="relative aspect-square bg-muted flex items-center justify-center">
                   <Camera size={64} className="text-muted-foreground" />
-                  
-                  {/* Stock Status */}
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      item.inStock 
-                        ? "bg-green-100 text-green-800" 
-                        : "bg-red-100 text-red-800"
-                    }`}>
-                      {item.inStock ? "In Stock" : "Out of Stock"}
-                    </span>
-                  </div>
-
-                  {/* Wishlist Button */}
-                  <button
-                    onClick={() => toggleWishlist(item.id)}
-                    className="absolute top-4 right-4 p-2 rounded-full bg-white/90 hover:bg-white transition-colors"
-                  >
-                    <Heart 
-                      size={16} 
-                      className={wishlist.includes(item.id) ? "fill-red-500 text-red-500" : "text-muted-foreground"} 
-                    />
-                  </button>
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="font-playfair font-semibold text-lg">{item.name}</h3>
-                    <span className="text-xl font-bold text-accent">{item.price}</span>
-                  </div>
+                  <h3 className="font-playfair font-semibold text-lg mb-3">{item.name}</h3>
                   
                   <p className="text-muted-foreground text-sm mb-4">
                     {item.description}
@@ -200,12 +155,9 @@ const Gear = () => {
                     ))}
                   </div>
 
-                  <button
-                    disabled={!item.inStock}
-                    className="w-full btn-hero disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                  >
-                    <ShoppingCart size={16} />
-                    <span>{item.inStock ? "Add to Cart" : "Out of Stock"}</span>
+                  <button className="w-full btn-hero flex items-center justify-center space-x-2">
+                    <Eye size={16} />
+                    <span>View Details</span>
                   </button>
                 </div>
               </div>
@@ -215,14 +167,10 @@ const Gear = () => {
 
         {/* All Equipment Grid */}
         <div>
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-playfair font-bold">
+          <div className="mb-8">
+            <h2 className="text-3xl font-playfair font-bold text-center">
               All Equipment ({filteredItems.length})
             </h2>
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <Heart size={16} />
-              <span>{wishlist.length} items in wishlist</span>
-            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -233,33 +181,18 @@ const Gear = () => {
               >
                 <div className="relative aspect-square bg-muted flex items-center justify-center">
                   <Camera size={48} className="text-muted-foreground" />
-                  
-                  <button
-                    onClick={() => toggleWishlist(item.id)}
-                    className="absolute top-3 right-3 p-1.5 rounded-full bg-white/90 hover:bg-white transition-colors"
-                  >
-                    <Heart 
-                      size={14} 
-                      className={wishlist.includes(item.id) ? "fill-red-500 text-red-500" : "text-muted-foreground"} 
-                    />
-                  </button>
                 </div>
 
                 <div className="p-4">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-semibold text-sm line-clamp-2">{item.name}</h3>
-                    <span className="text-accent font-bold text-sm ml-2">{item.price}</span>
-                  </div>
+                  <h3 className="font-semibold text-sm line-clamp-2 mb-2">{item.name}</h3>
                   
                   <p className="text-muted-foreground text-xs mb-3 line-clamp-2">
                     {item.description}
                   </p>
 
-                  <button
-                    disabled={!item.inStock}
-                    className="w-full btn-outline text-xs py-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {item.inStock ? "Add to Cart" : "Out of Stock"}
+                  <button className="w-full btn-outline text-xs py-2 flex items-center justify-center space-x-1">
+                    <Eye size={12} />
+                    <span>View Details</span>
                   </button>
                 </div>
               </div>
