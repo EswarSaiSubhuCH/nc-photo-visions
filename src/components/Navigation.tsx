@@ -58,7 +58,7 @@ const Navigation = () => {
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="text-2xl font-signature font-bold text-foreground hover:text-accent transition-colors"
+              className="text-2xl font-playfair font-bold text-foreground hover:text-accent transition-colors"
             >
               NC Photography & Aerials
             </Link>

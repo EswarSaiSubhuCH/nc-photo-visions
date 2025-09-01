@@ -89,8 +89,50 @@ const About = () => {
             </div>
           </div>
 
+          <div className="bg-accent/5 rounded-2xl p-8">
+            <h3 className="text-2xl font-playfair font-bold mb-6">Our Mission</h3>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              To capture and preserve life's most important moments through exceptional photography 
+              and innovative aerial perspectives, creating lasting memories that exceed our clients' expectations.
+            </p>
+            
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="text-2xl font-bold text-accent mb-1">10+</div>
+                <div className="text-sm text-muted-foreground">Years Experience</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-accent mb-1">1000+</div>
+                <div className="text-sm text-muted-foreground">Happy Clients</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-accent mb-1">50+</div>
+                <div className="text-sm text-muted-foreground">Awards Won</div>
+              </div>
+            </div>
+          </div>
         </div>
 
+        {/* Achievements */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-playfair font-bold text-center mb-12">Our Achievements</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {achievements.map((achievement, index) => {
+              const IconComponent = achievement.icon;
+              return (
+                <div key={index} className="text-center p-6 rounded-xl border border-border hover:border-accent transition-colors">
+                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <IconComponent size={32} className="text-accent" />
+                  </div>
+                  <h3 className="font-playfair font-semibold text-lg mb-3">{achievement.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {achievement.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Team Section */}
         <div className="mb-20">
@@ -189,6 +231,11 @@ const About = () => {
             </div>
           </div>
 
+          <div className="text-center mt-8">
+            <button className="bg-primary-foreground text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary-foreground/90 transition-colors">
+              Schedule a Consultation
+            </button>
+          </div>
         </div>
       </div>
     </div>
