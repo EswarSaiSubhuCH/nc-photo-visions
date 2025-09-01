@@ -1,62 +1,49 @@
 import React from "react";
 import { Camera, Award, Users, MapPin, Mail, Phone } from "lucide-react";
-
 const About = () => {
-  const teamMembers = [
-    {
-      id: "1",
-      name: "Nick Carter",
-      role: "Founder & Lead Photographer",
-      bio: "With over 10 years of experience in professional photography, Nick specializes in aerial photography and portrait sessions. His artistic vision and technical expertise have earned recognition from industry professionals.",
-      specialties: ["Aerial Photography", "Portrait Photography", "Commercial Work"],
-      experience: "10+ years"
-    },
-    {
-      id: "2",
-      name: "Sarah Mitchell",
-      role: "Senior Photographer",
-      bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
-      specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
-      experience: "7+ years"
-    },
-    {
-      id: "3",
-      name: "Mike Johnson",
-      role: "Drone Operations Specialist",
-      bio: "Mike is our certified drone pilot with expertise in aerial videography and complex flight operations. He ensures safe and stunning aerial captures for all our projects.",
-      specialties: ["Drone Operations", "Aerial Videography", "Technical Planning"],
-      experience: "5+ years"
-    },
-    {
-      id: "4",
-      name: "Emma Davis",
-      role: "Post-Production Manager",
-      bio: "Emma's expertise in post-production and digital artistry brings our images to life. She ensures every photo meets our high standards of quality and artistic vision.",
-      specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
-      experience: "6+ years"
-    }
-  ];
-
-  const achievements = [
-    {
-      icon: Award,
-      title: "Professional Excellence Awards",
-      description: "Recognized by the National Photography Association for outstanding aerial photography"
-    },
-    {
-      icon: Camera,
-      title: "1000+ Successful Projects",
-      description: "Completed over 1000 photography projects with 100% client satisfaction"
-    },
-    {
-      icon: Users,
-      title: "Certified Team",
-      description: "All team members are certified professionals with specialized training and expertise"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen pt-24 pb-16">
+  const teamMembers = [{
+    id: "1",
+    name: "Nick Carter",
+    role: "Founder & Lead Photographer",
+    bio: "With over 10 years of experience in professional photography, Nick specializes in aerial photography and portrait sessions. His artistic vision and technical expertise have earned recognition from industry professionals.",
+    specialties: ["Aerial Photography", "Portrait Photography", "Commercial Work"],
+    experience: "10+ years"
+  }, {
+    id: "2",
+    name: "Sarah Mitchell",
+    role: "Senior Photographer",
+    bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
+    specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
+    experience: "7+ years"
+  }, {
+    id: "3",
+    name: "Mike Johnson",
+    role: "Drone Operations Specialist",
+    bio: "Mike is our certified drone pilot with expertise in aerial videography and complex flight operations. He ensures safe and stunning aerial captures for all our projects.",
+    specialties: ["Drone Operations", "Aerial Videography", "Technical Planning"],
+    experience: "5+ years"
+  }, {
+    id: "4",
+    name: "Emma Davis",
+    role: "Post-Production Manager",
+    bio: "Emma's expertise in post-production and digital artistry brings our images to life. She ensures every photo meets our high standards of quality and artistic vision.",
+    specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
+    experience: "6+ years"
+  }];
+  const achievements = [{
+    icon: Award,
+    title: "Professional Excellence Awards",
+    description: "Recognized by the National Photography Association for outstanding aerial photography"
+  }, {
+    icon: Camera,
+    title: "1000+ Successful Projects",
+    description: "Completed over 1000 photography projects with 100% client satisfaction"
+  }, {
+    icon: Users,
+    title: "Certified Team",
+    description: "All team members are certified professionals with specialized training and expertise"
+  }];
+  return <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -89,50 +76,11 @@ const About = () => {
             </div>
           </div>
 
-          <div className="bg-accent/5 rounded-2xl p-8">
-            <h3 className="text-2xl font-playfair font-bold mb-6">Our Mission</h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              To capture and preserve life's most important moments through exceptional photography 
-              and innovative aerial perspectives, creating lasting memories that exceed our clients' expectations.
-            </p>
-            
-            <div className="grid grid-cols-3 gap-4 text-center">
-              <div>
-                <div className="text-2xl font-bold text-accent mb-1">10+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-accent mb-1">1000+</div>
-                <div className="text-sm text-muted-foreground">Happy Clients</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-accent mb-1">50+</div>
-                <div className="text-sm text-muted-foreground">Awards Won</div>
-              </div>
-            </div>
-          </div>
+          
         </div>
 
         {/* Achievements */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-playfair font-bold text-center mb-12">Our Achievements</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {achievements.map((achievement, index) => {
-              const IconComponent = achievement.icon;
-              return (
-                <div key={index} className="text-center p-6 rounded-xl border border-border hover:border-accent transition-colors">
-                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent size={32} className="text-accent" />
-                  </div>
-                  <h3 className="font-playfair font-semibold text-lg mb-3">{achievement.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {achievement.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        
 
         {/* Team Section */}
         <div className="mb-20">
@@ -145,8 +93,7 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {teamMembers.map((member) => (
-              <div key={member.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            {teamMembers.map(member => <div key={member.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
                 <div className="flex items-start space-x-6">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Camera size={32} className="text-accent" />
@@ -168,19 +115,13 @@ const About = () => {
                     </p>
                     
                     <div className="flex flex-wrap gap-2">
-                      {member.specialties.map((specialty, index) => (
-                        <span
-                          key={index}
-                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full"
-                        >
+                      {member.specialties.map((specialty, index) => <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                           {specialty}
-                        </span>
-                      ))}
+                        </span>)}
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
 
@@ -232,14 +173,10 @@ const About = () => {
           </div>
 
           <div className="text-center mt-8">
-            <button className="bg-primary-foreground text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary-foreground/90 transition-colors">
-              Schedule a Consultation
-            </button>
+            
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default About;
