@@ -207,3 +207,14 @@
   font-weight: normal;
   letter-spacing: 0.5px;
 }
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+}
+
+.signature .capital {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
