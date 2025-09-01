@@ -21,9 +21,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen">
-         <span className="signature">
-          <span className="capital">N</span><span className="capital">C</span> Photography &amp; <span className="capital">A</span>erials
-        </span>
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
