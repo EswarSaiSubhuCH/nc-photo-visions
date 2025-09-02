@@ -113,37 +113,29 @@ const Galleries = () => {
         {/* Featured Galleries */}
         <div className="mb-16">
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">Featured Collections</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {featuredGalleries.map((gallery) => {
               const IconComponent = gallery.icon;
               return (
                 <div
                   key={gallery.id}
-                  className="gallery-item group cursor-pointer rounded-2xl overflow-hidden border border-border hover:border-accent"
+                  className={`gallery-item group cursor-pointer rounded-2xl p-8 bg-gradient-to-br ${gallery.gradient}/20 text-foreground hover:${gallery.gradient}/30 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-white/20 backdrop-blur-sm`}
                 >
-                  <div className={`relative h-64 bg-gradient-to-br ${gallery.gradient} flex items-center justify-center`}>
-                    <div className="absolute inset-0 bg-black/20" />
-                    <IconComponent size={64} className="text-white relative z-10" />
-                    
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <Eye size={32} className="mx-auto mb-2" />
-                        <p className="font-medium">View Gallery</p>
-                      </div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -mr-8 -mt-8"></div>
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${gallery.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
+                      <IconComponent size={32} className="text-white" />
                     </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-playfair font-semibold">{gallery.title}</h3>
-                      <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                        {gallery.imageCount} photos
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <h3 className="text-2xl font-playfair font-bold mb-4">{gallery.title}</h3>
+                    <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
                       {gallery.description}
                     </p>
+                    <div className="flex items-center justify-between">
+                      <span className={`text-sm font-medium px-3 py-1 rounded-full bg-gradient-to-r ${gallery.gradient}/20 border border-current/20`}>
+                        {gallery.imageCount} photos
+                      </span>
+                      <Eye size={20} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                    </div>
                   </div>
                 </div>
               );
@@ -162,30 +154,22 @@ const Galleries = () => {
                 return (
                   <div
                     key={gallery.id}
-                    className="gallery-item group cursor-pointer rounded-xl overflow-hidden border border-border hover:border-accent"
+                    className={`gallery-item group cursor-pointer rounded-2xl p-6 bg-gradient-to-br ${gallery.gradient}/15 text-foreground hover:${gallery.gradient}/25 transition-all duration-300 transform hover:scale-105 border border-white/10 backdrop-blur-sm`}
                   >
-                    <div className={`relative h-48 bg-gradient-to-br ${gallery.gradient} flex items-center justify-center`}>
-                      <div className="absolute inset-0 bg-black/20" />
-                      <IconComponent size={48} className="text-white relative z-10" />
-                      
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <Eye size={24} className="mx-auto mb-1" />
-                          <p className="text-sm font-medium">View Gallery</p>
-                        </div>
+                    <div className="relative z-10">
+                      <div className={`w-12 h-12 bg-gradient-to-br ${gallery.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-md`}>
+                        <IconComponent size={24} className="text-white" />
                       </div>
-                    </div>
-                    
-                    <div className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-semibold">{gallery.title}</h3>
-                        <span className="text-xs text-muted-foreground">
-                          {gallery.imageCount}
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground text-sm">
+                      <h3 className="font-playfair font-bold mb-2">{gallery.title}</h3>
+                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                         {gallery.description}
                       </p>
+                      <div className="flex items-center justify-between">
+                        <span className={`text-xs font-medium px-2 py-1 rounded-full bg-gradient-to-r ${gallery.gradient}/20 border border-current/20`}>
+                          {gallery.imageCount} photos
+                        </span>
+                        <Eye size={16} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                      </div>
                     </div>
                   </div>
                 );
@@ -198,9 +182,9 @@ const Galleries = () => {
                 return (
                   <div
                     key={gallery.id}
-                    className="group cursor-pointer flex items-center p-6 rounded-xl border border-border hover:border-accent hover:bg-muted/30 transition-all"
+                    className={`group cursor-pointer flex items-center p-6 rounded-2xl bg-gradient-to-r ${gallery.gradient}/10 hover:${gallery.gradient}/20 transition-all duration-300 border border-white/10 backdrop-blur-sm`}
                   >
-                    <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${gallery.gradient} flex items-center justify-center mr-6`}>
+                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${gallery.gradient} flex items-center justify-center mr-6 shadow-lg`}>
                       <IconComponent size={24} className="text-white" />
                     </div>
                     
@@ -208,7 +192,7 @@ const Galleries = () => {
                       <div className="flex items-center justify-between">
                         <h3 className="text-xl font-playfair font-semibold mb-1">{gallery.title}</h3>
                         <div className="flex items-center space-x-4">
-                          <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                          <span className={`text-sm font-medium px-3 py-1 rounded-full bg-gradient-to-r ${gallery.gradient}/20 border border-current/20`}>
                             {gallery.imageCount} photos
                           </span>
                           <Eye size={20} className="text-muted-foreground group-hover:text-accent transition-colors" />
@@ -224,13 +208,13 @@ const Galleries = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-16 bg-accent/5 rounded-2xl p-12">
-          <h2 className="text-3xl font-playfair font-bold mb-4">Like What You See?</h2>
+        <div className="text-center mt-16 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-12 border border-white/10 backdrop-blur-sm">
+          <h2 className="text-3xl font-playfair font-bold mb-4">Ready to Capture Your Story?</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Ready to create your own stunning photography collection? Let's discuss your vision and bring it to life.
+            Let's create something beautiful together. Contact us to discuss your vision and bring it to life.
           </p>
           <button className="btn-hero">
-            Start Your Project
+            Get In Touch
           </button>
         </div>
       </div>
