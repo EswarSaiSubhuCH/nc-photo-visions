@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Twitter, Youtube, Linkedin, Users } from "lucide-react";
+import { Instagram, Twitter, Youtube, Linkedin, Users, Camera, Play } from "lucide-react";
 
 const SocialMedia = () => {
   const socialPlatforms = [
@@ -94,6 +94,54 @@ const SocialMedia = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Latest Social Highlights */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-playfair font-bold mb-4 text-foreground">Latest Social Highlights</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Get a glimpse of our most recent social media content and photography adventures.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-orange-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                  <Camera size={32} className="text-orange-500" />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Instagram Stories</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Behind-the-scenes content from our latest aerial photography session
+              </p>
+            </div>
+
+            <div className="bg-orange-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                  <Play size={32} className="text-orange-500" />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">New Tutorial</h3>
+              <p className="text-gray-600 leading-relaxed">
+                "Mastering Golden Hour Photography" - Our latest YouTube tutorial
+              </p>
+            </div>
+
+            <div className="bg-orange-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                  <Camera size={32} className="text-orange-500" />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Featured Post</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Stunning drone shot of the city skyline at sunset - trending on Instagram
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Statistics */}
