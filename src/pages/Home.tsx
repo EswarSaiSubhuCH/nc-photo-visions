@@ -124,19 +124,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-playfair font-bold mb-4">
-            Ready to Capture Your Story?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Let's create something beautiful together. Contact us to discuss your vision.
-          </p>
-          <Link to="/contact" className="btn-hero">
-            Get In Touch
-          </Link>
-        </div>
-      </section>
+      
     </div>;
 };
 export default Home;
