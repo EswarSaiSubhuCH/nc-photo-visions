@@ -113,33 +113,41 @@ const Galleries = () => {
         {/* Featured Galleries */}
         <div className="mb-16">
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">Featured Collections</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {featuredGalleries.map((gallery) => {
-              const IconComponent = gallery.icon;
-              return (
-                <div
-                  key={gallery.id}
-                  className={`gallery-item group cursor-pointer rounded-2xl p-8 bg-gradient-to-br ${gallery.gradient}/20 text-foreground hover:${gallery.gradient}/30 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-white/20 backdrop-blur-sm`}
-                >
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -mr-8 -mt-8"></div>
-                  <div className="relative z-10">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${gallery.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                      <IconComponent size={32} className="text-white" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {featuredGalleries.map((gallery) => (
+              <div key={gallery.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+                <div className="flex items-start space-x-6">
+                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <gallery.icon size={32} className="text-accent" />
+                  </div>
+                  
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="text-xl font-playfair font-semibold">{gallery.title}</h3>
+                        <p className="text-accent font-medium">{gallery.category}</p>
+                      </div>
+                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                        {gallery.imageCount} images
+                      </span>
                     </div>
-                    <h3 className="text-2xl font-playfair font-bold mb-4">{gallery.title}</h3>
-                    <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                    
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {gallery.description}
                     </p>
-                    <div className="flex items-center justify-between">
-                      <span className={`text-sm font-medium px-3 py-1 rounded-full bg-gradient-to-r ${gallery.gradient}/20 border border-current/20`}>
-                        {gallery.imageCount} photos
+                    
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                        Featured
                       </span>
-                      <Eye size={20} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        View Gallery
+                      </span>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -148,61 +156,78 @@ const Galleries = () => {
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">All Collections</h2>
           
           {viewMode === "grid" ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allGalleries.map((gallery) => {
-                const IconComponent = gallery.icon;
-                return (
-                  <div
-                    key={gallery.id}
-                    className={`gallery-item group cursor-pointer rounded-2xl p-6 bg-gradient-to-br ${gallery.gradient}/15 text-foreground hover:${gallery.gradient}/25 transition-all duration-300 transform hover:scale-105 border border-white/10 backdrop-blur-sm`}
-                  >
-                    <div className="relative z-10">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${gallery.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-md`}>
-                        <IconComponent size={24} className="text-white" />
-                      </div>
-                      <h3 className="font-playfair font-bold mb-2">{gallery.title}</h3>
-                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                        {gallery.description}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className={`text-xs font-medium px-2 py-1 rounded-full bg-gradient-to-r ${gallery.gradient}/20 border border-current/20`}>
-                          {gallery.imageCount} photos
-                        </span>
-                        <Eye size={16} className="text-muted-foreground group-hover:text-accent transition-colors" />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {allGalleries.map((gallery) => {
-                const IconComponent = gallery.icon;
-                return (
-                  <div
-                    key={gallery.id}
-                    className={`group cursor-pointer flex items-center p-6 rounded-2xl bg-gradient-to-r ${gallery.gradient}/10 hover:${gallery.gradient}/20 transition-all duration-300 border border-white/10 backdrop-blur-sm`}
-                  >
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${gallery.gradient} flex items-center justify-center mr-6 shadow-lg`}>
-                      <IconComponent size={24} className="text-white" />
+            <div className="grid md:grid-cols-2 gap-8">
+              {allGalleries.map((gallery) => (
+                <div key={gallery.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <gallery.icon size={32} className="text-accent" />
                     </div>
                     
                     <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-playfair font-semibold mb-1">{gallery.title}</h3>
-                        <div className="flex items-center space-x-4">
-                          <span className={`text-sm font-medium px-3 py-1 rounded-full bg-gradient-to-r ${gallery.gradient}/20 border border-current/20`}>
-                            {gallery.imageCount} photos
-                          </span>
-                          <Eye size={20} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="text-xl font-playfair font-semibold">{gallery.title}</h3>
+                          <p className="text-accent font-medium">{gallery.category}</p>
                         </div>
+                        <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                          {gallery.imageCount} images
+                        </span>
                       </div>
-                      <p className="text-muted-foreground">{gallery.description}</p>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {gallery.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                          {gallery.category}
+                        </span>
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                          View Gallery
+                        </span>
+                      </div>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {allGalleries.map((gallery) => (
+                <div key={gallery.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <gallery.icon size={32} className="text-accent" />
+                    </div>
+                    
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="text-xl font-playfair font-semibold">{gallery.title}</h3>
+                          <p className="text-accent font-medium">{gallery.category}</p>
+                        </div>
+                        <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                          {gallery.imageCount} images
+                        </span>
+                      </div>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {gallery.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                          {gallery.category}
+                        </span>
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                          View Gallery
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>

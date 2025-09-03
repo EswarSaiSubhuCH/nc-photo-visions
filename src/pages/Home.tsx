@@ -47,76 +47,128 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Photography Card */}
-            <div className="group relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-colors">
-                  <Camera size={32} className="text-white" />
+            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Camera size={32} className="text-accent" />
                 </div>
-                <h3 className="text-2xl font-playfair font-bold mb-4 text-white">Photography</h3>
-                <p className="text-white/90 mb-6 text-sm leading-relaxed">
-                  Professional portrait photography with artistic flair and technical excellence.
-                </p>
-                <Link to="/galleries/portraits" className="inline-flex items-center space-x-2 text-white/90 hover:text-white font-medium group-hover:translate-x-1 transition-all duration-200">
-                  <span>View Portfolio</span>
-                  <ArrowRight size={16} />
-                </Link>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Photography</h3>
+                      <p className="text-accent font-medium">Portrait & Commercial</p>
+                    </div>
+                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                      Pro
+                    </span>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Professional portrait photography with artistic flair and technical excellence for all your creative needs.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <Link to="/galleries/portraits" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Portfolio
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Aerial Photography Card */}
-            <div className="group relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br from-emerald-500 to-teal-600 text-white hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-colors">
-                  <Plane size={32} className="text-white" />
+            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Plane size={32} className="text-accent" />
                 </div>
-                <h3 className="text-2xl font-playfair font-bold mb-4 text-white">Aerial Photography</h3>
-                <p className="text-white/90 mb-6 text-sm leading-relaxed">
-                  Stunning drone photography and videography capturing unique perspectives from above.
-                </p>
-                <Link to="/galleries/aerial" className="inline-flex items-center space-x-2 text-white/90 hover:text-white font-medium group-hover:translate-x-1 transition-all duration-200">
-                  <span>View Aerials</span>
-                  <ArrowRight size={16} />
-                </Link>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Aerial Photography</h3>
+                      <p className="text-accent font-medium">Drone & Aviation</p>
+                    </div>
+                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                      Certified
+                    </span>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Stunning drone photography and videography capturing unique perspectives from above with professional equipment.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <Link to="/galleries/aerial" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Aerials
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Wedding Photography Card */}
-            <div className="group relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br from-rose-500 to-pink-600 text-white hover:from-rose-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-colors">
-                  <Heart size={32} className="text-white" />
+            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Heart size={32} className="text-accent" />
                 </div>
-                <h3 className="text-2xl font-playfair font-bold mb-4 text-white">Wedding Photography</h3>
-                <p className="text-white/90 mb-6 text-sm leading-relaxed">
-                  Capturing your special day with romantic and timeless wedding photography.
-                </p>
-                <Link to="/galleries/wedding" className="inline-flex items-center space-x-2 text-white/90 hover:text-white font-medium group-hover:translate-x-1 transition-all duration-200">
-                  <span>View Weddings</span>
-                  <ArrowRight size={16} />
-                </Link>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Wedding Photography</h3>
+                      <p className="text-accent font-medium">Romantic & Timeless</p>
+                    </div>
+                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                      Premium
+                    </span>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Capturing your special day with romantic and timeless wedding photography that tells your love story.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <Link to="/galleries/wedding" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Weddings
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Event Photography Card */}
-            <div className="group relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br from-amber-500 to-orange-600 text-white hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-colors">
-                  <Users size={32} className="text-white" />
+            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users size={32} className="text-accent" />
                 </div>
-                <h3 className="text-2xl font-playfair font-bold mb-4 text-white">Event Photography</h3>
-                <p className="text-white/90 mb-6 text-sm leading-relaxed">
-                  Professional event coverage for corporate functions, parties, and celebrations.
-                </p>
-                <Link to="/galleries/events" className="inline-flex items-center space-x-2 text-white/90 hover:text-white font-medium group-hover:translate-x-1 transition-all duration-200">
-                  <span>View Events</span>
-                  <ArrowRight size={16} />
-                </Link>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Event Photography</h3>
+                      <p className="text-accent font-medium">Corporate & Social</p>
+                    </div>
+                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                      Professional
+                    </span>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Professional event coverage for corporate functions, parties, and celebrations with candid storytelling.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <Link to="/galleries/events" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Events
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

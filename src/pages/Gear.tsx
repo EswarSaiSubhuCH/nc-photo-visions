@@ -162,37 +162,40 @@ const Gear = () => {
         {/* Featured Items */}
         <div className="mb-16">
           <h2 className="text-3xl font-playfair font-bold mb-8">Featured Equipment</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
             {gearItems.filter(item => item.featured).map((item) => (
-              <div
-                key={item.id}
-                className={`group cursor-pointer rounded-2xl p-8 bg-gradient-to-br ${item.gradient}/20 text-foreground hover:${item.gradient}/30 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-white/20 backdrop-blur-sm`}
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -mr-8 -mt-8"></div>
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                    <Camera size={32} className="text-white" />
+              <div key={item.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+                <div className="flex items-start space-x-6">
+                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Camera size={32} className="text-accent" />
                   </div>
                   
-                  <h3 className="text-2xl font-playfair font-bold mb-4">{item.name}</h3>
-                  
-                  <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  <div className="space-y-2 mb-6">
-                    {item.specifications.map((spec, index) => (
-                      <div key={index} className="flex items-center text-sm text-muted-foreground">
-                        <div className={`w-1.5 h-1.5 bg-gradient-to-r ${item.gradient} rounded-full mr-2`} />
-                        {spec}
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="text-xl font-playfair font-semibold">{item.name}</h3>
+                        <p className="text-accent font-medium">{item.category}</p>
                       </div>
-                    ))}
+                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                        Featured
+                      </span>
+                    </div>
+                    
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {item.specifications.slice(0, 2).map((spec, index) => (
+                        <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                          {spec}
+                        </span>
+                      ))}
+                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        View Details
+                      </span>
+                    </div>
                   </div>
-
-                  <button className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-lg py-3 px-6 font-medium hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
-                    <Eye size={16} />
-                    <span>View Details</span>
-                  </button>
                 </div>
               </div>
             ))}
@@ -206,51 +209,79 @@ const Gear = () => {
           </h2>
 
           {viewMode === "grid" ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               {filteredItems.map((item) => (
-                <div
-                  key={item.id}
-                  className={`group cursor-pointer rounded-2xl p-6 bg-gradient-to-br ${item.gradient}/15 text-foreground hover:${item.gradient}/25 transition-all duration-300 transform hover:scale-105 border border-white/10 backdrop-blur-sm`}
-                >
-                  <div className="relative z-10">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-md`}>
-                      <Camera size={24} className="text-white" />
+                <div key={item.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Camera size={32} className="text-accent" />
                     </div>
                     
-                    <h3 className="font-playfair font-bold mb-2 line-clamp-2">{item.name}</h3>
-                    
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
-                      {item.description}
-                    </p>
-
-                    <button className="w-full bg-gradient-to-r from-primary/80 to-accent/80 text-primary-foreground rounded-lg py-2 px-4 text-sm font-medium hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
-                      <Eye size={14} />
-                      <span>View</span>
-                    </button>
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="text-xl font-playfair font-semibold">{item.name}</h3>
+                          <p className="text-accent font-medium">{item.category}</p>
+                        </div>
+                        <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                          {item.featured ? "Featured" : "Available"}
+                        </span>
+                      </div>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {item.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {item.specifications.slice(0, 2).map((spec, index) => (
+                          <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                            {spec}
+                          </span>
+                        ))}
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                          View Details
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {filteredItems.map((item) => (
-                <div
-                  key={item.id}
-                  className={`group cursor-pointer flex items-center p-6 rounded-2xl bg-gradient-to-r ${item.gradient}/10 hover:${item.gradient}/20 transition-all duration-300 border border-white/10 backdrop-blur-sm`}
-                >
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mr-6 shadow-lg`}>
-                    <Camera size={24} className="text-white" />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-playfair font-semibold">{item.name}</h3>
-                      <button className="bg-gradient-to-r from-primary/80 to-accent/80 text-primary-foreground rounded-lg py-2 px-4 text-sm font-medium hover:opacity-90 transition-opacity flex items-center space-x-2">
-                        <Eye size={16} />
-                        <span>View Details</span>
-                      </button>
+                <div key={item.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Camera size={32} className="text-accent" />
                     </div>
-                    <p className="text-muted-foreground">{item.description}</p>
+                    
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="text-xl font-playfair font-semibold">{item.name}</h3>
+                          <p className="text-accent font-medium">{item.category}</p>
+                        </div>
+                        <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                          {item.featured ? "Featured" : "Available"}
+                        </span>
+                      </div>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {item.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {item.specifications.slice(0, 3).map((spec, index) => (
+                          <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                            {spec}
+                          </span>
+                        ))}
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                          View Details
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
