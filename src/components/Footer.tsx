@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Camera, Instagram, Facebook, Twitter } from "lucide-react";
 const Footer = () => {
-  return <footer className="bg-[rgb(38,38,38)] text-white py-[12px]">
+  return <footer className="bg-[rgb(38,38,38)] text-white py-[16px]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
