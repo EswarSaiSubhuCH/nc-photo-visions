@@ -61,9 +61,7 @@ const Home = () => {
                       <h3 className="text-xl font-playfair font-semibold">Photography</h3>
                       <p className="text-accent font-medium">Portrait & Commercial</p>
                     </div>
-                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                      Pro
-                    </span>
+                    
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -92,9 +90,7 @@ const Home = () => {
                       <h3 className="text-xl font-playfair font-semibold">Aerial Photography</h3>
                       <p className="text-accent font-medium">Drone & Aviation</p>
                     </div>
-                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                      Certified
-                    </span>
+                    
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -123,9 +119,7 @@ const Home = () => {
                       <h3 className="text-xl font-playfair font-semibold">Wedding Photography</h3>
                       <p className="text-accent font-medium">Romantic & Timeless</p>
                     </div>
-                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                      Premium
-                    </span>
+                    
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -154,9 +148,7 @@ const Home = () => {
                       <h3 className="text-xl font-playfair font-semibold">Event Photography</h3>
                       <p className="text-accent font-medium">Corporate & Social</p>
                     </div>
-                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                      Professional
-                    </span>
+                    
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
