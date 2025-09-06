@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Camera, Zap, Settings, Smartphone, Search, Eye, Grid, List } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Gear = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -191,9 +192,12 @@ const Gear = () => {
                           {spec}
                         </span>
                       ))}
-                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                      <Link 
+                        to={`/gear/${item.category}`}
+                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer"
+                      >
                         View Details
-                      </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -238,9 +242,12 @@ const Gear = () => {
                             {spec}
                           </span>
                         ))}
-                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <Link 
+                          to={`/gear/${item.category}`}
+                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer"
+                        >
                           View Details
-                        </span>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -277,9 +284,12 @@ const Gear = () => {
                             {spec}
                           </span>
                         ))}
-                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <Link 
+                          to={`/gear/${item.category}`}
+                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer"
+                        >
                           View Details
-                        </span>
+                        </Link>
                       </div>
                     </div>
                   </div>

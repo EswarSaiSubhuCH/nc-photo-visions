@@ -12,6 +12,16 @@ import Gear from "./pages/Gear";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AerialGallery from "./pages/galleries/AerialGallery";
+import PortraitGallery from "./pages/galleries/PortraitGallery";
+import WeddingGallery from "./pages/galleries/WeddingGallery";
+import CommercialGallery from "./pages/galleries/CommercialGallery";
+import LandscapeGallery from "./pages/galleries/LandscapeGallery";
+import EventsGallery from "./pages/galleries/EventsGallery";
+import CameraGear from "./pages/gear/CameraGear";
+import LensGear from "./pages/gear/LensGear";
+import DroneGear from "./pages/gear/DroneGear";
+import AccessoriesGear from "./pages/gear/AccessoriesGear";
 
 const queryClient = new QueryClient();
 
@@ -28,9 +38,17 @@ const App = () => (
             <Route path="/social" element={<SocialMedia />} />
             <Route path="/social/:platform" element={<SocialMedia />} />
             <Route path="/galleries" element={<Galleries />} />
-            <Route path="/galleries/:category" element={<Galleries />} />
+            <Route path="/galleries/aerial" element={<AerialGallery />} />
+            <Route path="/galleries/portraits" element={<PortraitGallery />} />
+            <Route path="/galleries/weddings" element={<WeddingGallery />} />
+            <Route path="/galleries/commercial" element={<CommercialGallery />} />
+            <Route path="/galleries/landscape" element={<LandscapeGallery />} />
+            <Route path="/galleries/events" element={<EventsGallery />} />
             <Route path="/gear" element={<Gear />} />
-            <Route path="/gear/:category" element={<Gear />} />
+            <Route path="/gear/cameras" element={<CameraGear />} />
+            <Route path="/gear/lenses" element={<LensGear />} />
+            <Route path="/gear/drones" element={<DroneGear />} />
+            <Route path="/gear/accessories" element={<AccessoriesGear />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

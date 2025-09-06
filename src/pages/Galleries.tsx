@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Camera, Plane, Heart, Building, Grid, List, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Galleries = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -140,9 +141,12 @@ const Galleries = () => {
                       <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                         Featured
                       </span>
-                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                      <Link 
+                        to={`/galleries/${gallery.id}`}
+                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer"
+                      >
                         View Gallery
-                      </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -183,9 +187,12 @@ const Galleries = () => {
                         <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                           {gallery.category}
                         </span>
-                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <Link 
+                          to={`/galleries/${gallery.id}`}
+                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer"
+                        >
                           View Gallery
-                        </span>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -220,9 +227,12 @@ const Galleries = () => {
                         <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                           {gallery.category}
                         </span>
-                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <Link 
+                          to={`/galleries/${gallery.id}`}
+                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer"
+                        >
                           View Gallery
-                        </span>
+                        </Link>
                       </div>
                     </div>
                   </div>
