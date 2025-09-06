@@ -1,20 +1,17 @@
 import { Link } from "react-router-dom";
-import { Camera, Instagram, Facebook, Twitter } from "lucide-react";
+import { Instagram, Facebook, Twitter } from "lucide-react";
 const Footer = () => {
   return <footer className="bg-[rgb(38,38,38)] text-white py-[16px]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
-                <Camera className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">NC Photography</h3>
-                <p className="text-sm text-gray-400">& Aerials</p>
-              </div>
-            </div>
+            <Link
+              to="/"
+              className="text-2xl font-playfair font-bold text-white hover:text-accent transition-colors site-title"
+            >
+              NC Photography & Aerials
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               Capturing life's beautiful moments from every angle. 
               Professional photography and aerial services.
