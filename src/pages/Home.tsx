@@ -49,7 +49,7 @@ const Home = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Photography Card */}
-            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            <Link to="/galleries/portraits" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
               <div className="flex items-start space-x-6">
                 <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Camera size={32} className="text-accent" />
@@ -69,16 +69,16 @@ const Home = () => {
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
-                    <Link to="/galleries/portraits" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                       View Portfolio
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Aerial Photography Card */}
-            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            <Link to="/galleries/aerial" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
               <div className="flex items-start space-x-6">
                 <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Plane size={32} className="text-accent" />
@@ -98,16 +98,16 @@ const Home = () => {
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
-                    <Link to="/galleries/aerial" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                       View Aerials
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Wedding Photography Card */}
-            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            <Link to="/galleries/weddings" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
               <div className="flex items-start space-x-6">
                 <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Heart size={32} className="text-accent" />
@@ -127,16 +127,16 @@ const Home = () => {
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
-                    <Link to="/galleries/wedding" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                       View Weddings
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Event Photography Card */}
-            <div className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            <Link to="/galleries/events" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
               <div className="flex items-start space-x-6">
                 <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Users size={32} className="text-accent" />
@@ -156,13 +156,13 @@ const Home = () => {
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
-                    <Link to="/galleries/events" className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                       View Events
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

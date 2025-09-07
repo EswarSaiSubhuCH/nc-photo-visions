@@ -89,7 +89,7 @@ const Galleries = () => {
         <div className="mb-16">
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">Featured Collections</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {featuredGalleries.map(gallery => <div key={gallery.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            {featuredGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                 <div className="flex items-start space-x-6">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <gallery.icon size={32} className="text-accent" />
@@ -114,13 +114,13 @@ const Galleries = () => {
                       <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                         Featured
                       </span>
-                      <Link to={`/galleries/${gallery.id}`} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                         View Gallery
-                      </Link>
+                      </span>
                     </div>
                   </div>
                 </div>
-              </div>)}
+              </Link>)}
           </div>
         </div>
 
@@ -129,7 +129,7 @@ const Galleries = () => {
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">All Collections</h2>
           
           {viewMode === "grid" ? <div className="grid md:grid-cols-2 gap-8">
-              {allGalleries.map(gallery => <div key={gallery.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              {allGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-6">
                     <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <gallery.icon size={32} className="text-accent" />
@@ -154,15 +154,15 @@ const Galleries = () => {
                         <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                           {gallery.category}
                         </span>
-                        <Link to={`/galleries/${gallery.id}`} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                           View Gallery
-                        </Link>
+                        </span>
                       </div>
                     </div>
                   </div>
-                </div>)}
+                </Link>)}
             </div> : <div className="space-y-6">
-              {allGalleries.map(gallery => <div key={gallery.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              {allGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-6">
                     <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <gallery.icon size={32} className="text-accent" />
@@ -187,13 +187,13 @@ const Galleries = () => {
                         <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                           {gallery.category}
                         </span>
-                        <Link to={`/galleries/${gallery.id}`} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                           View Gallery
-                        </Link>
+                        </span>
                       </div>
                     </div>
                   </div>
-                </div>)}
+                </Link>)}
             </div>}
         </div>
 

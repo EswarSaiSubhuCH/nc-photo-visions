@@ -6,8 +6,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <Link
+            <Link 
               to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="text-2xl font-playfair font-bold text-white hover:text-accent transition-colors site-title"
             >
               NC Photography & Aerials
@@ -19,7 +20,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-center">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="space-y-2 text-center">
               <Link 

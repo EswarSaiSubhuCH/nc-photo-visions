@@ -133,7 +133,7 @@ const Gear = () => {
         <div className="mb-16">
           <h2 className="text-3xl font-playfair font-bold mb-8">Featured Equipment</h2>
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {gearItems.filter(item => item.featured).map(item => <div key={item.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            {gearItems.filter(item => item.featured).map(item => <Link key={item.id} to={`/gear/${item.category}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                 <div className="flex items-start space-x-6">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Camera size={32} className="text-accent" />
@@ -158,13 +158,13 @@ const Gear = () => {
                       {item.specifications.slice(0, 2).map((spec, index) => <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                           {spec}
                         </span>)}
-                      <Link to={`/gear/${item.category}`} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                         View Details
-                      </Link>
+                      </span>
                     </div>
                   </div>
                 </div>
-              </div>)}
+              </Link>)}
           </div>
         </div>
 
@@ -175,7 +175,7 @@ const Gear = () => {
           </h2>
 
           {viewMode === "grid" ? <div className="grid md:grid-cols-2 gap-8">
-              {filteredItems.map(item => <div key={item.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              {filteredItems.map(item => <Link key={item.id} to={`/gear/${item.category}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-6">
                     <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <Camera size={32} className="text-accent" />
@@ -200,15 +200,15 @@ const Gear = () => {
                         {item.specifications.slice(0, 2).map((spec, index) => <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                             {spec}
                           </span>)}
-                        <Link to={`/gear/${item.category}`} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                           View Details
-                        </Link>
+                        </span>
                       </div>
                     </div>
                   </div>
-                </div>)}
+                </Link>)}
             </div> : <div className="space-y-6">
-              {filteredItems.map(item => <div key={item.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+              {filteredItems.map(item => <Link key={item.id} to={`/gear/${item.category}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-6">
                     <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <Camera size={32} className="text-accent" />
@@ -233,13 +233,13 @@ const Gear = () => {
                         {item.specifications.slice(0, 3).map((spec, index) => <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                             {spec}
                           </span>)}
-                        <Link to={`/gear/${item.category}`} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                        <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
                           View Details
-                        </Link>
+                        </span>
                       </div>
                     </div>
                   </div>
-                </div>)}
+                </Link>)}
             </div>}
         </div>
 
