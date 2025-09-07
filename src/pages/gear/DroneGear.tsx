@@ -55,10 +55,7 @@ const DroneGear = () => {
               <Eye size={16} />
               <span>{drones.length} Items</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Star size={16} />
-              <span>DJI Professional</span>
-            </div>
+            
           </div>
         </div>
 
