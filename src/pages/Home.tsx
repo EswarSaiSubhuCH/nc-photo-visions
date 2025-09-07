@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Camera, Plane } from "lucide-react";
+import { ArrowRight, Camera, Plane, Heart, Users } from "lucide-react";
 import heroImage from "@/assets/hero-aerial.jpg";
 const Home = () => {
   return <div className="min-h-screen">
@@ -47,66 +47,128 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group p-8 rounded-lg border border-border hover:border-accent transition-all duration-300">
-              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                <Camera size={32} />
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Photography Card */}
+            <Link to="/galleries/portraits" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Camera size={32} className="text-accent" />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Photography</h3>
+                      <p className="text-accent font-medium">Portrait & Commercial</p>
+                    </div>
+                    
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Professional portrait photography with artistic flair and technical excellence for all your creative needs.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Portfolio
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-playfair font-semibold mb-4">Photography</h3>
-              <p className="text-muted-foreground mb-6">
-                Professional portrait, wedding, and commercial photography with artistic flair and technical excellence.
-              </p>
-              <Link to="/galleries/portraits" className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2">
-                <span>View Portfolio</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            </Link>
 
-            <div className="group p-8 rounded-lg border border-border hover:border-accent transition-all duration-300">
-              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                <Plane size={32} />
+            {/* Aerial Photography Card */}
+            <Link to="/galleries/aerial" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Plane size={32} className="text-accent" />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Aerial Photography</h3>
+                      <p className="text-accent font-medium">Drone & Aviation</p>
+                    </div>
+                    
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Stunning drone photography and videography capturing unique perspectives from above with professional equipment.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Aerials
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-playfair font-semibold mb-4">Aerial Photography</h3>
-              <p className="text-muted-foreground mb-6">
-                Stunning drone photography and videography capturing unique perspectives from above.
-              </p>
-              <Link to="/galleries/aerial" className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2">
-                <span>View Aerials</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            </Link>
 
-            <div className="group p-8 rounded-lg border border-border hover:border-accent transition-all duration-300 md:col-span-2 lg:col-span-1">
-              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                <Camera size={32} />
+            {/* Wedding Photography Card */}
+            <Link to="/galleries/weddings" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Heart size={32} className="text-accent" />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Wedding Photography</h3>
+                      <p className="text-accent font-medium">Romantic & Timeless</p>
+                    </div>
+                    
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Capturing your special day with romantic and timeless wedding photography that tells your love story.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Weddings
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-playfair font-semibold mb-4">Commercial Work</h3>
-              <p className="text-muted-foreground mb-6">
-                Professional commercial photography for businesses, products, and marketing campaigns.
-              </p>
-              <Link to="/galleries/commercial" className="text-accent hover:text-accent/80 font-medium flex items-center space-x-2">
-                <span>View Work</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            </Link>
+
+            {/* Event Photography Card */}
+            <Link to="/galleries/events" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+              <div className="flex items-start space-x-6">
+                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users size={32} className="text-accent" />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-semibold">Event Photography</h3>
+                      <p className="text-accent font-medium">Corporate & Social</p>
+                    </div>
+                    
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    Professional event coverage for corporate functions, parties, and celebrations with candid storytelling.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                      View Events
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-playfair font-bold mb-4">
-            Ready to Capture Your Story?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Let's create something beautiful together. Contact us to discuss your vision.
-          </p>
-          <Link to="/contact" className="btn-hero">
-            Get In Touch
-          </Link>
-        </div>
-      </section>
+      
     </div>;
 };
 export default Home;

@@ -1,14 +1,13 @@
 import React from "react";
-import { ExternalLink, Instagram, Facebook, Youtube, Twitter, Camera, Users } from "lucide-react";
-
+import { Instagram, Twitter, Youtube, Linkedin, Users, Camera, Play } from "lucide-react";
 const SocialMedia = () => {
   const socialPlatforms = [
     {
       name: "Instagram",
       icon: Instagram,
-      handle: "@nc_photography_galleryz",
-      url: "https://www.instagram.com/nc_photography_galleryz/",
-      followers: "0",
+      handle: "@nc_photography_aerials",
+      url: "https://instagram.com/nc_photography_aerials",
+      followers: "12.5K",
       description: "Daily shots, behind-the-scenes content, and aerial photography highlights",
       color: "from-purple-500 to-pink-500"
     },
@@ -16,26 +15,26 @@ const SocialMedia = () => {
       name: "Facebook",
       icon: Facebook,
       handle: "NC Photography & Aerials",
-      url: "https://www.facebook.com/profile.php?id=61580168834907",
-      followers: "0",
+      url: "https://facebook.com/ncphotographyaerials",
+      followers: "8.2K",
       description: "Latest projects, client testimonials, and photography tips",
       color: "from-blue-600 to-blue-500"
     },
     {
       name: "YouTube",
       icon: Youtube,
-      handle: "NC Photography & Aerials",
-      url: "https://www.youtube.com/@NCPhotographyAerials",
-      followers: "0",
+      handle: "NC Photography Aerials",
+      url: "https://youtube.com/@ncphotographyaerials",
+      followers: "3.1K",
       description: "Photography tutorials, drone flight footage, and project documentaries",
       color: "from-red-600 to-red-500"
     },
     {
       name: "Twitter",
       icon: Twitter,
-      handle: "@ncphotographys",
-      url: "https://x.com/ncphotographys",
-      followers: "0",
+      handle: "@nc_photo_aerials",
+      url: "https://twitter.com/nc_photo_aerials",
+      followers: "2.8K",
       description: "Quick updates, industry news, and photography insights",
       color: "from-blue-400 to-cyan-400"
     }
@@ -46,133 +45,95 @@ const SocialMedia = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-playfair font-bold mb-6">Connect With Us</h1>
+          <h1 className="text-5xl font-playfair font-bold mb-6 text-foreground">Follow My Journey</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Follow our journey across social media platforms and stay updated with our latest work, 
-            behind-the-scenes content, and photography insights.
+            Stay updated with my latest work and creative process across social platforms
           </p>
         </div>
 
         {/* Social Platform Cards */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {socialPlatforms.map((platform) => {
-            const IconComponent = platform.icon;
-            return (
-              <div
-                key={platform.name}
-                className="group relative overflow-hidden rounded-2xl border border-border hover:border-accent transition-all duration-300 hover:shadow-2xl"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
-                
-                <div className="relative p-8">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${platform.color} flex items-center justify-center text-white`}>
-                        <IconComponent size={28} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-playfair font-semibold">{platform.name}</h3>
-                        <p className="text-muted-foreground">{platform.handle}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="text-right">
-                      <div className="flex items-center space-x-1 text-muted-foreground mb-1">
-                        <Users size={16} />
-                        <span className="text-sm">Followers</span>
-                      </div>
-                      <p className="text-2xl font-bold text-accent">{platform.followers}</p>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-20">
+          {socialPlatforms.map(platform => {
+          const IconComponent = platform.icon;
+          return <div key={platform.name} className={`${platform.bgColor} rounded-3xl p-8 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
+                <div className="flex justify-center mb-6">
+                  <div className={`w-16 h-16 rounded-full bg-white/80 flex items-center justify-center ${platform.iconColor}`}>
+                    <IconComponent size={32} />
                   </div>
-
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {platform.description}
-                  </p>
-
-                  <a
-                    href={platform.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-medium hover:bg-accent/90 transition-colors group-hover:scale-105 transform duration-200"
-                  >
-                    <span>Visit {platform.name}</span>
-                    <ExternalLink size={16} />
-                  </a>
                 </div>
-              </div>
-            );
-          })}
+                
+                <h3 className="text-2xl font-bold mb-2 text-gray-800">{platform.name}</h3>
+                <p className="text-gray-600 mb-4">{platform.handle}</p>
+                
+                <div className="flex items-center justify-center space-x-2 mb-6 text-gray-700">
+                  <Users size={16} />
+                  <span className="font-semibold">{platform.followers}</span>
+                  <span className="text-sm">followers</span>
+                </div>
+
+                <a href={platform.url} target="_blank" rel="noopener noreferrer" className="inline-block bg-white/80 text-gray-800 hover:bg-white px-8 py-3 rounded-full font-medium transition-colors duration-200">
+                  Follow Us
+                </a>
+              </div>;
+        })}
         </div>
 
-        {/* Featured Content Section */}
-        <div className="bg-muted/50 rounded-2xl p-8 md:p-12">
+        {/* Latest Social Highlights */}
+        <div className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-playfair font-bold mb-4">Latest Social Highlights</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-playfair font-bold mb-4 text-foreground">Latest Social Highlights</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Get a glimpse of our most recent social media content and photography adventures.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group cursor-pointer">
-              <div className="aspect-square bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl mb-4 flex items-center justify-center hover:scale-105 transition-transform">
-                <Camera size={48} className="text-accent" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-orange-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                  <Camera size={32} className="text-orange-500" />
+                </div>
               </div>
-              <h3 className="font-semibold mb-2">Instagram Stories</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Instagram Stories</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Behind-the-scenes content from our latest aerial photography session
               </p>
             </div>
 
-            <div className="group cursor-pointer">
-              <div className="aspect-square bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl mb-4 flex items-center justify-center hover:scale-105 transition-transform">
-                <Youtube size={48} className="text-accent" />
+            <div className="bg-orange-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                  <Play size={32} className="text-orange-500" />
+                </div>
               </div>
-              <h3 className="font-semibold mb-2">New Tutorial</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-xl font-bold mb-3 text-gray-800">New Tutorial</h3>
+              <p className="text-gray-600 leading-relaxed">
                 "Mastering Golden Hour Photography" - Our latest YouTube tutorial
               </p>
             </div>
 
-            <div className="group cursor-pointer">
-              <div className="aspect-square bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl mb-4 flex items-center justify-center hover:scale-105 transition-transform">
-                <Instagram size={48} className="text-accent" />
+            <div className="bg-orange-50 rounded-2xl p-8 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                  <Camera size={32} className="text-orange-500" />
+                </div>
               </div>
-              <h3 className="font-semibold mb-2">Featured Post</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Featured Post</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Stunning drone shot of the city skyline at sunset - trending on Instagram
               </p>
             </div>
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <h2 className="text-3xl font-playfair font-bold mb-4">Stay Connected</h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Don't miss out on our latest work and photography tips. Follow us on your favorite platform!
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {socialPlatforms.map((platform) => {
-              const IconComponent = platform.icon;
-              return (
-                <a
-                  key={platform.name}
-                  href={platform.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg bg-gradient-to-r ${platform.color} text-white hover:scale-105 transition-transform font-medium`}
-                >
-                  <IconComponent size={20} />
-                  <span>{platform.name}</span>
-                </a>
-              );
-            })}
-          </div>
+        {/* Statistics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => <div key={index} className="space-y-2">
+              
+              
+            </div>)}
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default SocialMedia;
