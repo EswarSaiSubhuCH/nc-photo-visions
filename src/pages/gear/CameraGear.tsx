@@ -7,35 +7,27 @@ const CameraGear = () => {
   const cameras = [{
     id: 1,
     src: cameraImage,
-    name: "Canon EOS R5",
-    description: "Professional full-frame mirrorless camera with 45MP resolution and advanced autofocus system",
-    specifications: ["45MP Full Frame", "8K Video Recording", "In-Body Image Stabilization", "Dual Pixel CMOS AF II"],
-    price: "$3,899",
-    rating: 4.8
+    name: "Sony R3",
+    description: "An entirely renewed image processing system further enhances image quality. Up to approximately 2x improved AF speed15, AF tracking7, and Eye AF tracking7Â performance and up to 10fps continuous shooting allow more decisive moments to be captured. Reliable pro-style operability packed within a strong, compact body provides superior flexibility and mobility",
+    specifications: ["42.4 megapixels with Exmor R CMOS sensor, 4K Video Recording in XAVC S Format, 5-axis Image Stabilisation to minimize camera shakes, Fast Hybrid Autofocus, Continuous Burst Shooting at up to 10fps, Dynamic Range of up to 15 Stops, NP-FZ100 Battery for long duration shooting"],
   }, {
     id: 2,
     src: cameraImage,
-    name: "Canon EOS R6 Mark II",
+    name: " --- ",
     description: "High-performance full-frame camera optimized for speed and low-light performance",
     specifications: ["24.2MP Full Frame", "6K Video Oversampling", "40fps Electronic Shutter", "Advanced Subject Detection"],
-    price: "$2,499",
-    rating: 4.7
   }, {
     id: 3,
     src: cameraImage,
-    name: "Sony A7R V",
+    name: " ---- ",
     description: "Ultra-high resolution camera with exceptional detail and dynamic range",
     specifications: ["61MP Full Frame", "8K 24p Video", "693-point AF System", "8-stop Image Stabilization"],
-    price: "$3,899",
-    rating: 4.9
   }, {
     id: 4,
     src: cameraImage,
-    name: "Nikon Z9",
+    name: " ----- ",
     description: "Flagship mirrorless camera combining speed, resolution, and video capabilities",
     specifications: ["45.7MP Stacked Sensor", "8K 30p Internal", "493-point AF System", "120fps Continuous Shooting"],
-    price: "$5,499",
-    rating: 4.8
   }];
   return <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
