@@ -63,40 +63,29 @@ const AccessoriesGear = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {accessories.map(accessory => (
-            <div key={accessory.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer" onClick={() => setSelectedItem(accessory.id)}>
+          {accessories.map(accessory => <div key={accessory.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer" onClick={() => setSelectedItem(accessory.id)}>
               <div className="aspect-[4/3] relative mb-4 rounded-xl overflow-hidden">
                 <img src={accessory.src} alt={accessory.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm rounded-full px-3 py-1 text-foreground text-sm font-medium">
-                  {accessory.price}
-                </div>
+                
               </div>
               <div className="flex items-start justify-between mb-3">
                 <h3 className="font-playfair font-semibold text-xl">{accessory.name}</h3>
                 <div className="flex items-center space-x-1">
-                  <Star size={14} className="text-yellow-400 fill-yellow-400" />
-                  <span className="text-sm text-muted-foreground">{accessory.rating}</span>
+                  
+                  
                 </div>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {accessory.description}
               </p>
               <div className="space-y-2 mb-4">
-                {accessory.specifications.map((spec, index) => (
-                  <div key={index} className="flex items-center space-x-2">
+                {accessory.specifications.map((spec, index) => <div key={index} className="flex items-center space-x-2">
                     <div className="w-1 h-1 rounded-full bg-accent"></div>
                     <span className="text-xs text-muted-foreground">{spec}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
-              <div className="pt-4 border-t border-border flex items-center justify-between">
-                <span className="font-semibold text-lg">{accessory.price}</span>
-                <span className="text-xs bg-accent/10 text-accent px-3 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
-                  View Details
-                </span>
-              </div>
-            </div>
-          ))}
+              
+            </div>)}
         </div>
 
         
