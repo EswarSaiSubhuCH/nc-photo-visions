@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,16 +11,19 @@ const Contact = () => {
     service: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -30,9 +32,9 @@ const Contact = () => {
     setTimeout(() => {
       toast({
         title: "Message Sent Successfully!",
-        description: "We'll get back to you within 24 hours. Thank you for choosing NC Photography & Aerials!",
+        description: "We'll get back to you within 24 hours. Thank you for choosing NC Photography & Aerials!"
       });
-      
+
       // Reset form
       setFormData({
         name: "",
@@ -42,63 +44,28 @@ const Contact = () => {
         message: "",
         service: ""
       });
-      
       setIsSubmitting(false);
     }, 2000);
   };
-
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Studio Location",
-      details: [
-        "123 Photography Lane",
-        "Creative District",
-        "Photo City, PC 12345"
-      ]
-    },
-    {
-      icon: Phone,
-      title: "Phone Numbers",
-      details: [
-        "Main: +1 (555) 123-4567",
-        "Mobile: +1 (555) 987-6543",
-        "Emergency: +1 (555) 456-7890"
-      ]
-    },
-    {
-      icon: Mail,
-      title: "Email Addresses",
-      details: [
-        "info@ncphotography.com",
-        "bookings@ncphotography.com",
-        "support@ncphotography.com"
-      ]
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: [
-        "Monday - Friday: 9 AM - 6 PM",
-        "Saturday: 10 AM - 4 PM",
-        "Sunday: By Appointment Only"
-      ]
-    }
-  ];
-
-  const services = [
-    "Portrait Photography",
-    "Wedding Photography",
-    "Aerial Photography",
-    "Commercial Photography",
-    "Event Photography",
-    "Product Photography",
-    "Real Estate Photography",
-    "Other"
-  ];
-
-  return (
-    <div className="min-h-screen pt-24 pb-16">
+  const contactInfo = [{
+    icon: MapPin,
+    title: "Studio Location",
+    details: ["123 Photography Lane", "Creative District", "Photo City, PC 12345"]
+  }, {
+    icon: Phone,
+    title: "Phone Numbers",
+    details: ["Main: +1 (555) 123-4567", "Mobile: +1 (555) 987-6543", "Emergency: +1 (555) 456-7890"]
+  }, {
+    icon: Mail,
+    title: "Email Addresses",
+    details: ["info@ncphotography.com", "bookings@ncphotography.com", "support@ncphotography.com"]
+  }, {
+    icon: Clock,
+    title: "Business Hours",
+    details: ["Monday - Friday: 9 AM - 6 PM", "Saturday: 10 AM - 4 PM", "Sunday: By Appointment Only"]
+  }];
+  const services = ["Portrait Photography", "Wedding Photography", "Aerial Photography", "Commercial Photography", "Event Photography", "Product Photography", "Real Estate Photography", "Other"];
+  return <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -116,33 +83,26 @@ const Contact = () => {
             
             <div className="space-y-8 mb-12">
               {contactInfo.map((info, index) => {
-                const IconComponent = info.icon;
-                return (
-                  <div key={index} className="flex items-start space-x-4">
+              const IconComponent = info.icon;
+              return <div key={index} className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <IconComponent size={24} className="text-accent" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg mb-2">{info.title}</h3>
-                      {info.details.map((detail, idx) => (
-                        <p key={idx} className="text-muted-foreground">
+                      {info.details.map((detail, idx) => <p key={idx} className="text-muted-foreground">
                           {detail}
-                        </p>
-                      ))}
+                        </p>)}
                     </div>
-                  </div>
-                );
-              })}
+                  </div>;
+            })}
             </div>
 
             {/* Quick Actions */}
             <div className="bg-accent/5 rounded-2xl p-8">
               <h3 className="text-xl font-playfair font-bold mb-6">Quick Actions</h3>
               <div className="space-y-4">
-                <a
-                  href="tel:+15551234567"
-                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors"
-                >
+                <a href="tel:+15551234567" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
                   <Phone size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">Call Now</p>
@@ -150,10 +110,7 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a
-                  href="mailto:info@ncphotography.com"
-                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors"
-                >
+                <a href="mailto:info@ncphotography.com" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
                   <Mail size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">Send Email</p>
@@ -161,12 +118,7 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a
-                  href="https://wa.me/15551234567"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors"
-                >
+                <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
                   <MessageSquare size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">WhatsApp</p>
@@ -191,32 +143,14 @@ const Contact = () => {
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Full Name *
                     </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                      placeholder="Enter your full name"
-                    />
+                    <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your full name" />
                   </div>
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
                       Email Address *
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                      placeholder="Enter your email address"
-                    />
+                    <input type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your email address" />
                   </div>
                 </div>
 
@@ -225,34 +159,18 @@ const Contact = () => {
                     <label htmlFor="phone" className="block text-sm font-medium mb-2">
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                      placeholder="Enter your phone number"
-                    />
+                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your phone number" />
                   </div>
 
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium mb-2">
                       Service Interested In
                     </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                    >
+                    <select id="service" name="service" value={formData.service} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
                       <option value="">Select a service</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>
+                      {services.map(service => <option key={service} value={service}>
                           {service}
-                        </option>
-                      ))}
+                        </option>)}
                     </select>
                   </div>
                 </div>
@@ -261,49 +179,24 @@ const Contact = () => {
                   <label htmlFor="address" className="block text-sm font-medium mb-2">
                     Address (Optional)
                   </label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                    placeholder="Enter your address"
-                  />
+                  <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your address" />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message *
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none"
-                    placeholder="Tell us about your project, event details, preferred dates, and any specific requirements..."
-                  />
+                  <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none" placeholder="Tell us about your project, event details, preferred dates, and any specific requirements..." />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-hero disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                >
-                  {isSubmitting ? (
-                    <>
+                <button type="submit" disabled={isSubmitting} className="w-full btn-hero disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2">
+                  {isSubmitting ? <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       <span>Sending Message...</span>
-                    </>
-                  ) : (
-                    <>
+                    </> : <>
                       <Send size={20} />
                       <span>Send Message</span>
-                    </>
-                  )}
+                    </>}
                 </button>
               </form>
             </div>
@@ -312,64 +205,11 @@ const Contact = () => {
 
         {/* FAQ Section */}
         <div className="mt-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-playfair font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Quick answers to common questions about our services and booking process.
-            </p>
-          </div>
+          
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-semibold mb-3">How far in advance should I book?</h3>
-                <p className="text-muted-foreground text-sm">
-                  We recommend booking 4-6 weeks in advance for regular sessions and 6-12 months for weddings and major events.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-semibold mb-3">Do you travel for shoots?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Yes! We offer travel services within a 100-mile radius. Travel fees may apply depending on distance and duration.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-semibold mb-3">What's included in a session?</h3>
-                <p className="text-muted-foreground text-sm">
-                  All sessions include professional editing, an online gallery, and high-resolution digital downloads. Print packages available.
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-semibold mb-3">How long until I receive my photos?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Portrait sessions: 1-2 weeks. Weddings and large events: 4-6 weeks. Rush delivery available for additional fee.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-semibold mb-3">Do you offer payment plans?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Yes, we offer flexible payment plans for weddings and larger projects. 50% deposit required to secure your date.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-semibold mb-3">What about weather cancellations?</h3>
-                <p className="text-muted-foreground text-sm">
-                  We monitor weather closely and will reschedule outdoor sessions if necessary. Indoor backup options available.
-                </p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
