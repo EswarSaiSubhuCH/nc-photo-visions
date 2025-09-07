@@ -51,10 +51,7 @@ const CommercialGallery = () => {
               <Eye size={16} />
               <span>{images.length} Images</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Heart size={16} />
-              <span>Professional Work</span>
-            </div>
+            
           </div>
         </div>
 
