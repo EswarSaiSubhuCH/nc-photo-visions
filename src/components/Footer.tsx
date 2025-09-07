@@ -19,25 +19,49 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="flex flex-col items-center">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <nav className="space-y-2">
-              <Link to="/" className="block text-gray-300 hover:text-white transition-colors text-sm">
+            <nav className="space-y-2 text-center">
+              <Link 
+                to="/" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 Home
               </Link>
-              <Link to="/social" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <Link 
+                to="/social" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 Social Media
               </Link>
-              <Link to="/galleries" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <Link 
+                to="/galleries" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 Galleries
               </Link>
-              <Link to="/gear" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <Link 
+                to="/gear" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 Gear
               </Link>
-              <Link to="/about" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <Link 
+                to="/about" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 About
               </Link>
-              <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <Link 
+                to="/contact" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 Contact
               </Link>
             </nav>

@@ -59,28 +59,21 @@ const PortraitGallery = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {images.map(image => <div key={image.id} className="group cursor-pointer" onClick={() => setSelectedImage(image.id)}>
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20">
-                <div className="aspect-[3/4] relative">
-                  <img src={image.src} alt={image.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <h3 className="text-white font-playfair font-semibold text-lg mb-1">{image.title}</h3>
-                    <p className="text-white/80 text-sm">{image.camera}</p>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-playfair font-semibold text-lg mb-2">{image.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                    {image.description}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>{image.camera}</span>
-                    <span>{image.settings}</span>
-                  </div>
-                </div>
+          {images.map(image => (
+            <div key={image.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image.id)}>
+              <div className="aspect-[3/4] relative mb-4 rounded-xl overflow-hidden">
+                <img src={image.src} alt={image.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
               </div>
-            </div>)}
+              <h3 className="font-playfair font-semibold text-lg mb-2">{image.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                {image.description}
+              </p>
+              <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
+                <span className="font-medium">{image.camera}</span>
+                <span>{image.settings}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
         
