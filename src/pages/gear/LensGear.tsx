@@ -55,10 +55,7 @@ const LensGear = () => {
               <Eye size={16} />
               <span>{lenses.length} Items</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Star size={16} />
-              <span>L-Series Quality</span>
-            </div>
+            
           </div>
         </div>
 
