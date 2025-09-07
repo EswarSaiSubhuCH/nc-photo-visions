@@ -59,8 +59,7 @@ const CommercialGallery = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {images.map(image => (
-            <div key={image.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image.id)}>
+          {images.map(image => <div key={image.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image.id)}>
               <div className="aspect-[4/3] relative mb-4 rounded-xl overflow-hidden">
                 <img src={image.src} alt={image.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
               </div>
@@ -68,12 +67,8 @@ const CommercialGallery = () => {
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {image.description}
               </p>
-              <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
-                <span className="font-medium">{image.camera}</span>
-                <span>{image.settings}</span>
-              </div>
-            </div>
-          ))}
+              
+            </div>)}
         </div>
 
         
