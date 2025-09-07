@@ -6,8 +6,8 @@ const SocialMedia = () => {
     {
       name: "Instagram",
       icon: Instagram,
-      handle: "@nc_photography_aerials",
-      url: "https://instagram.com/nc_photography_aerials",
+      handle: "@nc_photography_galleryz",
+      url: "https://www.instagram.com/nc_photography_galleryz/",
       followers: "12.5K",
       description: "Daily shots, behind-the-scenes content, and aerial photography highlights",
       color: "from-purple-500 to-pink-500"
@@ -16,7 +16,7 @@ const SocialMedia = () => {
       name: "Facebook",
       icon: Facebook,
       handle: "NC Photography & Aerials",
-      url: "https://facebook.com/ncphotographyaerials",
+      url: "https://www.facebook.com/profile.php?id=61580168834907",
       followers: "8.2K",
       description: "Latest projects, client testimonials, and photography tips",
       color: "from-blue-600 to-blue-500"
@@ -24,8 +24,8 @@ const SocialMedia = () => {
     {
       name: "YouTube",
       icon: Youtube,
-      handle: "NC Photography Aerials",
-      url: "https://youtube.com/@ncphotographyaerials",
+      handle: "NC Photography & Aerials",
+      url: "https://www.youtube.com/@NCPhotographyAerials",
       followers: "3.1K",
       description: "Photography tutorials, drone flight footage, and project documentaries",
       color: "from-red-600 to-red-500"
@@ -33,8 +33,8 @@ const SocialMedia = () => {
     {
       name: "Twitter",
       icon: Twitter,
-      handle: "@nc_photo_aerials",
-      url: "https://twitter.com/nc_photo_aerials",
+      handle: "@ncphotographys",
+      url: "https://x.com/ncphotographys",
       followers: "2.8K",
       description: "Quick updates, industry news, and photography insights",
       color: "from-blue-400 to-cyan-400"
