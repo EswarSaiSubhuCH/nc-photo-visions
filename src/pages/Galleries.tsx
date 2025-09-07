@@ -89,7 +89,10 @@ const Galleries = () => {
         <div className="mb-16">
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">Featured Collections</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {featuredGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+            {featuredGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                 <div className="flex items-start space-x-6">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <gallery.icon size={32} className="text-accent" />
@@ -101,9 +104,7 @@ const Galleries = () => {
                         <h3 className="text-xl font-playfair font-semibold">{gallery.title}</h3>
                         <p className="text-accent font-medium">{gallery.category}</p>
                       </div>
-                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                        {gallery.imageCount} images
-                      </span>
+                      
                     </div>
                     
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -129,7 +130,10 @@ const Galleries = () => {
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">All Collections</h2>
           
           {viewMode === "grid" ? <div className="grid md:grid-cols-2 gap-8">
-              {allGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+              {allGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-6">
                     <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <gallery.icon size={32} className="text-accent" />
@@ -162,7 +166,10 @@ const Galleries = () => {
                   </div>
                 </Link>)}
             </div> : <div className="space-y-6">
-              {allGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
+              {allGalleries.map(gallery => <Link key={gallery.id} to={`/galleries/${gallery.id}`} onClick={() => window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-6">
                     <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <gallery.icon size={32} className="text-accent" />
