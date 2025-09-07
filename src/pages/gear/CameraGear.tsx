@@ -55,10 +55,7 @@ const CameraGear = () => {
               <Eye size={16} />
               <span>{cameras.length} Items</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Star size={16} />
-              <span>Professional Grade</span>
-            </div>
+            
           </div>
         </div>
 
