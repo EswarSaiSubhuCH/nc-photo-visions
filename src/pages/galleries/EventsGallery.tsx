@@ -41,7 +41,7 @@ const EventsGallery = () => {
         </Link>
 
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-playfair font-bold mb-6">Event Photography</h1>
+          
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Corporate events, celebrations, and special occasions documented professionally. 
             Capturing the energy, emotion, and important moments that matter.
