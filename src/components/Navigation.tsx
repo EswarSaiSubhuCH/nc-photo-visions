@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 
@@ -8,43 +8,25 @@ const Navigation = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  // Separate refs for each dropdown
   const socialRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const gearRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleDropdownToggle = (dropdown: string) => {
+  // Open/close dropdown on click
+  const handleDropdownClick = (dropdown: string) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
-  // Open dropdown immediately
-  const handleMouseEnter = (dropdown: string) => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setActiveDropdown(dropdown);
-  };
-
-  // Close dropdown with delay
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setActiveDropdown(null), 300);
-  };
-
-  // Close if mouse moves too far from the dropdown
+  // Close dropdown if mouse moves too far from the container
   const handleMouseMove = (
     e: React.MouseEvent,
     ref: React.RefObject<HTMLDivElement>
   ) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const buffer = 50;
+    const buffer = 50; // distance before closing
     if (
       e.clientX < rect.left - buffer ||
       e.clientX > rect.right + buffer ||
@@ -105,13 +87,11 @@ const Navigation = () => {
             {/* Social Media Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter("social")}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={(e) => handleMouseMove(e, socialRef)}
               ref={socialRef}
+              onMouseMove={(e) => handleMouseMove(e, socialRef)}
             >
               <button
-                onClick={() => handleDropdownToggle("social")}
+                onClick={() => handleDropdownClick("social")}
                 className="nav-link flex items-center space-x-1"
               >
                 <span>Social Media</span>
@@ -153,13 +133,11 @@ const Navigation = () => {
             {/* Galleries Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter("galleries")}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={(e) => handleMouseMove(e, galleryRef)}
               ref={galleryRef}
+              onMouseMove={(e) => handleMouseMove(e, galleryRef)}
             >
               <button
-                onClick={() => handleDropdownToggle("galleries")}
+                onClick={() => handleDropdownClick("galleries")}
                 className="nav-link flex items-center space-x-1"
               >
                 <span>Galleries</span>
@@ -191,13 +169,11 @@ const Navigation = () => {
             {/* Gear Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter("gear")}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={(e) => handleMouseMove(e, gearRef)}
               ref={gearRef}
+              onMouseMove={(e) => handleMouseMove(e, gearRef)}
             >
               <button
-                onClick={() => handleDropdownToggle("gear")}
+                onClick={() => handleDropdownClick("gear")}
                 className="nav-link flex items-center space-x-1"
               >
                 <span>Gear</span>
@@ -229,7 +205,6 @@ const Navigation = () => {
             <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`}>
               About
             </Link>
-
             <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`}>
               Contact
             </Link>
