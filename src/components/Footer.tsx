@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
+import { Instagram, Facebook, Youtube, Twitter, PinIcon } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -75,7 +75,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com/yourpage"
+                href="https://www.instagram.com/nc_photography_galleryz/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
@@ -84,7 +84,7 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://facebook.com/yourpage"
+                href="https://www.facebook.com/profile.php?id=61580168834907"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
@@ -93,22 +93,31 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com/yourpage"
+                href="https://x.com/ncphotographys"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
-                aria-label="Twitter"
+                aria-label="X"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="https://youtube.com/yourpage"
+                href="https://www.youtube.com/@NCPhotographyAerials"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
                 aria-label="YouTube"
               >
                 <Youtube className="w-5 h-5" />
+              </a>
+              <a
+                href="https://pin.it/3ZKWi8vw2"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                aria-label="Pinterest"
+              >
+                <PinIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
