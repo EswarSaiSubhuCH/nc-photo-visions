@@ -19,9 +19,14 @@ const WeddingGallery = () => {
       id: 1,
       title: "Ceremony Moments",
       description: "Intimate ceremony moments captured with emotional depth",
-      coverImage: wedding1,
+      coverImage: "https://drive.google.com/uc?export=view&id=1-TlV95BwsZA9H-nZ_ZciGnNoyzaIdepg",
       imageCount: 4,
-      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
+      images: [
+        "https://drive.google.com/uc?export=view&id=1-TlV95BwsZA9H-nZ_ZciGnNoyzaIdepg",
+        "https://drive.google.com/uc?export=view&id=1AOsntb9WVfBz2uYfHDGwrCqCkg5TZdXC",
+        wedding3,
+        wedding4
+      ].map((src, index) => ({
         id: index + 1,
         src,
         title: `Ceremony Moment ${index + 1}`,
