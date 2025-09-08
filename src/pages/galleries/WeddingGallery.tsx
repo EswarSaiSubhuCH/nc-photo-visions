@@ -3,7 +3,7 @@ import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
 
-// Use Postimg direct links
+// Use Postimg direct links 
 const wedding1 = "https://i.postimg.cc/Fk9F3v6C/Wedding-2024-1.jpg";
 const wedding2 = "https://i.postimg.cc/7fZYLx0f/Wedding-2024-2.jpg";
 const wedding3 = "https://i.postimg.cc/jCKSG6j6/Wedding-Photography-3.jpg";
