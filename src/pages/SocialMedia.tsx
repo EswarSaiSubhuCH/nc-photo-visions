@@ -70,9 +70,7 @@ const SocialMedia = () => {
             <Link to="/social/highlights" className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium">
               Latest Highlights
             </Link>
-            <a href="#platforms" className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium">
-              All Platforms
-            </a>
+            
           </div>
         </div>
 
