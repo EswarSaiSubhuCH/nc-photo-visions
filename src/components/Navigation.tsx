@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 
@@ -7,12 +7,11 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -21,6 +20,32 @@ const Navigation = () => {
 
   const handleDropdownToggle = (dropdown: string) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  };
+
+  // Open dropdown immediately
+  const handleMouseEnter = (dropdown: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveDropdown(dropdown);
+  };
+
+  // Close dropdown with delay
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setActiveDropdown(null), 300);
+  };
+
+  // Close if mouse moves too far
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!dropdownRef.current) return;
+    const rect = dropdownRef.current.getBoundingClientRect();
+    const buffer = 50;
+    if (
+      e.clientX < rect.left - buffer ||
+      e.clientX > rect.right + buffer ||
+      e.clientY < rect.top - buffer ||
+      e.clientY > rect.bottom + buffer
+    ) {
+      setActiveDropdown(null);
+    }
   };
 
   const socialLinks = [
@@ -49,9 +74,7 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "glass-effect shadow-lg"
-          : "bg-transparent"
+        isScrolled ? "glass-effect shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,18 +91,17 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className={`nav-link ${isActive("/") ? "active" : ""}`}
-            >
+            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`}>
               Home
             </Link>
 
             {/* Social Media Dropdown */}
-            <div 
+            <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown("social")}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter("social")}
+              onMouseLeave={handleMouseLeave}
+              onMouseMove={handleMouseMove}
+              ref={dropdownRef}
             >
               <button
                 onClick={() => handleDropdownToggle("social")}
@@ -97,23 +119,22 @@ const Navigation = () => {
                   <Link
                     to="/social"
                     className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                    onClick={() => setActiveDropdown(null)}
+                    onClick={() => {
+                      setActiveDropdown(null);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                   >
                     Social Media Hub
-                  </Link>
-                  <Link
-                    to="/social/highlights"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    Latest Highlights
                   </Link>
                   {socialLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                      onClick={() => setActiveDropdown(null)}
+                      onClick={() => {
+                        setActiveDropdown(null);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
                     >
                       {link.name}
                     </Link>
@@ -123,10 +144,12 @@ const Navigation = () => {
             </div>
 
             {/* Galleries Dropdown */}
-            <div 
+            <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown("galleries")}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter("galleries")}
+              onMouseLeave={handleMouseLeave}
+              onMouseMove={handleMouseMove}
+              ref={dropdownRef}
             >
               <button
                 onClick={() => handleDropdownToggle("galleries")}
@@ -146,7 +169,10 @@ const Navigation = () => {
                       key={link.path}
                       to={link.path}
                       className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                      onClick={() => setActiveDropdown(null)}
+                      onClick={() => {
+                        setActiveDropdown(null);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
                     >
                       {link.name}
                     </Link>
@@ -156,10 +182,12 @@ const Navigation = () => {
             </div>
 
             {/* Gear Dropdown */}
-            <div 
+            <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown("gear")}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter("gear")}
+              onMouseLeave={handleMouseLeave}
+              onMouseMove={handleMouseMove}
+              ref={dropdownRef}
             >
               <button
                 onClick={() => handleDropdownToggle("gear")}
@@ -179,7 +207,10 @@ const Navigation = () => {
                       key={link.path}
                       to={link.path}
                       className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                      onClick={() => setActiveDropdown(null)}
+                      onClick={() => {
+                        setActiveDropdown(null);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
                     >
                       {link.name}
                     </Link>
@@ -188,17 +219,11 @@ const Navigation = () => {
               )}
             </div>
 
-            <Link
-              to="/about"
-              className={`nav-link ${isActive("/about") ? "active" : ""}`}
-            >
+            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`}>
               About
             </Link>
 
-            <Link
-              to="/contact"
-              className={`nav-link ${isActive("/contact") ? "active" : ""}`}
-            >
+            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`}>
               Contact
             </Link>
           </div>
