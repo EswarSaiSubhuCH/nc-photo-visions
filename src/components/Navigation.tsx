@@ -1,4 +1,3 @@
-// COMMIT: Navigation update - Desktop Social Media dropdown, Mobile link only
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -40,9 +39,12 @@ const Navigation = () => {
     }, 300);
   };
 
-  // Desktop dropdown links
   const socialLinks = [
-    { name: "All Platforms", path: "/social", internal: true },
+    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/" },
+    { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials" },
+    { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2" },
+    { name: "X", path: "https://x.com/ncphotographys" },
+    { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907" },
   ];
 
   const galleryLinks = [
@@ -65,13 +67,15 @@ const Navigation = () => {
     title,
     links,
     dropdownKey,
+    external = false,
   }: {
     title: string;
-    links: { name: string; path: string; internal?: boolean }[];
+    links: { name: string; path: string }[];
     dropdownKey: "social" | "galleries" | "gear";
+    external?: boolean;
   }) => (
     <div
-      className="relative text-left hidden md:block" // only desktop
+      className="relative text-left hidden md:block"
       ref={dropdownRefs[dropdownKey]}
       onMouseEnter={() => handleMouseEnter(dropdownKey)}
       onMouseLeave={() => handleMouseLeave(dropdownKey)}
@@ -91,16 +95,7 @@ const Navigation = () => {
         }`}
       >
         {links.map((link) =>
-          link.internal ? (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              {link.name}
-            </Link>
-          ) : (
+          external ? (
             <a
               key={link.path}
               href={link.path}
@@ -110,6 +105,15 @@ const Navigation = () => {
             >
               {link.name}
             </a>
+          ) : (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              {link.name}
+            </Link>
           )
         )}
       </div>
@@ -134,50 +138,27 @@ const Navigation = () => {
             </Link>
           </div>
 
+          {/* Desktop */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className={`nav-link ${isActive("/") ? "active" : ""}`}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              Home
-            </Link>
+            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Home</Link>
 
-            {/* Desktop dropdown */}
-            <Dropdown title="Social Media" links={socialLinks} dropdownKey="social" />
+            <Dropdown title="Social Media" links={socialLinks} dropdownKey="social" external />
 
             <Dropdown title="Galleries" links={galleryLinks} dropdownKey="galleries" />
             <Dropdown title="Gear" links={gearLinks} dropdownKey="gear" />
 
-            <Link
-              to="/about"
-              className={`nav-link ${isActive("/about") ? "active" : ""}`}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className={`nav-link ${isActive("/contact") ? "active" : ""}`}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              Contact
-            </Link>
+            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>About</Link>
+            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Contact</Link>
           </div>
 
+          {/* Mobile */}
           <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground hover:text-accent transition-colors"
-              type="button"
-              aria-label="Toggle mobile menu"
-            >
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:text-accent transition-colors" type="button" aria-label="Toggle mobile menu">
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
             <div className="space-y-4">
