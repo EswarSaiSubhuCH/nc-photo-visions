@@ -1,4 +1,4 @@
-// COMMIT: Navigation update: added "All Platforms" link at top of Social Media dropdown
+// COMMIT: Navigation update: Social Media dropdown opens all links internally (no new tab), "All Platforms" -> /social
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -40,14 +40,14 @@ const Navigation = () => {
     }, 300);
   };
 
-  // Social Media external links
+  // Social Media dropdown
   const socialLinks = [
-    { name: "All Platforms", path: "https://nc-photography.vercel.app/social" },
-    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/" },
-    { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials" },
-    { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2" },
-    { name: "X", path: "https://x.com/ncphotographys" },
-    { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907" },
+    { name: "All Platforms", path: "/social" },
+    { name: "Instagram", path: "/social/instagram" },
+    { name: "YouTube", path: "/social/youtube" },
+    { name: "Pinterest", path: "/social/pinterest" },
+    { name: "X", path: "/social/x" },
+    { name: "Facebook", path: "/social/facebook" },
   ];
 
   const galleryLinks = [
@@ -97,15 +97,14 @@ const Navigation = () => {
         }`}
       >
         {links.map((link) => (
-          <a
+          <Link
             key={link.path}
-            href={link.path}
-            target="_blank"
-            rel="noopener noreferrer"
+            to={link.path}
             className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             {link.name}
-          </a>
+          </Link>
         ))}
       </div>
     </div>
@@ -186,15 +185,13 @@ const Navigation = () => {
               >
                 Home
               </Link>
-              <a
-                href="https://nc-photography.vercel.app/social"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/social"
                 className="block text-foreground hover:text-accent transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 All Platforms
-              </a>
+              </Link>
               <Link
                 to="/galleries"
                 className="block text-foreground hover:text-accent transition-colors"
