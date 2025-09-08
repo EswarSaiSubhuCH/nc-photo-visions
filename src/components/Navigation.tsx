@@ -1,4 +1,4 @@
-// COMMIT: Navigation update - Social Media dropdown now links to external platforms, hover delay, fade effect, scroll-to-top links, mobile menu intact
+// COMMIT: Navigation update: added "All Platforms" link at top of Social Media dropdown
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -15,7 +15,6 @@ const Navigation = () => {
     gear: useRef<HTMLDivElement>(null),
   };
 
-  // To store timeout IDs for closing dropdowns
   const closeTimeouts = useRef<{ [key: string]: NodeJS.Timeout }>({});
 
   useEffect(() => {
@@ -26,7 +25,6 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Open dropdown on hover
   const handleMouseEnter = (dropdown: string) => {
     if (closeTimeouts.current[dropdown]) {
       clearTimeout(closeTimeouts.current[dropdown]);
@@ -35,16 +33,16 @@ const Navigation = () => {
     setActiveDropdown(dropdown);
   };
 
-  // Close dropdown with a short delay
   const handleMouseLeave = (dropdown: string) => {
     closeTimeouts.current[dropdown] = setTimeout(() => {
       setActiveDropdown((current) => (current === dropdown ? null : current));
       delete closeTimeouts.current[dropdown];
-    }, 300); // 300ms delay before closing
+    }, 300);
   };
 
-  // 🔗 Social Media external links
+  // Social Media external links
   const socialLinks = [
+    { name: "All Platforms", path: "https://nc-photography.vercel.app/social" },
     { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/" },
     { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials" },
     { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2" },
@@ -68,17 +66,15 @@ const Navigation = () => {
     { name: "Accessories", path: "/gear/accessories" },
   ];
 
-  // Generic Dropdown Component with fade transition
+  // Dropdown Component
   const Dropdown = ({
     title,
     links,
     dropdownKey,
-    external = false,
   }: {
     title: string;
     links: { name: string; path: string }[];
     dropdownKey: "social" | "galleries" | "gear";
-    external?: boolean;
   }) => (
     <div
       className="relative text-left"
@@ -99,31 +95,18 @@ const Navigation = () => {
         className={`absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50 transition-opacity duration-300 ease-in-out pointer-events-none opacity-0 ${
           activeDropdown === dropdownKey ? "opacity-100 pointer-events-auto" : ""
         }`}
-        onMouseEnter={() => handleMouseEnter(dropdownKey)}
-        onMouseLeave={() => handleMouseLeave(dropdownKey)}
       >
-        {links.map((link) =>
-          external ? (
-            <a
-              key={link.path}
-              href={link.path}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-            >
-              {link.name}
-            </a>
-          ) : (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              {link.name}
-            </Link>
-          )
-        )}
+        {links.map((link) => (
+          <a
+            key={link.path}
+            href={link.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
       </div>
     </div>
   );
@@ -156,14 +139,7 @@ const Navigation = () => {
               Home
             </Link>
 
-            {/* External social dropdown */}
-            <Dropdown
-              title="Social Media"
-              links={socialLinks}
-              dropdownKey="social"
-              external={true}
-            />
-
+            <Dropdown title="Social Media" links={socialLinks} dropdownKey="social" />
             <Dropdown title="Galleries" links={galleryLinks} dropdownKey="galleries" />
             <Dropdown title="Gear" links={gearLinks} dropdownKey="gear" />
 
@@ -211,82 +187,39 @@ const Navigation = () => {
                 Home
               </Link>
               <a
-                href="https://www.instagram.com/nc_photography_galleryz/"
+                href="https://nc-photography.vercel.app/social"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Instagram
-              </a>
-              <a
-                href="https://www.youtube.com/@NCPhotographyAerials"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-foreground hover:text-accent transition-colors"
-              >
-                YouTube
-              </a>
-              <a
-                href="https://pin.it/3ZKWi8vw2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-foreground hover:text-accent transition-colors"
-              >
-                Pinterest
-              </a>
-              <a
-                href="https://x.com/ncphotographys"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-foreground hover:text-accent transition-colors"
-              >
-                X
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61580168834907"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-foreground hover:text-accent transition-colors"
-              >
-                Facebook
+                All Platforms
               </a>
               <Link
                 to="/galleries"
                 className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Galleries
               </Link>
               <Link
                 to="/gear"
                 className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Gear
               </Link>
               <Link
                 to="/about"
                 className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 to="/contact"
                 className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </Link>
