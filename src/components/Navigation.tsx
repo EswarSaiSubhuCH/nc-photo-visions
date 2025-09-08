@@ -1,4 +1,4 @@
-// COMMIT: Navigation update: Social Media dropdown opens all links internally (no new tab), "All Platforms" -> /social
+// COMMIT: Navigation update: Social Media dropdown external links open in new tab, "All Platforms" internal
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -40,14 +40,14 @@ const Navigation = () => {
     }, 300);
   };
 
-  // Social Media dropdown
+  // Social Media dropdown links
   const socialLinks = [
-    { name: "All Platforms", path: "/social" },
-    { name: "Instagram", path: "/social/instagram" },
-    { name: "YouTube", path: "/social/youtube" },
-    { name: "Pinterest", path: "/social/pinterest" },
-    { name: "X", path: "/social/x" },
-    { name: "Facebook", path: "/social/facebook" },
+    { name: "All Platforms", path: "/social", internal: true },
+    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/", internal: false },
+    { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials", internal: false },
+    { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2", internal: false },
+    { name: "X", path: "https://x.com/ncphotographys", internal: false },
+    { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907", internal: false },
   ];
 
   const galleryLinks = [
@@ -73,7 +73,7 @@ const Navigation = () => {
     dropdownKey,
   }: {
     title: string;
-    links: { name: string; path: string }[];
+    links: { name: string; path: string; internal?: boolean }[];
     dropdownKey: "social" | "galleries" | "gear";
   }) => (
     <div
@@ -96,16 +96,28 @@ const Navigation = () => {
           activeDropdown === dropdownKey ? "opacity-100 pointer-events-auto" : ""
         }`}
       >
-        {links.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            {link.name}
-          </Link>
-        ))}
+        {links.map((link) =>
+          link.internal ? (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              {link.name}
+            </Link>
+          ) : (
+            <a
+              key={link.path}
+              href={link.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              {link.name}
+            </a>
+          )
+        )}
       </div>
     </div>
   );
@@ -192,6 +204,46 @@ const Navigation = () => {
               >
                 All Platforms
               </Link>
+              <a
+                href="https://www.instagram.com/nc_photography_galleryz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.youtube.com/@NCPhotographyAerials"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                YouTube
+              </a>
+              <a
+                href="https://pin.it/3ZKWi8vw2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                Pinterest
+              </a>
+              <a
+                href="https://x.com/ncphotographys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                X
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61580168834907"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                Facebook
+              </a>
               <Link
                 to="/galleries"
                 className="block text-foreground hover:text-accent transition-colors"
