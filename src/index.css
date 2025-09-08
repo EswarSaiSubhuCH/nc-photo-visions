@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Media Protection Styles */
+img, video {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+img::-webkit-scrollbar,
+video::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-image {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* Photography Portfolio Design System - Monochrome with warm accents */
 
 @layer base {

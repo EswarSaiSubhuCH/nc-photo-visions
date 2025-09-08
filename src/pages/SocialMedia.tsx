@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const SocialMedia = () => {
   const socialPlatforms = [{
     name: "Instagram",
@@ -62,25 +63,46 @@ const SocialMedia = () => {
           </p>
         </div>
 
+        {/* Quick Navigation */}
+        <div className="bg-card rounded-2xl border border-border p-8 mb-12 text-center">
+          <h2 className="text-2xl font-playfair font-bold mb-4">Quick Navigation</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link 
+              to="/social/highlights"
+              className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium"
+            >
+              Latest Highlights
+            </Link>
+            <a 
+              href="#platforms" 
+              className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium"
+            >
+              All Platforms
+            </a>
+          </div>
+        </div>
+
         {/* Social Media Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {socialPlatforms.map(platform => <div key={platform.name} className="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 relative">
+        <div id="platforms" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {socialPlatforms.map(platform => <div key={platform.name} className="bg-card rounded-2xl border border-border hover:border-accent transition-all duration-300 p-6 relative">
               {/* Icon */}
-              <div className="p-3 bg-orange-50 rounded-full w-fit mb-4">
+              <div className="p-3 bg-accent/10 rounded-full w-fit mb-4">
                 <span className={platform.color}>{platform.icon}</span>
               </div>
 
               {/* Followers badge */}
-              
+              <div className="absolute top-4 right-4 bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
+                {platform.followers}
+              </div>
 
               {/* Content */}
               <h3 className="text-xl font-semibold">{platform.name}</h3>
-              <p className="text-orange-500 text-sm mb-2">{platform.category}</p>
-              <p className="text-gray-600 mb-4">{platform.description}</p>
+              <p className="text-accent text-sm mb-2">{platform.category}</p>
+              <p className="text-muted-foreground mb-4">{platform.description}</p>
 
               {/* Action button */}
-              <a href={platform.link} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 rounded-full bg-orange-100 text-orange-600 font-medium hover:bg-orange-200 transition">
-                Visit
+              <a href={platform.link} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 rounded-lg bg-accent/10 text-accent font-medium hover:bg-accent hover:text-accent-foreground transition">
+                Visit Platform
               </a>
             </div>)}
         </div>
