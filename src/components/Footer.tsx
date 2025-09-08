@@ -14,9 +14,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[rgb(38,38,38)] text-white py-6 md:py-8">
+    <footer className="bg-[rgb(38,38,38)] text-white py-10 md:py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 mb-6">
           
           {/* Brand Section */}
           <div className="space-y-4 text-left">
@@ -36,13 +36,13 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="flex flex-col items-start text-left">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-6">
               {quickLinks.map((item, idx) => (
                 <Link
                   key={idx}
                   to={item.path}
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                  className="text-gray-300 hover:text-accent transition-colors text-sm"
                 >
                   {item.name}
                 </Link>
@@ -51,24 +51,24 @@ const Footer = () => {
           </div>
 
           {/* Follow Us & Contact Side by Side */}
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start text-left">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start md:space-x-12 text-left">
             {/* Follow Us */}
-            <div className="flex flex-col mb-4 md:mb-0">
+            <div className="flex flex-col mb-6 md:mb-0">
               <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <a href="https://www.instagram.com/nc_photography_galleryz/" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-all hover:scale-110" aria-label="Instagram" title="Follow us on Instagram">
+                <a href="https://www.instagram.com/nc_photography_galleryz/" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-accent transition-all hover:scale-110" aria-label="Instagram" title="Follow us on Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61580168834907" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-all hover:scale-110" aria-label="Facebook" title="Follow us on Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61580168834907" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-accent transition-all hover:scale-110" aria-label="Facebook" title="Follow us on Facebook">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="https://x.com/ncphotographys" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-all hover:scale-110" aria-label="X" title="Follow us on X">
+                <a href="https://x.com/ncphotographys" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-accent transition-all hover:scale-110" aria-label="X" title="Follow us on X">
                   <SiX className="w-5 h-5" />
                 </a>
-                <a href="https://www.youtube.com/@NCPhotographyAerials" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-all hover:scale-110" aria-label="YouTube" title="Follow us on YouTube">
+                <a href="https://www.youtube.com/@NCPhotographyAerials" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-accent transition-all hover:scale-110" aria-label="YouTube" title="Follow us on YouTube">
                   <Youtube className="w-5 h-5" />
                 </a>
-                <a href="https://pin.it/3ZKWi8vw2" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-all hover:scale-110" aria-label="Pinterest" title="Follow us on Pinterest">
+                <a href="https://pin.it/3ZKWi8vw2" target="_blank" rel="noreferrer noopener" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-accent transition-all hover:scale-110" aria-label="Pinterest" title="Follow us on Pinterest">
                   <FaPinterestP className="w-5 h-5" />
                 </a>
               </div>
