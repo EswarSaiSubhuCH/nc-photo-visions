@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 
@@ -8,33 +8,30 @@ const Navigation = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  const socialRef = useRef<HTMLDivElement>(null);
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const gearRef = useRef<HTMLDivElement>(null);
+  const dropdownRefs = {
+    social: useRef<HTMLDivElement>(null),
+    galleries: useRef<HTMLDivElement>(null),
+    gear: useRef<HTMLDivElement>(null),
+  };
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Open/close dropdown on click
-  const handleDropdownClick = (dropdown: string) => {
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  // Open dropdown on hover
+  const handleMouseEnter = (dropdown: string) => {
+    setActiveDropdown(dropdown);
   };
 
-  // Close dropdown if mouse moves too far from the container
-  const handleMouseMove = (
-    e: React.MouseEvent,
-    ref: React.RefObject<HTMLDivElement>
-  ) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const buffer = 50; // distance before closing
-    if (
-      e.clientX < rect.left - buffer ||
-      e.clientX > rect.right + buffer ||
-      e.clientY < rect.top - buffer ||
-      e.clientY > rect.bottom + buffer
-    ) {
-      setActiveDropdown(null);
-    }
+  // Close dropdown with a short delay
+  const handleMouseLeave = (dropdown: string) => {
+    setTimeout(() => {
+      setActiveDropdown((current) => (current === dropdown ? null : current));
+    }, 300); // 300ms delay before closing
   };
 
   const socialLinks = [
@@ -60,6 +57,50 @@ const Navigation = () => {
     { name: "Accessories", path: "/gear/accessories" },
   ];
 
+  // Generic Dropdown Component
+  const Dropdown = ({
+    title,
+    links,
+    dropdownKey,
+  }: {
+    title: string;
+    links: { name: string; path: string }[];
+    dropdownKey: "social" | "galleries" | "gear";
+  }) => (
+    <div
+      className="relative text-center"
+      ref={dropdownRefs[dropdownKey]}
+      onMouseEnter={() => handleMouseEnter(dropdownKey)}
+      onMouseLeave={() => handleMouseLeave(dropdownKey)}
+    >
+      <button className="nav-link flex items-center space-x-1">
+        <span>{title}</span>
+        <ChevronDown
+          className={`w-4 h-4 transition-transform ${
+            activeDropdown === dropdownKey ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {activeDropdown === dropdownKey && (
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
+          {links.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+              onClick={() =>
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -80,132 +121,27 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`}>
+            <Link
+              to="/"
+              className={`nav-link ${isActive("/") ? "active" : ""}`}
+            >
               Home
             </Link>
 
-            {/* Social Media Dropdown */}
-            <div
-              className="relative"
-              ref={socialRef}
-              onMouseMove={(e) => handleMouseMove(e, socialRef)}
-            >
-              <button
-                onClick={() => handleDropdownClick("social")}
-                className="nav-link flex items-center space-x-1"
-              >
-                <span>Social Media</span>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
-                    activeDropdown === "social" ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {activeDropdown === "social" && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                  <Link
-                    to="/social"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                    onClick={() => {
-                      setActiveDropdown(null);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                  >
-                    Social Media Hub
-                  </Link>
-                  {socialLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                      onClick={() => {
-                        setActiveDropdown(null);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Dropdown title="Social Media" links={socialLinks} dropdownKey="social" />
+            <Dropdown title="Galleries" links={galleryLinks} dropdownKey="galleries" />
+            <Dropdown title="Gear" links={gearLinks} dropdownKey="gear" />
 
-            {/* Galleries Dropdown */}
-            <div
-              className="relative"
-              ref={galleryRef}
-              onMouseMove={(e) => handleMouseMove(e, galleryRef)}
+            <Link
+              to="/about"
+              className={`nav-link ${isActive("/about") ? "active" : ""}`}
             >
-              <button
-                onClick={() => handleDropdownClick("galleries")}
-                className="nav-link flex items-center space-x-1"
-              >
-                <span>Galleries</span>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
-                    activeDropdown === "galleries" ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {activeDropdown === "galleries" && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                  {galleryLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                      onClick={() => {
-                        setActiveDropdown(null);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Gear Dropdown */}
-            <div
-              className="relative"
-              ref={gearRef}
-              onMouseMove={(e) => handleMouseMove(e, gearRef)}
-            >
-              <button
-                onClick={() => handleDropdownClick("gear")}
-                className="nav-link flex items-center space-x-1"
-              >
-                <span>Gear</span>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
-                    activeDropdown === "gear" ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {activeDropdown === "gear" && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                  {gearLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                      onClick={() => {
-                        setActiveDropdown(null);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`}>
               About
             </Link>
-            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`}>
+            <Link
+              to="/contact"
+              className={`nav-link ${isActive("/contact") ? "active" : ""}`}
+            >
               Contact
             </Link>
           </div>
@@ -225,12 +161,12 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
             <div className="space-y-4">
-              <Link to="/" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-              <Link to="/social" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Social Media</Link>
-              <Link to="/galleries" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Galleries</Link>
-              <Link to="/gear" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Gear</Link>
-              <Link to="/about" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-              <Link to="/contact" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+              <Link to="/" className="block text-foreground hover:text-accent transition-colors">Home</Link>
+              <Link to="/social" className="block text-foreground hover:text-accent transition-colors">Social Media</Link>
+              <Link to="/galleries" className="block text-foreground hover:text-accent transition-colors">Galleries</Link>
+              <Link to="/gear" className="block text-foreground hover:text-accent transition-colors">Gear</Link>
+              <Link to="/about" className="block text-foreground hover:text-accent transition-colors">About</Link>
+              <Link to="/contact" className="block text-foreground hover:text-accent transition-colors">Contact</Link>
             </div>
           </div>
         )}
