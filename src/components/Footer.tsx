@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Youtube, Pinterest } from "lucide-react";
-import { SiX } from "react-icons/si"; // For the X (Twitter) logo
+import { Instagram, Facebook, Youtube } from "lucide-react"; // Only valid lucide icons
+import { FaPinterestP } from "react-icons/fa"; // Pinterest from react-icons
+import { SiX } from "react-icons/si"; // X (Twitter) from react-icons
 
 const Footer = () => {
   return (
@@ -58,47 +59,52 @@ const Footer = () => {
               <a
                 href="https://www.instagram.com/nc_photography_galleryz/"
                 target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all"
+                rel="noreferrer noopener"
+                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all hover:scale-110"
                 aria-label="Instagram"
+                title="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="https://www.facebook.com/profile.php?id=61580168834907"
                 target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all"
+                rel="noreferrer noopener"
+                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all hover:scale-110"
                 aria-label="Facebook"
+                title="Follow us on Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="https://x.com/ncphotographys"
                 target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all"
+                rel="noreferrer noopener"
+                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all hover:scale-110"
                 aria-label="X"
+                title="Follow us on X"
               >
                 <SiX className="w-5 h-5" />
               </a>
               <a
                 href="https://www.youtube.com/@NCPhotographyAerials"
                 target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all"
+                rel="noreferrer noopener"
+                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all hover:scale-110"
                 aria-label="YouTube"
+                title="Follow us on YouTube"
               >
                 <Youtube className="w-5 h-5" />
               </a>
               <a
                 href="https://pin.it/3ZKWi8vw2"
                 target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all"
+                rel="noreferrer noopener"
+                className="w-10 h-10 border border-gray-500 rounded-full flex items-center justify-center hover:border-white hover:text-white transition-all hover:scale-110"
                 aria-label="Pinterest"
+                title="Follow us on Pinterest"
               >
-                <Pinterest className="w-5 h-5" />
+                <FaPinterestP className="w-5 h-5" />
               </a>
             </div>
           </div>
