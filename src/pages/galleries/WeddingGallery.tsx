@@ -3,30 +3,24 @@ import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
 
-// Import the actual uploaded images
-import wedding1 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 1.jpg";
-import wedding2 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 2.jpg";
-import wedding3 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 3.jpg";
-import wedding4 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 4.jpg";
+// Use Postimg direct links
+const wedding1 = "https://i.postimg.cc/Fk9F3v6C/Wedding-2024-1.jpg";
+const wedding2 = "https://i.postimg.cc/7fZYLx0f/Wedding-2024-2.jpg";
+const wedding3 = "https://i.postimg.cc/jCKSG6j6/Wedding-Photography-3.jpg";
+const wedding4 = "https://i.postimg.cc/kDcg9VVO/Wedding-Photography-4.jpg";
 
 const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Albums array with actual images 
   const albums = [
     {
       id: 1,
       title: "Ceremony Moments",
       description: "Intimate ceremony moments captured with emotional depth",
-      coverImage: "https://drive.google.com/uc?export=view&id=1-TlV95BwsZA9H-nZ_ZciGnNoyzaIdepg",
+      coverImage: wedding1,
       imageCount: 4,
-      images: [
-        "https://drive.google.com/uc?export=view&id=1-TlV95BwsZA9H-nZ_ZciGnNoyzaIdepg",
-        "https://drive.google.com/uc?export=view&id=1AOsntb9WVfBz2uYfHDGwrCqCkg5TZdXC",
-        wedding3,
-        wedding4
-      ].map((src, index) => ({
+      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
         src,
         title: `Ceremony Moment ${index + 1}`,
@@ -40,7 +34,7 @@ const WeddingGallery = () => {
       title: "Reception Celebrations",
       description: "Joyful reception moments full of celebration and laughter",
       coverImage: wedding1,
-      imageCount: 4, // For now, using same 4 images, can replace later
+      imageCount: 4,
       images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
         src,
@@ -55,7 +49,7 @@ const WeddingGallery = () => {
       title: "Detail Shots",
       description: "Beautiful detail photography of rings, flowers, and décor",
       coverImage: wedding1,
-      imageCount: 4, // For now, using same 4 images, can replace later
+      imageCount: 4,
       images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
         src,
