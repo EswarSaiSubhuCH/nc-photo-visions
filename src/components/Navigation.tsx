@@ -39,6 +39,7 @@ const Navigation = () => {
     }, 300);
   };
 
+  // Social Media dropdown stays untouched
   const socialLinks = [
     { name: "All Platforms", path: "/social", internal: true },
     { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/", internal: false },
@@ -48,6 +49,7 @@ const Navigation = () => {
     { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907", internal: false },
   ];
 
+  // Updated internal routing for Galleries
   const galleryLinks = [
     { name: "Aerial Photography", path: "/galleries/aerial" },
     { name: "Portrait Sessions", path: "/galleries/portraits" },
@@ -57,6 +59,7 @@ const Navigation = () => {
     { name: "Event Photography", path: "/galleries/events" },
   ];
 
+  // Updated internal routing for Gear
   const gearLinks = [
     { name: "Cameras", path: "/gear/cameras" },
     { name: "Lenses", path: "/gear/lenses" },
@@ -78,7 +81,11 @@ const Navigation = () => {
     >
       <button className="nav-link flex items-center space-x-1" type="button">
         <span>{title}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === title ? "rotate-180" : ""}`} />
+        <ChevronDown
+          className={`w-4 h-4 transition-transform ${
+            activeDropdown === title ? "rotate-180" : ""
+          }`}
+        />
       </button>
 
       <div
@@ -130,33 +137,98 @@ const Navigation = () => {
             </Link>
           </div>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Home</Link>
+            <Link
+              to="/"
+              className={`nav-link ${isActive("/") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              Home
+            </Link>
 
+            {/* Social Media dropdown is untouched */}
             <Dropdown title="Social Media" links={socialLinks} />
+
+            {/* Updated Galleries & Gear dropdowns */}
             <Dropdown title="Galleries" links={galleryLinks} />
             <Dropdown title="Gear" links={gearLinks} />
 
-            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>About</Link>
-            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Contact</Link>
+            <Link
+              to="/about"
+              className={`nav-link ${isActive("/about") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              className={`nav-link ${isActive("/contact") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              Contact
+            </Link>
           </div>
 
+          {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:text-accent transition-colors" type="button" aria-label="Toggle mobile menu">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground hover:text-accent transition-colors"
+              type="button"
+              aria-label="Toggle mobile menu"
+            >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
+        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
             <div className="space-y-4">
-              <Link to="/" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-              <Link to="/social" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Social Media</Link>
-              <Link to="/galleries" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Galleries</Link>
-              <Link to="/gear" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Gear</Link>
-              <Link to="/about" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-              <Link to="/contact" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+              <Link
+                to="/"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/social"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Social Media
+              </Link>
+              <Link
+                to="/galleries"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Galleries
+              </Link>
+              <Link
+                to="/gear"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Gear
+              </Link>
+              <Link
+                to="/about"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}
