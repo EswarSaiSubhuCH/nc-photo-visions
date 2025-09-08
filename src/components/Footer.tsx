@@ -4,27 +4,35 @@ import { FaPinterestP } from "react-icons/fa";
 import { SiX } from "react-icons/si"; // X logo
 
 const Footer = () => {
-  const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "Galleries", path: "/galleries" },
-    { name: "Social Media", path: "/social" },
-    { name: "Gear", path: "/gear" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  return (
-    <footer className="bg-[rgb(38,38,38)] text-white py-10 md:py-12">
-      <div className="container mx-auto px-4">
+  const quickLinks = [{
+    name: "Home",
+    path: "/"
+  }, {
+    name: "Galleries",
+    path: "/galleries"
+  }, {
+    name: "Social Media",
+    path: "/social"
+  }, {
+    name: "Gear",
+    path: "/gear"
+  }, {
+    name: "About",
+    path: "/about"
+  }, {
+    name: "Contact",
+    path: "/contact"
+  }];
+  return <footer className="bg-[rgb(38,38,38)] text-white py-10 md:py-[25px]">
+      <div className="container mx-auto py-[12px] px-px">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 mb-6">
           
           {/* Brand Section */}
           <div className="space-y-4 text-left">
-            <Link
-              to="/"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-2xl font-playfair font-bold text-white hover:text-accent transition-colors site-title"
-            >
+            <Link to="/" onClick={() => window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          })} className="text-2xl font-playfair font-bold text-white hover:text-accent transition-colors site-title">
               NC Photography & Aerials
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
@@ -34,19 +42,15 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-start text-left ml-2"> {/* Slight left shift */}
+          <div className="flex flex-col items-start text-left ml-2 px-0 mx-[10px]"> {/* Slight left shift */}
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <div className="grid grid-cols-3 gap-6">
-              {quickLinks.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item.path}
-                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
+              {quickLinks.map((item, idx) => <Link key={idx} to={item.path} onClick={() => window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            })} className="text-gray-300 hover:text-white transition-colors text-sm px-0 mx-0 my-0">
                   {item.name}
-                </Link>
-              ))}
+                </Link>)}
             </div>
           </div>
 
@@ -75,15 +79,7 @@ const Footer = () => {
             </div>
 
             {/* Contact Us */}
-            <div className="flex flex-col mt-6 md:mt-0">
-              <h4 className="text-lg font-semibold mb-2">Contact Us</h4>
-              <p className="text-gray-300 text-sm">
-                Email: <a href="mailto:info@ncphotography.com" className="hover:text-white">info@ncphotography.com</a>
-              </p>
-              <p className="text-gray-300 text-sm">
-                Phone: <a href="tel:+911234567890" className="hover:text-white">+91 12345 67890</a>
-              </p>
-            </div>
+            
           </div>
 
         </div>
@@ -93,8 +89,6 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} NC Photography & Aerials. All rights reserved.
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
