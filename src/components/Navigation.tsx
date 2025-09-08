@@ -40,11 +40,12 @@ const Navigation = () => {
   };
 
   const socialLinks = [
-    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/" },
-    { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials" },
-    { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2" },
-    { name: "X", path: "https://x.com/ncphotographys" },
-    { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907" },
+    { name: "All Platforms", path: "/social", internal: true },
+    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/", internal: false },
+    { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials", internal: false },
+    { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2", internal: false },
+    { name: "X", path: "https://x.com/ncphotographys", internal: false },
+    { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907", internal: false },
   ];
 
   const galleryLinks = [
@@ -66,36 +67,36 @@ const Navigation = () => {
   const Dropdown = ({
     title,
     links,
-    dropdownKey,
-    external = false,
   }: {
     title: string;
-    links: { name: string; path: string }[];
-    dropdownKey: "social" | "galleries" | "gear";
-    external?: boolean;
+    links: { name: string; path: string; internal?: boolean }[];
   }) => (
     <div
       className="relative text-left hidden md:block"
-      ref={dropdownRefs[dropdownKey]}
-      onMouseEnter={() => handleMouseEnter(dropdownKey)}
-      onMouseLeave={() => handleMouseLeave(dropdownKey)}
+      onMouseEnter={() => handleMouseEnter(title)}
+      onMouseLeave={() => handleMouseLeave(title)}
     >
       <button className="nav-link flex items-center space-x-1" type="button">
         <span>{title}</span>
-        <ChevronDown
-          className={`w-4 h-4 transition-transform ${
-            activeDropdown === dropdownKey ? "rotate-180" : ""
-          }`}
-        />
+        <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === title ? "rotate-180" : ""}`} />
       </button>
 
       <div
         className={`absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50 transition-opacity duration-300 ease-in-out pointer-events-none opacity-0 ${
-          activeDropdown === dropdownKey ? "opacity-100 pointer-events-auto" : ""
+          activeDropdown === title ? "opacity-100 pointer-events-auto" : ""
         }`}
       >
         {links.map((link) =>
-          external ? (
+          link.internal ? (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              {link.name}
+            </Link>
+          ) : (
             <a
               key={link.path}
               href={link.path}
@@ -105,15 +106,6 @@ const Navigation = () => {
             >
               {link.name}
             </a>
-          ) : (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              {link.name}
-            </Link>
           )
         )}
       </div>
@@ -138,20 +130,17 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Home</Link>
 
-            <Dropdown title="Social Media" links={socialLinks} dropdownKey="social" external />
-
-            <Dropdown title="Galleries" links={galleryLinks} dropdownKey="galleries" />
-            <Dropdown title="Gear" links={gearLinks} dropdownKey="gear" />
+            <Dropdown title="Social Media" links={socialLinks} />
+            <Dropdown title="Galleries" links={galleryLinks} />
+            <Dropdown title="Gear" links={gearLinks} />
 
             <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>About</Link>
             <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Contact</Link>
           </div>
 
-          {/* Mobile */}
           <div className="md:hidden">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:text-accent transition-colors" type="button" aria-label="Toggle mobile menu">
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
