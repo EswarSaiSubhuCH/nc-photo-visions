@@ -1,4 +1,4 @@
-// COMMIT: Final Navigation update: hover dropdown with delay, left-aligned, fade effect, scroll-to-top links, mobile menu intact
+// COMMIT: Navigation update - Social Media dropdown now links to external platforms, hover delay, fade effect, scroll-to-top links, mobile menu intact
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -26,7 +26,7 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Open dropdown on hover 
+  // Open dropdown on hover
   const handleMouseEnter = (dropdown: string) => {
     if (closeTimeouts.current[dropdown]) {
       clearTimeout(closeTimeouts.current[dropdown]);
@@ -43,11 +43,13 @@ const Navigation = () => {
     }, 300); // 300ms delay before closing
   };
 
+  // 🔗 Social Media external links
   const socialLinks = [
-    { name: "Instagram", path: "/social/instagram" },
-    { name: "Facebook", path: "/social/facebook" },
-    { name: "YouTube", path: "/social/youtube" },
-    { name: "Twitter", path: "/social/twitter" },
+    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/" },
+    { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials" },
+    { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2" },
+    { name: "X", path: "https://x.com/ncphotographys" },
+    { name: "Facebook", path: "https://www.facebook.com/profile.php?id=61580168834907" },
   ];
 
   const galleryLinks = [
@@ -71,10 +73,12 @@ const Navigation = () => {
     title,
     links,
     dropdownKey,
+    external = false,
   }: {
     title: string;
     links: { name: string; path: string }[];
     dropdownKey: "social" | "galleries" | "gear";
+    external?: boolean;
   }) => (
     <div
       className="relative text-left"
@@ -98,16 +102,28 @@ const Navigation = () => {
         onMouseEnter={() => handleMouseEnter(dropdownKey)}
         onMouseLeave={() => handleMouseLeave(dropdownKey)}
       >
-        {links.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            {link.name}
-          </Link>
-        ))}
+        {links.map((link) =>
+          external ? (
+            <a
+              key={link.path}
+              href={link.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              {link.name}
+            </a>
+          ) : (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              {link.name}
+            </Link>
+          )
+        )}
       </div>
     </div>
   );
@@ -140,7 +156,14 @@ const Navigation = () => {
               Home
             </Link>
 
-            <Dropdown title="Social Media" links={socialLinks} dropdownKey="social" />
+            {/* External social dropdown */}
+            <Dropdown
+              title="Social Media"
+              links={socialLinks}
+              dropdownKey="social"
+              external={true}
+            />
+
             <Dropdown title="Galleries" links={galleryLinks} dropdownKey="galleries" />
             <Dropdown title="Gear" links={gearLinks} dropdownKey="gear" />
 
@@ -187,16 +210,46 @@ const Navigation = () => {
               >
                 Home
               </Link>
-              <Link
-                to="/social"
+              <a
+                href="https://www.instagram.com/nc_photography_galleryz/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                  setIsMobileMenuOpen(false);
-                }}
               >
-                Social Media
-              </Link>
+                Instagram
+              </a>
+              <a
+                href="https://www.youtube.com/@NCPhotographyAerials"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                YouTube
+              </a>
+              <a
+                href="https://pin.it/3ZKWi8vw2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                Pinterest
+              </a>
+              <a
+                href="https://x.com/ncphotographys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                X
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61580168834907"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-foreground hover:text-accent transition-colors"
+              >
+                Facebook
+              </a>
               <Link
                 to="/galleries"
                 className="block text-foreground hover:text-accent transition-colors"
