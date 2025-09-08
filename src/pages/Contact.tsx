@@ -131,75 +131,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div>
-            <div className="bg-card rounded-2xl border border-border p-8">
-              <h2 className="text-2xl font-playfair font-bold mb-6">Send Us a Message</h2>
-              <p className="text-muted-foreground mb-8">
-                Fill out the form below and we'll get back to you within 24 hours.
-              </p>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Full Name *
-                    </label>
-                    <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your full name" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email Address *
-                    </label>
-                    <input type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your email address" />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number
-                    </label>
-                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your phone number" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium mb-2">
-                      Service Interested In
-                    </label>
-                    <select id="service" name="service" value={formData.service} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
-                      <option value="">Select a service</option>
-                      {services.map(service => <option key={service} value={service}>
-                          {service}
-                        </option>)}
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="address" className="block text-sm font-medium mb-2">
-                    Address (Optional)
-                  </label>
-                  <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Enter your address" />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message *
-                  </label>
-                  <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleInputChange} className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none" placeholder="Tell us about your project, event details, preferred dates, and any specific requirements..." />
-                </div>
-
-                <button type="submit" disabled={isSubmitting} className="w-full btn-hero disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2">
-                  {isSubmitting ? <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span>Sending Message...</span>
-                    </> : <>
-                      <Send size={20} />
-                      <span>Send Message</span>
-                    </>}
-                </button>
-              </form>
-            </div>
+            
           </div>
         </div>
 
