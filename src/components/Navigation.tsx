@@ -26,7 +26,7 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Open dropdown on hover   -- This has to be deleted 
+  // Open dropdown on hover 
   const handleMouseEnter = (dropdown: string) => {
     if (closeTimeouts.current[dropdown]) {
       clearTimeout(closeTimeouts.current[dropdown]);
