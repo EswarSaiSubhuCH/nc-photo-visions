@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
-import weddingImage1 from "../../assets/samples/wedding-1.jpg";
+
+// Import the actual uploaded images
+import wedding1 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 1.jpg";
+import wedding2 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 2.jpg";
+import wedding3 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 3.jpg";
+import wedding4 from "../../assets/Galleries Page/Wedding Photography/Anusha Wedding/Wedding Photography 4.jpg";
+
 const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Sample albums - each album contains multiple images
+  // Albums array with actual images
   const albums = [
     {
       id: 1,
       title: "Ceremony Moments",
       description: "Intimate ceremony moments captured with emotional depth",
-      coverImage: weddingImage1,
-      imageCount: 12,
-      images: Array(12).fill(null).map((_, index) => ({
+      coverImage: wedding1,
+      imageCount: 4,
+      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
-        src: weddingImage1,
+        src,
         title: `Ceremony Moment ${index + 1}`,
         description: `Intimate ceremony moment captured with emotional depth and artistic vision`,
         camera: "Canon EOS R5",
@@ -28,11 +34,11 @@ const WeddingGallery = () => {
       id: 2,
       title: "Reception Celebrations",
       description: "Joyful reception moments full of celebration and laughter",
-      coverImage: weddingImage1,
-      imageCount: 15,
-      images: Array(15).fill(null).map((_, index) => ({
+      coverImage: wedding1,
+      imageCount: 4, // For now, using same 4 images, can replace later
+      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
-        src: weddingImage1,
+        src,
         title: `Reception Joy ${index + 1}`,
         description: `Candid reception moments full of joy, laughter, and celebration`,
         camera: "Canon EOS R6",
@@ -43,11 +49,11 @@ const WeddingGallery = () => {
       id: 3,
       title: "Detail Shots",
       description: "Beautiful detail photography of rings, flowers, and décor",
-      coverImage: weddingImage1,
-      imageCount: 8,
-      images: Array(8).fill(null).map((_, index) => ({
+      coverImage: wedding1,
+      imageCount: 4, // For now, using same 4 images, can replace later
+      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
-        src: weddingImage1,
+        src,
         title: `Wedding Detail ${index + 1}`,
         description: `Beautiful detail shot showcasing the artistry and elegance of the wedding`,
         camera: "Canon EOS R5",
@@ -66,7 +72,9 @@ const WeddingGallery = () => {
   };
 
   const selectedAlbumData = albums.find(album => album.id === selectedAlbum);
-  return <div className="min-h-screen pt-24 pb-16">
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to="/galleries" className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8">
           <ArrowLeft size={20} />
@@ -114,14 +122,10 @@ const WeddingGallery = () => {
                 </div>
               </div>
               <h3 className="font-playfair font-semibold text-lg mb-2">{album.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {album.description}
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{album.description}</p>
             </div>
           ))}
         </div>
-
-        
       </div>
 
       {/* Image Slider Modal */}
@@ -133,6 +137,8 @@ const WeddingGallery = () => {
           onClose={handleCloseSlider}
         />
       )}
-    </div>;
+    </div>
+  );
 };
+
 export default WeddingGallery;
