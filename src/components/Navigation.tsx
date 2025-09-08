@@ -7,7 +7,11 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Separate refs for each dropdown
+  const socialRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const gearRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -33,10 +37,13 @@ const Navigation = () => {
     timeoutRef.current = setTimeout(() => setActiveDropdown(null), 300);
   };
 
-  // Close if mouse moves too far
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!dropdownRef.current) return;
-    const rect = dropdownRef.current.getBoundingClientRect();
+  // Close if mouse moves too far from the dropdown
+  const handleMouseMove = (
+    e: React.MouseEvent,
+    ref: React.RefObject<HTMLDivElement>
+  ) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
     const buffer = 50;
     if (
       e.clientX < rect.left - buffer ||
@@ -100,8 +107,8 @@ const Navigation = () => {
               className="relative"
               onMouseEnter={() => handleMouseEnter("social")}
               onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
-              ref={dropdownRef}
+              onMouseMove={(e) => handleMouseMove(e, socialRef)}
+              ref={socialRef}
             >
               <button
                 onClick={() => handleDropdownToggle("social")}
@@ -148,8 +155,8 @@ const Navigation = () => {
               className="relative"
               onMouseEnter={() => handleMouseEnter("galleries")}
               onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
-              ref={dropdownRef}
+              onMouseMove={(e) => handleMouseMove(e, galleryRef)}
+              ref={galleryRef}
             >
               <button
                 onClick={() => handleDropdownToggle("galleries")}
@@ -186,8 +193,8 @@ const Navigation = () => {
               className="relative"
               onMouseEnter={() => handleMouseEnter("gear")}
               onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
-              ref={dropdownRef}
+              onMouseMove={(e) => handleMouseMove(e, gearRef)}
+              ref={gearRef}
             >
               <button
                 onClick={() => handleDropdownToggle("gear")}
@@ -243,48 +250,12 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
             <div className="space-y-4">
-              <Link
-                to="/"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                to="/social"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Social Media
-              </Link>
-              <Link
-                to="/galleries"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Galleries
-              </Link>
-              <Link
-                to="/gear"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Gear
-              </Link>
-              <Link
-                to="/about"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
+              <Link to="/" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+              <Link to="/social" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Social Media</Link>
+              <Link to="/galleries" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Galleries</Link>
+              <Link to="/gear" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Gear</Link>
+              <Link to="/about" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+              <Link to="/contact" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
             </div>
           </div>
         )}
