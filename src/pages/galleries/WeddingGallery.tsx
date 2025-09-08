@@ -13,7 +13,7 @@ const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Albums array with actual images
+  // Albums array with actual images 
   const albums = [
     {
       id: 1,
