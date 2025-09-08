@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
           
           {/* Brand Section */}
-          <div className="space-y-4 text-center md:text-left">
+          <div className="space-y-4 text-left">
             <Link
               to="/"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -18,16 +18,16 @@ const Footer = () => {
             >
               NC Photography & Aerials
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+            <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
               Capturing life's beautiful moments from every angle. 
               Professional photography and aerial services.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-start text-left">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+            <div className="flex flex-col space-y-2">
               {[
                 { name: "Home", path: "/" },
                 { name: "Galleries", path: "/galleries" },
@@ -39,9 +39,7 @@ const Footer = () => {
                 <Link
                   key={idx}
                   to={item.path}
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="block text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   {item.name}
@@ -50,8 +48,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Follow Us */}
-          <div className="flex flex-col items-center md:items-end text-center md:text-right">
+          {/* Follow Us */ }
+          <div className="flex flex-col items-start text-left">
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
               <a
@@ -110,7 +108,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 pt-4 text-center text-gray-400 text-xs">
+        <div className="border-t border-gray-700 pt-4 text-left text-gray-400 text-xs">
           &copy; {new Date().getFullYear()} NC Photography & Aerials. All rights reserved.
         </div>
       </div>
