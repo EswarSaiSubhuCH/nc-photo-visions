@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-start text-left">
+          <div className="flex flex-col items-start text-left ml-2"> {/* Slight left shift */}
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <div className="grid grid-cols-3 gap-6">
               {quickLinks.map((item, idx) => (
@@ -42,7 +42,7 @@ const Footer = () => {
                   key={idx}
                   to={item.path}
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="text-gray-300 hover:text-accent transition-colors text-sm"
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   {item.name}
                 </Link>
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Follow Us & Contact Side by Side */}
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start md:space-x-12 text-left">
+          <div className="flex flex-col md:flex-row md:justify-start md:items-start md:space-x-12 text-left">
             {/* Follow Us */}
             <div className="flex flex-col mb-6 md:mb-0">
               <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
