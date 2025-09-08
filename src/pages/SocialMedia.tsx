@@ -67,16 +67,10 @@ const SocialMedia = () => {
         <div className="bg-card rounded-2xl border border-border p-8 mb-12 text-center">
           <h2 className="text-2xl font-playfair font-bold mb-4">Quick Navigation</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link 
-              to="/social/highlights"
-              className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium"
-            >
+            <Link to="/social/highlights" className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium">
               Latest Highlights
             </Link>
-            <a 
-              href="#platforms" 
-              className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium"
-            >
+            <a href="#platforms" className="bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-6 rounded-lg font-medium">
               All Platforms
             </a>
           </div>
@@ -91,9 +85,7 @@ const SocialMedia = () => {
               </div>
 
               {/* Followers badge */}
-              <div className="absolute top-4 right-4 bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
-                {platform.followers}
-              </div>
+              
 
               {/* Content */}
               <h3 className="text-xl font-semibold">{platform.name}</h3>
