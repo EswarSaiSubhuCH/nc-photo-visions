@@ -1,3 +1,4 @@
+// COMMIT: Final Navigation update: hover dropdown with delay, left-aligned, fade effect, scroll-to-top links, mobile menu intact
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -14,6 +15,9 @@ const Navigation = () => {
     gear: useRef<HTMLDivElement>(null),
   };
 
+  // To store timeout IDs for closing dropdowns
+  const closeTimeouts = useRef<{ [key: string]: NodeJS.Timeout }>({});
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -22,15 +26,20 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Open dropdown on hover
+  // Open dropdown on hover   -- This has to be deleted 
   const handleMouseEnter = (dropdown: string) => {
+    if (closeTimeouts.current[dropdown]) {
+      clearTimeout(closeTimeouts.current[dropdown]);
+      delete closeTimeouts.current[dropdown];
+    }
     setActiveDropdown(dropdown);
   };
 
   // Close dropdown with a short delay
   const handleMouseLeave = (dropdown: string) => {
-    setTimeout(() => {
+    closeTimeouts.current[dropdown] = setTimeout(() => {
       setActiveDropdown((current) => (current === dropdown ? null : current));
+      delete closeTimeouts.current[dropdown];
     }, 300); // 300ms delay before closing
   };
 
@@ -57,7 +66,7 @@ const Navigation = () => {
     { name: "Accessories", path: "/gear/accessories" },
   ];
 
-  // Generic Dropdown Component
+  // Generic Dropdown Component with fade transition
   const Dropdown = ({
     title,
     links,
@@ -68,12 +77,12 @@ const Navigation = () => {
     dropdownKey: "social" | "galleries" | "gear";
   }) => (
     <div
-      className="relative text-center"
+      className="relative text-left"
       ref={dropdownRefs[dropdownKey]}
       onMouseEnter={() => handleMouseEnter(dropdownKey)}
       onMouseLeave={() => handleMouseLeave(dropdownKey)}
     >
-      <button className="nav-link flex items-center space-x-1">
+      <button className="nav-link flex items-center space-x-1" type="button">
         <span>{title}</span>
         <ChevronDown
           className={`w-4 h-4 transition-transform ${
@@ -82,22 +91,24 @@ const Navigation = () => {
         />
       </button>
 
-      {activeDropdown === dropdownKey && (
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-          {links.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-              onClick={() =>
-                window.scrollTo({ top: 0, behavior: "smooth" })
-              }
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      )}
+      <div
+        className={`absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50 transition-opacity duration-300 ease-in-out pointer-events-none opacity-0 ${
+          activeDropdown === dropdownKey ? "opacity-100 pointer-events-auto" : ""
+        }`}
+        onMouseEnter={() => handleMouseEnter(dropdownKey)}
+        onMouseLeave={() => handleMouseLeave(dropdownKey)}
+      >
+        {links.map((link) => (
+          <Link
+            key={link.path}
+            to={link.path}
+            className="block px-4 py-2 text-left text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 
@@ -124,6 +135,7 @@ const Navigation = () => {
             <Link
               to="/"
               className={`nav-link ${isActive("/") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               Home
             </Link>
@@ -135,12 +147,14 @@ const Navigation = () => {
             <Link
               to="/about"
               className={`nav-link ${isActive("/about") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               About
             </Link>
             <Link
               to="/contact"
               className={`nav-link ${isActive("/contact") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               Contact
             </Link>
@@ -151,6 +165,8 @@ const Navigation = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-foreground hover:text-accent transition-colors"
+              type="button"
+              aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -161,12 +177,66 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
             <div className="space-y-4">
-              <Link to="/" className="block text-foreground hover:text-accent transition-colors">Home</Link>
-              <Link to="/social" className="block text-foreground hover:text-accent transition-colors">Social Media</Link>
-              <Link to="/galleries" className="block text-foreground hover:text-accent transition-colors">Galleries</Link>
-              <Link to="/gear" className="block text-foreground hover:text-accent transition-colors">Gear</Link>
-              <Link to="/about" className="block text-foreground hover:text-accent transition-colors">About</Link>
-              <Link to="/contact" className="block text-foreground hover:text-accent transition-colors">Contact</Link>
+              <Link
+                to="/"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Home
+              </Link>
+              <Link
+                to="/social"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Social Media
+              </Link>
+              <Link
+                to="/galleries"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Galleries
+              </Link>
+              <Link
+                to="/gear"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Gear
+              </Link>
+              <Link
+                to="/about"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}
