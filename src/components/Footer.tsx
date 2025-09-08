@@ -4,6 +4,15 @@ import { FaPinterestP } from "react-icons/fa";
 import { SiX } from "react-icons/si"; // X logo
 
 const Footer = () => {
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "Galleries", path: "/galleries" },
+    { name: "Social Media", path: "/social" },
+    { name: "Gear", path: "/gear" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <footer className="bg-[rgb(38,38,38)] text-white py-6 md:py-8">
       <div className="container mx-auto px-4">
@@ -27,20 +36,13 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="flex flex-col items-start text-left">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <div className="flex flex-col space-y-2">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Galleries", path: "/galleries" },
-                { name: "Social Media", path: "/social" },
-                { name: "Gear", path: "/gear" },
-                { name: "About", path: "/about" },
-                { name: "Contact", path: "/contact" },
-              ].map((item, idx) => (
+            <div className="grid grid-cols-3 gap-4">
+              {quickLinks.map((item, idx) => (
                 <Link
                   key={idx}
                   to={item.path}
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="block text-gray-300 hover:text-white transition-colors text-sm"
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   {item.name}
                 </Link>
@@ -48,7 +50,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Follow Us */}
+          {/* Follow Us & Contact */}
           <div className="flex flex-col items-start text-left">
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4 mb-4">
