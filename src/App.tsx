@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import SocialMedia from "./pages/SocialMedia";
+import SocialHighlights from "./pages/SocialHighlights";
 import Galleries from "./pages/Galleries";
 import Gear from "./pages/Gear";
 import About from "./pages/About";
@@ -36,6 +37,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/social" element={<SocialMedia />} />
+            <Route path="/social/highlights" element={<SocialHighlights />} />
             <Route path="/social/:platform" element={<SocialMedia />} />
             <Route path="/galleries" element={<Galleries />} />
             <Route path="/galleries/aerial" element={<AerialGallery />} />

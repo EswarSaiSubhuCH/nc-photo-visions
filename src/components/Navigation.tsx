@@ -35,6 +35,8 @@ const Navigation = () => {
     { name: "Portrait Sessions", path: "/galleries/portraits" },
     { name: "Wedding Photography", path: "/galleries/weddings" },
     { name: "Commercial Work", path: "/galleries/commercial" },
+    { name: "Landscape & Nature", path: "/galleries/landscape" },
+    { name: "Event Photography", path: "/galleries/events" },
   ];
 
   const gearLinks = [
@@ -74,7 +76,11 @@ const Navigation = () => {
             </Link>
 
             {/* Social Media Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("social")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
               <button
                 onClick={() => handleDropdownToggle("social")}
                 className="nav-link flex items-center space-x-1"
@@ -87,7 +93,21 @@ const Navigation = () => {
                 />
               </button>
               {activeDropdown === "social" && (
-                <div className="absolute top-full left-0 mt-2 w-56 glass-effect rounded-lg shadow-lg py-2">
+                <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
+                  <Link
+                    to="/social"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    Social Media Hub
+                  </Link>
+                  <Link
+                    to="/social/highlights"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    Latest Highlights
+                  </Link>
                   {socialLinks.map((link) => (
                     <Link
                       key={link.path}
@@ -103,7 +123,11 @@ const Navigation = () => {
             </div>
 
             {/* Galleries Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("galleries")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
               <button
                 onClick={() => handleDropdownToggle("galleries")}
                 className="nav-link flex items-center space-x-1"
@@ -116,7 +140,7 @@ const Navigation = () => {
                 />
               </button>
               {activeDropdown === "galleries" && (
-                <div className="absolute top-full left-0 mt-2 w-56 glass-effect rounded-lg shadow-lg py-2">
+                <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
                   {galleryLinks.map((link) => (
                     <Link
                       key={link.path}
@@ -132,7 +156,11 @@ const Navigation = () => {
             </div>
 
             {/* Gear Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("gear")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
               <button
                 onClick={() => handleDropdownToggle("gear")}
                 className="nav-link flex items-center space-x-1"
@@ -145,7 +173,7 @@ const Navigation = () => {
                 />
               </button>
               {activeDropdown === "gear" && (
-                <div className="absolute top-full left-0 mt-2 w-56 glass-effect rounded-lg shadow-lg py-2">
+                <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
                   {gearLinks.map((link) => (
                     <Link
                       key={link.path}
