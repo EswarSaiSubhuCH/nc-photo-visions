@@ -3,7 +3,7 @@ import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
 
-// Your uploaded images
+// Your uploaded images 
 const wedding1 = "https://i.ibb.co/gMTFLL2Q/Wedding-Photography-1.jpg";
 const wedding2 = "https://i.ibb.co/qFF2LFZW/Wedding-Photography-2.jpg";
 const wedding3 = "https://i.ibb.co/j9WG7cgL/Wedding-Photography-3.jpg";
@@ -22,8 +22,8 @@ const WeddingGallery = () => {
   const albums = [
     {
       id: 1,
-      title: "Album 1 - Wedding Photography",
-      description: "Your uploaded wedding images",
+      title: "Album 1",
+      description: "",
       coverImage: wedding1,
       imageCount: 4,
       images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
