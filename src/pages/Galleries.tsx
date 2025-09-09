@@ -145,9 +145,7 @@ const Galleries = () => {
                           <h3 className="text-xl font-playfair font-semibold">{gallery.title}</h3>
                           <p className="text-accent font-medium">{gallery.category}</p>
                         </div>
-                        <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                          {gallery.imageCount} images
-                        </span>
+                        
                       </div>
                       
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4">
