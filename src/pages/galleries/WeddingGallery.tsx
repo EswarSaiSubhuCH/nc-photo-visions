@@ -131,7 +131,7 @@ const WeddingGallery = () => {
               className="bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer group" 
               onClick={() => handleAlbumClick(album.id)}
             >
-              <div className="aspect-[4/3] relative rounded-xl overflow-hidden">
+              <div className="aspect-[4/3] relative mb-4 rounded-xl overflow-hidden">
                 <img 
                   src={album.coverImage} 
                   alt={album.title} 
@@ -147,6 +147,9 @@ const WeddingGallery = () => {
                   {album.imageCount} photos
                 </div>
               </div>
+              {/* Album title and description */}
+              <h3 className="font-playfair font-semibold text-lg mb-2">{album.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{album.description}</p>
             </div>
           ))}
         </div>
