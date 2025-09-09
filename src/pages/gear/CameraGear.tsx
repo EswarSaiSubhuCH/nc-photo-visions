@@ -6,7 +6,7 @@ const CameraGear = () => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const cameras = [{
     id: 1,
-    src: "https://drive.google.com/file/d/1tL9v2jItK_d7seFz--h5dNGQ1tIDKTAC/view?usp=sharing",
+    src: "<a href="https://ibb.co/wr6xXtK3"><img src="https://i.ibb.co/jZ412tLB/Sony-R3.jpg" alt="Sony-R3" border="0"></a>",
     name: "Sony Alpha ILCE-7RM3A",
     description: "An entirely renewed image processing system further enhances image quality. Up to approximately 2x improved AF speed15, AF tracking7, and Eye AF tracking7Â performance and up to 10fps continuous shooting allow more decisive moments to be captured. Reliable pro-style operability packed within a strong, compact body provides superior flexibility and mobility",
     specifications: ["42.4 megapixels with Exmor R CMOS sensor", "4K Video Recording in XAVC S Format", "5-axis Image Stabilisation to minimize camera shakes", "Fast Hybrid Autofocus", "Continuous Burst Shooting at up to 10fps", "Dynamic Range of up to 15 Stops", "NP-FZ100 Battery for long duration shooting"],
