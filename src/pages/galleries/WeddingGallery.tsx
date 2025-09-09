@@ -3,11 +3,11 @@ import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
 
-// Use Postimg direct links 
-const wedding1 = "https://i.postimg.cc/Fk9F3v6C/Wedding-2024-1.jpg";
-const wedding2 = "https://i.postimg.cc/7fZYLx0f/Wedding-2024-2.jpg";
-const wedding3 = "https://i.postimg.cc/jCKSG6j6/Wedding-Photography-3.jpg";
-const wedding4 = "https://i.postimg.cc/kDcg9VVO/Wedding-Photography-4.jpg";
+// Use Postimg direct links
+const wedding1 = "https://i.postimg.cc/8sWLbm0h/Wedding-2024-1.jpg";
+const wedding2 = "https://i.postimg.cc/5Y5Lfxvs/Wedding-2024-2.jpg";
+const wedding3 = "https://i.postimg.cc/qNY8LD4x/Wedding-Photography-3.jpg";
+const wedding4 = "https://i.postimg.cc/TyDnHjPM/Wedding-Photography-4.jpg";
 
 const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
@@ -26,14 +26,14 @@ const WeddingGallery = () => {
         title: `Ceremony Moment ${index + 1}`,
         description: `Intimate ceremony moment captured with emotional depth and artistic vision`,
         camera: "Canon EOS R5",
-        settings: "85mm, f/2.8, 1/250s, ISO 800"
-      }))
+        settings: "85mm, f/2.8, 1/250s, ISO 800",
+      })),
     },
     {
       id: 2,
       title: "Reception Celebrations",
       description: "Joyful reception moments full of celebration and laughter",
-      coverImage: wedding1,
+      coverImage: wedding2,
       imageCount: 4,
       images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
@@ -41,14 +41,14 @@ const WeddingGallery = () => {
         title: `Reception Joy ${index + 1}`,
         description: `Candid reception moments full of joy, laughter, and celebration`,
         camera: "Canon EOS R6",
-        settings: "35mm, f/2.0, 1/200s, ISO 1250"
-      }))
+        settings: "35mm, f/2.0, 1/200s, ISO 1250",
+      })),
     },
     {
       id: 3,
       title: "Detail Shots",
       description: "Beautiful detail photography of rings, flowers, and décor",
-      coverImage: wedding1,
+      coverImage: wedding3,
       imageCount: 4,
       images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
@@ -56,9 +56,9 @@ const WeddingGallery = () => {
         title: `Wedding Detail ${index + 1}`,
         description: `Beautiful detail shot showcasing the artistry and elegance of the wedding`,
         camera: "Canon EOS R5",
-        settings: "100mm macro, f/2.8, 1/200s, ISO 400"
-      }))
-    }
+        settings: "100mm macro, f/2.8, 1/200s, ISO 400",
+      })),
+    },
   ];
 
   const handleAlbumClick = (albumId: number) => {
@@ -70,21 +70,27 @@ const WeddingGallery = () => {
     setSelectedAlbum(null);
   };
 
-  const selectedAlbumData = albums.find(album => album.id === selectedAlbum);
+  const selectedAlbumData = albums.find((album) => album.id === selectedAlbum);
 
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/galleries" className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8">
+        <Link
+          to="/galleries"
+          className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8"
+        >
           <ArrowLeft size={20} />
           <span>Back to Galleries</span>
         </Link>
 
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-playfair font-bold mb-6">Wedding Photography</h1>
+          <h1 className="text-5xl font-playfair font-bold mb-6">
+            Wedding Photography
+          </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Capturing love stories with artistic vision and emotional depth. Every moment, 
-            from intimate ceremonies to joyful celebrations, preserved forever.
+            Capturing love stories with artistic vision and emotional depth.
+            Every moment, from intimate ceremonies to joyful celebrations,
+            preserved forever.
           </p>
           <div className="flex items-center justify-center space-x-6 mt-8 text-muted-foreground">
             <div className="flex items-center space-x-2">
@@ -96,16 +102,16 @@ const WeddingGallery = () => {
 
         {/* Albums Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {albums.map(album => (
-            <div 
-              key={album.id} 
-              className="bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer group" 
+          {albums.map((album) => (
+            <div
+              key={album.id}
+              className="bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer group"
               onClick={() => handleAlbumClick(album.id)}
             >
               <div className="aspect-[4/3] relative mb-4 rounded-xl overflow-hidden">
-                <img 
-                  src={album.coverImage} 
-                  alt={album.title} 
+                <img
+                  src={album.coverImage}
+                  alt={album.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 gallery-image"
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
@@ -120,8 +126,12 @@ const WeddingGallery = () => {
                   {album.imageCount} photos
                 </div>
               </div>
-              <h3 className="font-playfair font-semibold text-lg mb-2">{album.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{album.description}</p>
+              <h3 className="font-playfair font-semibold text-lg mb-2">
+                {album.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {album.description}
+              </p>
             </div>
           ))}
         </div>
