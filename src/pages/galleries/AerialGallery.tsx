@@ -9,7 +9,7 @@ const AerialGallery = () => {
 
   // Sample albums - each album contains multiple images
   const albums = [
-    {
+    /* {
       id: 1,
       title: "Mountain Valley Collection",
       description: "Breathtaking aerial views of mountain valleys during golden hour",
@@ -68,7 +68,7 @@ const AerialGallery = () => {
         camera: "DJI Mini 3",
         settings: "f/2.8, 1/100s, ISO 100"
       }))
-    }
+    } */
   ];
 
   const handleAlbumClick = (albumId: number) => {
