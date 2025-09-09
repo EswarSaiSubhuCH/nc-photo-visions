@@ -3,11 +3,11 @@ import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
 
-// Use Postimg direct links
-const wedding1 = "https://i.postimg.cc/8sWLbm0h/Wedding-2024-1.jpg";
-const wedding2 = "https://i.postimg.cc/5Y5Lfxvs/Wedding-2024-2.jpg";
-const wedding3 = "https://i.postimg.cc/qNY8LD4x/Wedding-Photography-3.jpg";
-const wedding4 = "https://i.postimg.cc/TyDnHjPM/Wedding-Photography-4.jpg";
+// Updated Postimg direct links (1080p)
+const wedding1 = "https://i.postimg.cc/WF5tSg6m/Wedding-2024-1.jpg";
+const wedding2 = "https://i.postimg.cc/Lh0n1ks2/Wedding-2024-2.jpg";
+const wedding3 = "https://i.postimg.cc/V05vhvDx/Wedding-Photography-3.jpg";
+const wedding4 = "https://i.postimg.cc/6TQ8qbtM/Wedding-Photography-4.jpg";
 
 const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
