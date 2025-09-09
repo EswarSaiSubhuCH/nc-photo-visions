@@ -3,11 +3,17 @@ import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
 
-// ✅ Direct ImgBB links
+// Your uploaded images
 const wedding1 = "https://i.ibb.co/gMTFLL2Q/Wedding-Photography-1.jpg";
 const wedding2 = "https://i.ibb.co/qFF2LFZW/Wedding-Photography-2.jpg";
 const wedding3 = "https://i.ibb.co/j9WG7cgL/Wedding-Photography-3.jpg";
 const wedding4 = "https://i.ibb.co/Tx3NpgQ6/Wedding-Photography-4.jpg";
+
+// Sample placeholder images for other albums
+const sample1 = "https://picsum.photos/id/1018/1200/800";
+const sample2 = "https://picsum.photos/id/1025/1200/800";
+const sample3 = "https://picsum.photos/id/1035/1200/800";
+const sample4 = "https://picsum.photos/id/1041/1200/800";
 
 const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
@@ -16,49 +22,79 @@ const WeddingGallery = () => {
   const albums = [
     {
       id: 1,
-      title: "Ceremony Moments",
-      description: "Intimate ceremony moments captured with emotional depth",
+      title: "Album 1 - Wedding Photography",
+      description: "Your uploaded wedding images",
       coverImage: wedding1,
       imageCount: 4,
       images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
         id: index + 1,
         src,
-        title: `Ceremony Moment ${index + 1}`,
-        description: `Intimate ceremony moment captured with emotional depth and artistic vision`,
+        title: `Wedding Photo ${index + 1}`,
+        description: "Captured with love and artistic vision",
         camera: "Canon EOS R5",
-        settings: "85mm, f/2.8, 1/250s, ISO 800",
-      })),
+        settings: "85mm, f/2.8, 1/250s, ISO 800"
+      }))
     },
     {
       id: 2,
-      title: "Reception Celebrations",
-      description: "Joyful reception moments full of celebration and laughter",
-      coverImage: wedding2,
+      title: "Album 2 - Ceremony",
+      description: "Sample placeholder images",
+      coverImage: sample1,
       imageCount: 4,
-      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
+      images: [sample1, sample2, sample3, sample4].map((src, index) => ({
         id: index + 1,
         src,
-        title: `Reception Joy ${index + 1}`,
-        description: `Candid reception moments full of joy, laughter, and celebration`,
+        title: `Ceremony Sample ${index + 1}`,
+        description: "Sample placeholder photography",
         camera: "Canon EOS R6",
-        settings: "35mm, f/2.0, 1/200s, ISO 1250",
-      })),
+        settings: "35mm, f/2.0, 1/200s, ISO 1250"
+      }))
     },
     {
       id: 3,
-      title: "Detail Shots",
-      description: "Beautiful detail photography of rings, flowers, and décor",
-      coverImage: wedding3,
+      title: "Album 3 - Reception",
+      description: "Sample placeholder images",
+      coverImage: sample2,
       imageCount: 4,
-      images: [wedding1, wedding2, wedding3, wedding4].map((src, index) => ({
+      images: [sample2, sample3, sample4, sample1].map((src, index) => ({
         id: index + 1,
         src,
-        title: `Wedding Detail ${index + 1}`,
-        description: `Beautiful detail shot showcasing the artistry and elegance of the wedding`,
+        title: `Reception Sample ${index + 1}`,
+        description: "Sample placeholder reception photos",
         camera: "Canon EOS R5",
-        settings: "100mm macro, f/2.8, 1/200s, ISO 400",
-      })),
+        settings: "50mm, f/2.8, 1/160s, ISO 1000"
+      }))
     },
+    {
+      id: 4,
+      title: "Album 4 - Detail Shots",
+      description: "Sample placeholder images",
+      coverImage: sample3,
+      imageCount: 4,
+      images: [sample3, sample4, sample1, sample2].map((src, index) => ({
+        id: index + 1,
+        src,
+        title: `Detail Sample ${index + 1}`,
+        description: "Placeholder detail photography",
+        camera: "Canon EOS R3",
+        settings: "100mm, f/2.8, 1/200s, ISO 400"
+      }))
+    },
+    {
+      id: 5,
+      title: "Album 5 - Outdoor",
+      description: "Sample placeholder images",
+      coverImage: sample4,
+      imageCount: 4,
+      images: [sample4, sample1, sample2, sample3].map((src, index) => ({
+        id: index + 1,
+        src,
+        title: `Outdoor Sample ${index + 1}`,
+        description: "Sample outdoor placeholder photography",
+        camera: "Canon EOS R7",
+        settings: "24mm, f/4.0, 1/500s, ISO 200"
+      }))
+    }
   ];
 
   const handleAlbumClick = (albumId: number) => {
@@ -70,51 +106,36 @@ const WeddingGallery = () => {
     setSelectedAlbum(null);
   };
 
-  const selectedAlbumData = albums.find((album) => album.id === selectedAlbum);
+  const selectedAlbumData = albums.find(album => album.id === selectedAlbum);
 
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link
-          to="/galleries"
-          className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8"
-        >
+        <Link to="/galleries" className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8">
           <ArrowLeft size={20} />
           <span>Back to Galleries</span>
         </Link>
 
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-playfair font-bold mb-6">
-            Wedding Photography
-          </h1>
+          <h1 className="text-5xl font-playfair font-bold mb-6">Wedding Photography</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Capturing love stories with artistic vision and emotional depth.
-            Every moment, from intimate ceremonies to joyful celebrations,
-            preserved forever.
+            Explore different albums showcasing wedding ceremonies, receptions, and more.
           </p>
-          <div className="flex items-center justify-center space-x-6 mt-8 text-muted-foreground">
-            <div className="flex items-center space-x-2">
-              <Eye size={16} />
-              <span>{albums.length} Albums</span>
-            </div>
-          </div>
         </div>
 
         {/* Albums Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {albums.map((album) => (
-            <div
-              key={album.id}
-              className="bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer group"
+          {albums.map(album => (
+            <div 
+              key={album.id} 
+              className="bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer group" 
               onClick={() => handleAlbumClick(album.id)}
             >
               <div className="aspect-[4/3] relative mb-4 rounded-xl overflow-hidden">
-                <img
-                  src={album.coverImage}
-                  alt={album.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 gallery-image"
-                  draggable={false}
-                  onContextMenu={(e) => e.preventDefault()}
+                <img 
+                  src={album.coverImage} 
+                  alt={album.title} 
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-white text-center">
@@ -126,12 +147,8 @@ const WeddingGallery = () => {
                   {album.imageCount} photos
                 </div>
               </div>
-              <h3 className="font-playfair font-semibold text-lg mb-2">
-                {album.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {album.description}
-              </p>
+              <h3 className="font-playfair font-semibold text-lg mb-2">{album.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{album.description}</p>
             </div>
           ))}
         </div>
