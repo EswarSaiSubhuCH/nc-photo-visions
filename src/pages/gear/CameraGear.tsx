@@ -37,7 +37,8 @@ const CameraGear = () => {
         "Wi-Fi and Bluetooth connectivity"
       ],
     },
-    {
+    
+    /*{
       id: 3,
       src: cameraImage,
       name: " ----  ",
@@ -50,7 +51,7 @@ const CameraGear = () => {
       name: " ----- ",
       description: "Flagship mirrorless camera combining speed, resolution, and video capabilities",
       specifications: ["45.7MP Stacked Sensor", "8K 30p Internal", "493-point AF System", "120fps Continuous Shooting"],
-    }
+    } */
   ];
 
   return (
