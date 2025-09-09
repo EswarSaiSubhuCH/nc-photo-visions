@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Image {
@@ -6,8 +6,8 @@ interface Image {
   src: string;
   title: string;
   description: string;
-  camera: string;
-  settings: string;
+  camera?: string;
+  settings?: string;
 }
 
 interface ImageSliderProps {
@@ -23,70 +23,60 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   initialIndex,
   onClose,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [currentIndex, setCurrentIndex] = React.useState(initialIndex);
+
+  React.useEffect(() => {
+    setCurrentIndex(initialIndex);
+  }, [initialIndex]);
 
   if (!isOpen) return null;
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? images.length - 1 : prev - 1
-    );
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === images.length - 1 ? 0 : prev + 1
-    );
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50">
-      {/* Close button */}
+    <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center">
+      {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 text-white hover:text-accent transition"
+        className="absolute top-6 right-6 text-white hover:text-accent transition-colors"
       >
         <X size={32} />
       </button>
 
-      {/* Previous button */}
+      {/* Previous Button */}
       <button
-        onClick={prevSlide}
-        className="absolute left-4 text-white hover:text-accent transition"
+        onClick={prevImage}
+        className="absolute left-6 text-white hover:text-accent transition-colors"
       >
-        <ChevronLeft size={40} />
+        <ChevronLeft size={48} />
       </button>
 
       {/* Image */}
-      <div className="w-full h-full flex items-center justify-center px-8">
+      <div className="max-w-screen max-h-screen flex flex-col items-center justify-center">
         <img
           src={images[currentIndex].src}
           alt={images[currentIndex].title}
-          className="w-full h-full object-contain"
-          draggable={false}
+          className="w-auto h-auto max-w-screen max-h-screen object-contain"
         />
-      </div>
-
-      {/* Next button */}
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 text-white hover:text-accent transition"
-      >
-        <ChevronRight size={40} />
-      </button>
-
-      {/* Caption */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center text-white max-w-4xl px-4">
-        <h2 className="text-xl font-semibold mb-2">
-          {images[currentIndex].title}
-        </h2>
-        <p className="text-sm mb-2">
+        <p className="text-white mt-4 text-lg">{images[currentIndex].title}</p>
+        <p className="text-gray-400 text-sm">
           {images[currentIndex].description}
         </p>
-        <p className="text-xs text-gray-300">
-          {images[currentIndex].camera} — {images[currentIndex].settings}
-        </p>
       </div>
+
+      {/* Next Button */}
+      <button
+        onClick={nextImage}
+        className="absolute right-6 text-white hover:text-accent transition-colors"
+      >
+        <ChevronRight size={48} />
+      </button>
     </div>
   );
 };
