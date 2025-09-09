@@ -7,7 +7,7 @@ const LandscapeGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const images = [
-    {
+    /* {
       id: 1,
       src: landscapeImage1,
       title: "Mountain Sunset",
@@ -38,7 +38,7 @@ const LandscapeGallery = () => {
       description: "Vast desert expanse with dramatic cloud formations",
       camera: "Canon EOS R6",
       settings: "24-70mm, f/11, 1/80s, ISO 100"
-    }
+    } */
   ];
 
   return (
