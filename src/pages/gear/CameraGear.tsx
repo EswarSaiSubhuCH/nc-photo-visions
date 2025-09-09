@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeft, Eye } from "lucide-react";
+import { ArrowLeft, Eye, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import cameraImage from "../../assets/samples/camera-gear.jpg";
 
@@ -11,8 +11,7 @@ const CameraGear = () => {
       id: 1,
       src: "https://i.ibb.co/jZ412tLB/Sony-R3.jpg",
       name: "Sony Alpha ILCE-7RM3A",
-      description:
-        "An entirely renewed image processing system further enhances image quality. Up to approximately 2x improved AF speed, AF tracking, and Eye AF tracking performance and up to 10fps continuous shooting allow more decisive moments to be captured. Reliable pro-style operability packed within a strong, compact body provides superior flexibility and mobility.",
+      description: "An entirely renewed image processing system further enhances image quality. Up to approximately 2x improved AF speed15, AF tracking7, and Eye AF tracking7Â performance and up to 10fps continuous shooting allow more decisive moments to be captured. Reliable pro-style operability packed within a strong, compact body provides superior flexibility and mobility",
       specifications: [
         "42.4 megapixels with Exmor R CMOS sensor",
         "4K Video Recording in XAVC S Format",
@@ -25,23 +24,20 @@ const CameraGear = () => {
     },
     {
       id: 2,
-      src: "https://i.ibb.co/wFdrHy6M/Canon-200-D-II.jpg",
-      name: "Canon 200D Mark II",
-      description:
-        "Compact DSLR with exceptional image quality, Dual Pixel CMOS AF, and versatile shooting capabilities for beginners and enthusiasts.",
+      src: cameraImage,
+      name: " --- ",
+      description: "High-performance full-frame camera optimized for speed and low-light performance",
       specifications: [
-        "24.1MP APS-C CMOS sensor",
-        "4K video recording",
-        "9-point AF system",
-        "ISO 100–25600",
-        "Wi-Fi and Bluetooth connectivity",
-        "Lightweight and compact design",
+        "24.2MP Full Frame",
+        "6K Video Oversampling",
+        "40fps Electronic Shutter",
+        "Advanced Subject Detection",
       ],
     },
     {
       id: 3,
       src: cameraImage,
-      name: " ----  ",
+      name: " ---- ",
       description: "Ultra-high resolution camera with exceptional detail and dynamic range",
       specifications: [
         "61MP Full Frame",
@@ -76,13 +72,10 @@ const CameraGear = () => {
         </Link>
 
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-playfair font-bold mb-6">
-            Camera Equipment
-          </h1>
+          <h1 className="text-5xl font-playfair font-bold mb-6">Camera Equipment</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Professional camera bodies that form the foundation of our
-            photography equipment. From full-frame mirrorless to specialized
-            cameras for every shooting scenario.
+            Professional camera bodies that form the foundation of our photography equipment.
+            From full-frame mirrorless to specialized cameras for every shooting scenario.
           </p>
           <div className="flex items-center justify-center space-x-6 mt-8 text-muted-foreground">
             <div className="flex items-center space-x-2">
@@ -103,25 +96,18 @@ const CameraGear = () => {
                 <img
                   src={camera.src}
                   alt={camera.name}
-                  className={`transition-transform duration-300 group-hover:scale-105 ${
-                    camera.id === 2 ? "w-3/4 h-3/4 mx-auto" : "w-full h-full"
-                  }`}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="flex items-start justify-between mb-3">
-                <h3 className="font-playfair font-semibold text-xl">
-                  {camera.name}
-                </h3>
+                <h3 className="font-playfair font-semibold text-xl">{camera.name}</h3>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {camera.description}
               </p>
               <div className="space-y-2 mb-4">
                 {camera.specifications.map((spec, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-2"
-                  >
+                  <div key={index} className="flex items-center space-x-2">
                     <div className="w-1 h-1 rounded-full bg-accent"></div>
                     <span className="text-xs text-muted-foreground">{spec}</span>
                   </div>
