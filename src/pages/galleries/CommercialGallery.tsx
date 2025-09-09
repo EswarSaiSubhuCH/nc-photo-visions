@@ -9,7 +9,7 @@ const CommercialGallery = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const albums = [
-    {
+    /*{
       id: 1,
       title: "Product Showcases",
       description: "Clean product photography with professional lighting setup",
@@ -38,7 +38,7 @@ const CommercialGallery = () => {
         camera: "Canon EOS R6",
         settings: "85mm, f/2.8, 1/160s, ISO 200"
       }))
-    }
+    } */
   ];
 
   const handleAlbumClick = (albumId: number) => {
