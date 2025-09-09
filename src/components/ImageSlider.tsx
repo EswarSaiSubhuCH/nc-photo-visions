@@ -58,16 +58,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       </button>
 
       {/* Image */}
-      <div className="max-w-screen max-h-screen flex flex-col items-center justify-center">
+      <div className="max-w-screen max-h-screen flex items-center justify-center">
         <img
           src={images[currentIndex].src}
-          alt={images[currentIndex].title}
+          alt=""
           className="w-auto h-auto max-w-screen max-h-screen object-contain"
         />
-        <p className="text-white mt-4 text-lg">{images[currentIndex].title}</p>
-        <p className="text-gray-400 text-sm">
-          {images[currentIndex].description}
-        </p>
       </div>
 
       {/* Next Button */}
