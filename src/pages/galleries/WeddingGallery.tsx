@@ -9,11 +9,11 @@ const wedding2 = "https://i.ibb.co/qFF2LFZW/Wedding-Photography-2.jpg";
 const wedding3 = "https://i.ibb.co/j9WG7cgL/Wedding-Photography-3.jpg";
 const wedding4 = "https://i.ibb.co/Tx3NpgQ6/Wedding-Photography-4.jpg";
 
-// Sample placeholder images for other albums
-const sample1 = "https://picsum.photos/id/1018/1200/800";
-const sample2 = "https://picsum.photos/id/1025/1200/800";
-const sample3 = "https://picsum.photos/id/1035/1200/800";
-const sample4 = "https://picsum.photos/id/1041/1200/800";
+// Sample placeholder images (commented since unused)
+// const sample1 = "https://picsum.photos/id/1018/1200/800";
+// const sample2 = "https://picsum.photos/id/1025/1200/800";
+// const sample3 = "https://picsum.photos/id/1035/1200/800";
+// const sample4 = "https://picsum.photos/id/1041/1200/800";
 
 const WeddingGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
@@ -35,66 +35,28 @@ const WeddingGallery = () => {
         settings: "85mm, f/2.8, 1/250s, ISO 800"
       }))
     },
+    /*
     {
       id: 2,
       title: "Album 2 - Ceremony",
-      description: "Sample placeholder images",
-      coverImage: sample1,
-      imageCount: 4,
-      images: [sample1, sample2, sample3, sample4].map((src, index) => ({
-        id: index + 1,
-        src,
-        title: `Ceremony Sample ${index + 1}`,
-        description: "Sample placeholder photography",
-        camera: "Canon EOS R6",
-        settings: "35mm, f/2.0, 1/200s, ISO 1250"
-      }))
+      ...
     },
     {
       id: 3,
       title: "Album 3 - Reception",
-      description: "Sample placeholder images",
-      coverImage: sample2,
-      imageCount: 4,
-      images: [sample2, sample3, sample4, sample1].map((src, index) => ({
-        id: index + 1,
-        src,
-        title: `Reception Sample ${index + 1}`,
-        description: "Sample placeholder reception photos",
-        camera: "Canon EOS R5",
-        settings: "50mm, f/2.8, 1/160s, ISO 1000"
-      }))
+      ...
     },
     {
       id: 4,
       title: "Album 4 - Detail Shots",
-      description: "Sample placeholder images",
-      coverImage: sample3,
-      imageCount: 4,
-      images: [sample3, sample4, sample1, sample2].map((src, index) => ({
-        id: index + 1,
-        src,
-        title: `Detail Sample ${index + 1}`,
-        description: "Placeholder detail photography",
-        camera: "Canon EOS R3",
-        settings: "100mm, f/2.8, 1/200s, ISO 400"
-      }))
+      ...
     },
     {
       id: 5,
       title: "Album 5 - Outdoor",
-      description: "Sample placeholder images",
-      coverImage: sample4,
-      imageCount: 4,
-      images: [sample4, sample1, sample2, sample3].map((src, index) => ({
-        id: index + 1,
-        src,
-        title: `Outdoor Sample ${index + 1}`,
-        description: "Sample outdoor placeholder photography",
-        camera: "Canon EOS R7",
-        settings: "24mm, f/4.0, 1/500s, ISO 200"
-      }))
+      ...
     }
+    */
   ];
 
   const handleAlbumClick = (albumId: number) => {
@@ -119,7 +81,7 @@ const WeddingGallery = () => {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-playfair font-bold mb-6">Wedding Photography</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Explore different albums showcasing wedding ceremonies, receptions, and more.
+            Explore our curated wedding photography album.
           </p>
         </div>
 
@@ -147,7 +109,6 @@ const WeddingGallery = () => {
                   {album.imageCount} photos
                 </div>
               </div>
-              {/* Album title and description */}
               <h3 className="font-playfair font-semibold text-lg mb-2">{album.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{album.description}</p>
             </div>
