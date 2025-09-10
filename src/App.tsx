@@ -1,8 +1,10 @@
+// src/App.tsx
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -13,12 +15,16 @@ import Gear from "./pages/Gear";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+
+// Galleries
 import AerialGallery from "./pages/galleries/AerialGallery";
 import PortraitGallery from "./pages/galleries/PortraitGallery";
 import WeddingGallery from "./pages/galleries/WeddingGallery";
 import CommercialGallery from "./pages/galleries/CommercialGallery";
 import LandscapeGallery from "./pages/galleries/LandscapeGallery";
 import EventsGallery from "./pages/galleries/EventsGallery";
+
+// Gear pages
 import CameraGear from "./pages/gear/CameraGear";
 import LensGear from "./pages/gear/LensGear";
 import DroneGear from "./pages/gear/DroneGear";
@@ -53,7 +59,7 @@ const App = () => (
             <Route path="/gear/accessories" element={<AccessoriesGear />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Catch-all route points to the clean 404 page */}
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
