@@ -101,8 +101,8 @@ const Gear = () => {
         <div className="flex flex-col lg:flex-row gap-6 mb-12">
           {/* Search */}
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
-            <input type="text" placeholder="Search equipment..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" />
+            
+            
           </div>
 
           {/* Category Filter */}
@@ -130,46 +130,7 @@ const Gear = () => {
         </div>
 
         {/* Featured Items */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-playfair font-bold mb-8">Featured Equipment</h2>
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {gearItems.filter(item => item.featured).map(item => <Link key={item.id} to={`/gear/${item.category}`} onClick={() => window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          })} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer">
-                <div className="flex items-start space-x-6">
-                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Camera size={32} className="text-accent" />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="text-xl font-playfair font-semibold">{item.name}</h3>
-                        <p className="text-accent font-medium">{item.category}</p>
-                      </div>
-                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                        Featured
-                      </span>
-                    </div>
-                    
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                      {item.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {item.specifications.slice(0, 2).map((spec, index) => <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
-                          {spec}
-                        </span>)}
-                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
-                        View Details
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>)}
-          </div>
-        </div>
+        
 
         {/* All Equipment */}
         <div>
