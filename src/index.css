@@ -30,6 +30,38 @@ video::-webkit-scrollbar {
   user-select: none;
 }
 
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Improve touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better text readability on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Improve form inputs on mobile */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
 /* Photography Portfolio Design System - Monochrome with warm accents */
 
 @layer base {
@@ -79,6 +111,10 @@ video::-webkit-scrollbar {
     /* Professional transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-gallery: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Mobile-specific tokens */
+    --mobile-padding: 1rem;
+    --mobile-gap: 0.75rem;
   }
 
   .dark {
@@ -131,6 +167,21 @@ video::-webkit-scrollbar {
   h1, h2, h3, h4, h5, h6 {
     @apply font-playfair;
   }
+
+  /* Mobile typography adjustments */
+  @media (max-width: 768px) {
+    h1 {
+      @apply text-3xl sm:text-4xl;
+    }
+    
+    h2 {
+      @apply text-2xl sm:text-3xl;
+    }
+    
+    h3 {
+      @apply text-xl sm:text-2xl;
+    }
+  }
 }
 
 @layer components {
@@ -142,6 +193,13 @@ video::-webkit-scrollbar {
     background-size: cover;
   }
 
+  /* Mobile hero adjustments */
+  @media (max-width: 768px) {
+    .hero-parallax {
+      background-attachment: scroll; /* Better performance on mobile */
+    }
+  }
+
   .photo-overlay {
     background: var(--hero-gradient);
   }
@@ -150,6 +208,13 @@ video::-webkit-scrollbar {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--border));
+  }
+
+  /* Mobile glass effect optimization */
+  @media (max-width: 768px) {
+    .glass-effect {
+      backdrop-filter: blur(8px); /* Reduce blur for better performance */
+    }
   }
 
   /* Gallery hover effects */
@@ -169,6 +234,17 @@ video::-webkit-scrollbar {
 
   .gallery-item:hover img {
     transform: scale(1.1);
+  }
+
+  /* Mobile gallery optimizations */
+  @media (max-width: 768px) {
+    .gallery-item:hover {
+      transform: scale(1.02); /* Reduce scale for mobile */
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05); /* Reduce scale for mobile */
+    }
   }
 
   /* Navigation animations */
@@ -211,6 +287,18 @@ video::-webkit-scrollbar {
     box-shadow: 0 15px 40px -10px hsl(var(--accent) / 0.4);
   }
 
+  /* Mobile button adjustments */
+  @media (max-width: 768px) {
+    .btn-hero {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-1px); /* Reduce hover effect on mobile */
+    }
+  }
+
   .btn-outline {
     background: transparent;
     color: hsl(var(--foreground));
@@ -227,6 +315,48 @@ video::-webkit-scrollbar {
     border-color: hsl(var(--accent));
     transform: translateY(-1px);
   }
+
+  /* Mobile outline button adjustments */
+  @media (max-width: 768px) {
+    .btn-outline {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    .btn-outline:hover {
+      transform: none; /* Remove hover transform on mobile */
+    }
+  }
+
+  /* Mobile-specific utilities */
+  .mobile-padding {
+    padding: var(--mobile-padding);
+  }
+
+  .mobile-gap {
+    gap: var(--mobile-gap);
+  }
+
+  /* Touch-friendly interactions */
+  @media (hover: none) and (pointer: coarse) {
+    .gallery-item:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .gallery-item:hover img {
+      transform: none;
+    }
+
+    .btn-hero:hover {
+      transform: none;
+      box-shadow: 0 10px 30px -10px hsl(var(--accent) / 0.3);
+    }
+
+    .btn-outline:hover {
+      transform: none;
+    }
+  }
 }
 
 /* Use Alex Brush for the site title */
@@ -234,4 +364,12 @@ video::-webkit-scrollbar {
   font-family: 'Great Vibes', cursive;
   font-weight: normal;
   letter-spacing: 0.5px;
+}
+
+/* Mobile site title adjustments */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
 }

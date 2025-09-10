@@ -120,18 +120,18 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">{/* reduced height */}
+        <div className="flex items-center justify-between h-14 sm:h-16">
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="text-2xl font-playfair font-bold text-foreground hover:text-accent transition-colors site-title"
+              className="text-xl sm:text-2xl font-playfair font-bold text-foreground hover:text-accent transition-colors site-title"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               NC Photography & Aerials
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <Link
               to="/"
               className={`nav-link ${isActive("/") ? "active" : ""}`}
@@ -163,7 +163,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground hover:text-accent transition-colors"
+              className="text-foreground hover:text-accent transition-colors p-2"
               type="button"
               aria-label="Toggle mobile menu"
             >
@@ -173,47 +173,65 @@ const Navigation = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
-            <div className="space-y-4">
+          <div className="md:hidden glass-effect rounded-lg mt-2 p-4 mx-2">
+            <div className="space-y-3">
               <Link
                 to="/"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Home
               </Link>
               <Link
                 to="/social"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Social Media
               </Link>
               <Link
                 to="/galleries"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Galleries
               </Link>
               <Link
                 to="/gear"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Gear
               </Link>
               <Link
                 to="/about"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className="block text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Contact
               </Link>

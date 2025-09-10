@@ -40,39 +40,51 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center">
+    <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 text-white hover:text-accent transition-colors"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-accent transition-colors z-10 p-2"
       >
-        <X size={32} />
+        <X size={24} className="sm:w-8 sm:h-8" />
       </button>
 
       {/* Previous Button */}
       <button
         onClick={prevImage}
-        className="absolute left-6 text-white hover:text-accent transition-colors"
+        className="absolute left-2 sm:left-6 text-white hover:text-accent transition-colors z-10 p-2"
       >
-        <ChevronLeft size={48} />
+        <ChevronLeft size={32} className="sm:w-12 sm:h-12" />
       </button>
 
       {/* Image */}
-      <div className="max-w-screen max-h-screen flex items-center justify-center">
+      <div className="max-w-full max-h-full flex items-center justify-center">
         <img
           src={images[currentIndex].src}
           alt=""
-          className="w-auto h-auto max-w-screen max-h-screen object-contain"
+          className="w-auto h-auto max-w-full max-h-full object-contain"
         />
       </div>
 
       {/* Next Button */}
       <button
         onClick={nextImage}
-        className="absolute right-6 text-white hover:text-accent transition-colors"
+        className="absolute right-2 sm:right-6 text-white hover:text-accent transition-colors z-10 p-2"
       >
-        <ChevronRight size={48} />
+        <ChevronRight size={32} className="sm:w-12 sm:h-12" />
       </button>
+
+      {/* Mobile swipe indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:hidden">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              index === currentIndex ? 'bg-white' : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
