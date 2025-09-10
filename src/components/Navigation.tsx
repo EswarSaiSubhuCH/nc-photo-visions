@@ -1,4 +1,3 @@
-// src/components/Navigation.tsx
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -45,6 +44,7 @@ const Navigation = () => {
   ];
 
   const galleryLinks = [
+    { name: "All Collections", path: "/galleries" }, // NEW
     { name: "Aerial Photography", path: "/galleries/aerial" },
     { name: "Portrait Sessions", path: "/galleries/portraits" },
     { name: "Wedding Photography", path: "/galleries/weddings" },
@@ -54,6 +54,7 @@ const Navigation = () => {
   ];
 
   const gearLinks = [
+    { name: "All Gear", path: "/gear" }, // NEW
     { name: "Cameras", path: "/gear/cameras" },
     { name: "Lenses", path: "/gear/lenses" },
     { name: "Drones", path: "/gear/drones" },
@@ -74,7 +75,11 @@ const Navigation = () => {
     >
       <button className="nav-link flex items-center space-x-1" type="button">
         <span>{title}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === title ? "rotate-180" : ""}`} />
+        <ChevronDown
+          className={`w-4 h-4 transition-transform ${
+            activeDropdown === title ? "rotate-180" : ""
+          }`}
+        />
       </button>
 
       <div
@@ -83,7 +88,6 @@ const Navigation = () => {
         }`}
       >
         {links.map((link) =>
-          // Special case: social media → open in new tab
           title === "Social Media" && !link.internal ? (
             <a
               key={link.path}
@@ -110,28 +114,59 @@ const Navigation = () => {
   );
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "glass-effect shadow-lg" : "bg-transparent"}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? "glass-effect shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">{/* reduced height */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-playfair font-bold text-foreground hover:text-accent transition-colors site-title" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <Link
+              to="/"
+              className="text-2xl font-playfair font-bold text-foreground hover:text-accent transition-colors site-title"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               NC Photography & Aerials
             </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Home</Link>
+            <Link
+              to="/"
+              className={`nav-link ${isActive("/") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              Home
+            </Link>
 
             <Dropdown title="Social Media" links={socialLinks} />
             <Dropdown title="Galleries" links={galleryLinks} />
             <Dropdown title="Gear" links={gearLinks} />
 
-            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>About</Link>
-            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Contact</Link>
+            <Link
+              to="/about"
+              className={`nav-link ${isActive("/about") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              className={`nav-link ${isActive("/contact") ? "active" : ""}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              Contact
+            </Link>
           </div>
 
           <div className="md:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:text-accent transition-colors" type="button" aria-label="Toggle mobile menu">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground hover:text-accent transition-colors"
+              type="button"
+              aria-label="Toggle mobile menu"
+            >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -140,12 +175,48 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4">
             <div className="space-y-4">
-              <Link to="/" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-              <Link to="/social" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Social Media</Link>
-              <Link to="/galleries" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Galleries</Link>
-              <Link to="/gear" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Gear</Link>
-              <Link to="/about" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-              <Link to="/contact" className="block text-foreground hover:text-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+              <Link
+                to="/"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/social"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Social Media
+              </Link>
+              <Link
+                to="/galleries"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Galleries
+              </Link>
+              <Link
+                to="/gear"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Gear
+              </Link>
+              <Link
+                to="/about"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className="block text-foreground hover:text-accent transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}
