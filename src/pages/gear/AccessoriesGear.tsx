@@ -6,7 +6,6 @@ const AccessoriesGear = () => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   const accessories = [
-    // 🆕 New Accessories
     {
       id: 1,
       src: "https://i.ibb.co/pBktwW5X/Sandisk-Extreme-Portable-2-TB.webp",
@@ -73,46 +72,6 @@ const AccessoriesGear = () => {
       price: "$149",
       rating: 4.8,
     },
-
-    // 🔒 Commented Out Old Accessories
-    /*
-    {
-      id: 5,
-      src: accessoriesImage,
-      name: "Manfrotto Carbon Fiber Tripod",
-      description: "Ultra-lightweight carbon fiber tripod with professional ball head system",
-      specifications: ["Carbon Fiber Construction", "Max Load 8kg", "Compact Design", "Quick Release Plate"],
-      price: "$459",
-      rating: 4.7,
-    },
-    {
-      id: 6,
-      src: accessoriesImage,
-      name: "Godox AD600Pro Flash",
-      description: "High-power portable flash system with advanced wireless control capabilities",
-      specifications: ["600Ws Power", "HSS Support", "Wireless Control", "Fast Recycle Time"],
-      price: "$899",
-      rating: 4.8,
-    },
-    {
-      id: 7,
-      src: accessoriesImage,
-      name: "Peak Design Camera Strap",
-      description: "Quick-connecting camera strap with innovative Anchor Link system",
-      specifications: ["Quick Connect System", "Adjustable Length", "Comfortable Padding", "Lifetime Warranty"],
-      price: "$59",
-      rating: 4.9,
-    },
-    {
-      id: 8,
-      src: accessoriesImage,
-      name: "B+W UV Protection Filter",
-      description: "High-quality UV filter for lens protection and image quality enhancement",
-      specifications: ["Multi-Coated Glass", "Brass Mount", "Various Sizes", "Optical Glass"],
-      price: "$89",
-      rating: 4.6,
-    },
-    */
   ];
 
   return (
@@ -154,7 +113,7 @@ const AccessoriesGear = () => {
                 <img
                   src={accessory.src}
                   alt={accessory.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-300"
                 />
               </div>
               <div className="flex items-start justify-between mb-3">
