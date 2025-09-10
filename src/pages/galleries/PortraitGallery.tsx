@@ -2,56 +2,43 @@ import React, { useState } from "react";
 import { ArrowLeft, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/ImageSlider";
-import portraitImage1 from "../../assets/samples/portrait-1.jpg";
+
+const Album1Images = [
+  "https://i.postimg.cc/8PtdYGDs/1000044247.jpg",
+  "https://i.postimg.cc/7L0dyhKq/1000044242.jpg",
+  "https://i.postimg.cc/sXNV0KKM/1000044243.jpg",
+  "https://i.postimg.cc/3rkSM9n3/1000044244.jpg",
+  "https://i.postimg.cc/nhrY7hgp/1000044245.jpg",
+  "https://i.postimg.cc/MGj7PrzL/1000044248.jpg",
+  "https://i.postimg.cc/rmDwCvcd/1000025015.jpg",
+  "https://i.postimg.cc/sXbDnwDT/1000025016.jpg",
+  "https://i.postimg.cc/Prs5Y37x/1000025050.jpg",
+  "https://i.postimg.cc/Mpn3w5W7/1000025044.jpg",
+  "https://i.postimg.cc/N0pKx6Hn/1000025055.jpg",
+  "https://i.postimg.cc/cJNRzB64/1000025058.jpg",
+  "https://i.postimg.cc/zBQ3sqpS/1000025063.jpg",
+  "https://i.postimg.cc/sDhZRGkB/1000025064.jpg",
+  "https://i.postimg.cc/V5QvN4xJ/1000036667.jpg"
+];
+
 const PortraitGallery = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Sample albums - each album contains multiple images
   const albums = [
     {
       id: 1,
-      title: "Professional Headshots",
-      description: "Clean, professional portraits perfect for business use",
-      coverImage: portraitImage1,
-      imageCount: 6,
-      images: Array(6).fill(null).map((_, index) => ({
+      title: "Album 1",
+      description: "",
+      coverImage: Album1Images[0],
+      imageCount: Album1Images.length,
+      images: Album1Images.map((src, index) => ({
         id: index + 1,
-        src: portraitImage1,
-        title: `Professional Headshot ${index + 1}`,
-        description: `Clean, professional portrait perfect for business and corporate use`,
-        camera: "Canon EOS R5",
-        settings: "85mm, f/2.8, 1/160s, ISO 200"
-      }))
-    },
-    {
-      id: 2,
-      title: "Creative Portraits",
-      description: "Artistic portraits with dramatic lighting and composition",
-      coverImage: portraitImage1,
-      imageCount: 8,
-      images: Array(8).fill(null).map((_, index) => ({
-        id: index + 1,
-        src: portraitImage1,
-        title: `Creative Portrait ${index + 1}`,
-        description: `Artistic portrait with dramatic lighting and creative composition`,
-        camera: "Canon EOS R6",
-        settings: "50mm, f/1.8, 1/200s, ISO 400"
-      }))
-    },
-    {
-      id: 3,
-      title: "Family Portraits",
-      description: "Warm family portraits capturing genuine connections",
-      coverImage: portraitImage1,
-      imageCount: 10,
-      images: Array(10).fill(null).map((_, index) => ({
-        id: index + 1,
-        src: portraitImage1,
-        title: `Family Portrait ${index + 1}`,
-        description: `Warm family portrait capturing genuine connections and emotions`,
-        camera: "Canon EOS R5",
-        settings: "35mm, f/2.8, 1/125s, ISO 320"
+        src,
+        title: `Image ${index + 1}`,
+        description: "",
+        camera: "",
+        settings: ""
       }))
     }
   ];
@@ -61,14 +48,17 @@ const PortraitGallery = () => {
     setSelectedImageIndex(0);
   };
 
-  const handleCloseSlider = () => {
-    setSelectedAlbum(null);
-  };
+  const handleCloseSlider = () => setSelectedAlbum(null);
 
   const selectedAlbumData = albums.find(album => album.id === selectedAlbum);
-  return <div className="min-h-screen pt-24 pb-16">
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/galleries" className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8">
+        <Link
+          to="/galleries"
+          className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8"
+        >
           <ArrowLeft size={20} />
           <span>Back to Galleries</span>
         </Link>
@@ -76,30 +66,29 @@ const PortraitGallery = () => {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-playfair font-bold mb-6">Portrait Photography</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Professional portraits that capture personality and character. From business headshots 
-            to family portraits, we create images that tell your unique story.
+            Professional portraits that capture personality and character.
           </p>
           <div className="flex items-center justify-center space-x-6 mt-8 text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Eye size={16} />
-              <span>{albums.length} Albums</span>
+              <span>{albums.length} Album(s)</span>
             </div>
           </div>
         </div>
 
-        {/* Albums Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {/* Albums Grid - Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {albums.map(album => (
-            <div 
-              key={album.id} 
-              className="bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer group" 
+            <div
+              key={album.id}
+              className="bg-card rounded-2xl border border-border p-4 hover:border-accent transition-all duration-300 cursor-pointer group"
               onClick={() => handleAlbumClick(album.id)}
             >
-              <div className="aspect-[3/4] relative mb-4 rounded-xl overflow-hidden">
-                <img 
-                  src={album.coverImage} 
-                  alt={album.title} 
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 gallery-image"
+              <div className="aspect-[3/4] relative rounded-xl overflow-hidden">
+                <img
+                  src={album.coverImage}
+                  alt={album.title}
+                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
                 />
@@ -109,19 +98,15 @@ const PortraitGallery = () => {
                     <p className="font-semibold">View Album</p>
                   </div>
                 </div>
-                <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium">
                   {album.imageCount} photos
                 </div>
               </div>
-              <h3 className="font-playfair font-semibold text-lg mb-2">{album.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {album.description}
-              </p>
+              <h3 className="font-playfair font-semibold text-lg mt-2">{album.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{album.description}</p>
             </div>
           ))}
         </div>
-
-        
       </div>
 
       {/* Image Slider Modal */}
@@ -133,6 +118,8 @@ const PortraitGallery = () => {
           onClose={handleCloseSlider}
         />
       )}
-    </div>;
+    </div>
+  );
 };
+
 export default PortraitGallery;
