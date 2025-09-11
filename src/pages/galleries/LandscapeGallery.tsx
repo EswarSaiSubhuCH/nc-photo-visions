@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import landscapeImage1 from "../../assets/samples/landscape-1.jpg";
 const LandscapeGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const images = [{
+  const images = [
+    /*
+    {
     id: 1,
     src: landscapeImage1,
     title: "Mountain Sunset",
@@ -32,7 +34,8 @@ const LandscapeGallery = () => {
     description: "Vast desert expanse with dramatic cloud formations",
     camera: "Canon EOS R6",
     settings: "24-70mm, f/11, 1/80s, ISO 100"
-  }];
+  } */
+    ];
   return <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to="/galleries" className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8">
