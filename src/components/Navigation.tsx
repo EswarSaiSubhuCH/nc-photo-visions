@@ -33,7 +33,6 @@ const Navigation = () => {
     }, 300);
   };
 
-  // Social Media dropdown (keep external links opening in new tab)
   const socialLinks = [
     { name: "All Platforms", path: "/social", internal: true },
     { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/", internal: false },
@@ -44,17 +43,17 @@ const Navigation = () => {
   ];
 
   const galleryLinks = [
-    { name: "All Collections", path: "/galleries" }, // NEW
+    { name: "All Collections", path: "/galleries" },
     { name: "Aerial Photography", path: "/galleries/aerial" },
     { name: "Portrait Sessions", path: "/galleries/portraits" },
     { name: "Wedding Photography", path: "/galleries/weddings" },
-    { name: "Commercial Work", path: "/galleries/commercial" },
     { name: "Landscape & Nature", path: "/galleries/landscape" },
     { name: "Event Photography", path: "/galleries/events" },
+    { name: "Commercial Work", path: "/galleries/commercial" }, // moved last
   ];
 
   const gearLinks = [
-    { name: "All Gear", path: "/gear" }, // NEW
+    { name: "All Gear", path: "/gear" },
     { name: "Cameras", path: "/gear/cameras" },
     { name: "Lenses", path: "/gear/lenses" },
     { name: "Drones", path: "/gear/drones" },
