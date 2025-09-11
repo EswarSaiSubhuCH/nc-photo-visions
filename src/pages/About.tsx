@@ -105,9 +105,7 @@ const About = () => {
                         <h3 className="text-xl font-playfair font-semibold">{member.name}</h3>
                         <p className="text-accent font-medium">{member.role}</p>
                       </div>
-                      <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full mt-2 sm:mt-0 mx-auto sm:mx-0">
-                        {member.experience}
-                      </span>
+                      
                     </div>
                     
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4 text-center sm:text-left">
