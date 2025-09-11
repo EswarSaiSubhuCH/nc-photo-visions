@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, MessageSquare } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,31 +12,25 @@ const Contact = () => {
     service: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const {
-    toast
-  } = useToast();
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const { toast } = useToast();
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
       toast({
         title: "Message Sent Successfully!",
         description: "We'll get back to you within 24 hours. Thank you for choosing NC Photography & Aerials!"
       });
 
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -47,25 +42,16 @@ const Contact = () => {
       setIsSubmitting(false);
     }, 2000);
   };
-  const contactInfo = [{
-    icon: MapPin,
-    title: "Studio Location",
-    details: ["123 Photography Lane", "Creative District", "Photo City, PC 12345"]
-  }, {
-    icon: Phone,
-    title: "Phone Numbers",
-    details: ["Main: +1 (555) 123-4567", "Mobile: +1 (555) 987-6543", "Emergency: +1 (555) 456-7890"]
-  }, {
-    icon: Mail,
-    title: "Email Addresses",
-    details: ["info@ncphotography.com", "bookings@ncphotography.com", "support@ncphotography.com"]
-  }, {
-    icon: Clock,
-    title: "Business Hours",
-    details: ["Monday - Friday: 9 AM - 6 PM", "Saturday: 10 AM - 4 PM", "Sunday: By Appointment Only"]
-  }];
-  const services = ["Portrait Photography", "Wedding Photography", "Aerial Photography", "Commercial Photography", "Event Photography", "Product Photography", "Real Estate Photography", "Other"];
-  return <div className="min-h-screen pt-24 pb-16">
+
+  const contactInfo = [
+    { icon: MapPin, title: "Studio Location", details: ["123 Photography Lane", "Creative District", "Photo City, PC 12345"] },
+    { icon: Phone, title: "Phone Numbers", details: ["Main: +1 (555) 123-4567", "Mobile: +1 (555) 987-6543", "Emergency: +1 (555) 456-7890"] },
+    { icon: Mail, title: "Email Addresses", details: ["info@ncphotography.com", "bookings@ncphotography.com", "support@ncphotography.com"] },
+    { icon: Clock, title: "Business Hours", details: ["Monday - Friday: 9 AM - 6 PM", "Saturday: 10 AM - 4 PM", "Sunday: By Appointment Only"] }
+  ];
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -76,30 +62,34 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
+        {/* Contact Section */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Get In Touch */}
           <div>
             <h2 className="text-3xl font-playfair font-bold mb-8">Get In Touch</h2>
-            
-            <div className="space-y-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {contactInfo.map((info, index) => {
-              const IconComponent = info.icon;
-              return <div key={index} className="flex items-start space-x-4">
+                const Icon = info.icon;
+                return (
+                  <div key={index} className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <IconComponent size={24} className="text-accent" />
+                      <Icon size={24} className="text-accent" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg mb-2">{info.title}</h3>
-                      {info.details.map((detail, idx) => <p key={idx} className="text-muted-foreground">
-                          {detail}
-                        </p>)}
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-muted-foreground">{detail}</p>
+                      ))}
                     </div>
-                  </div>;
-            })}
+                  </div>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Quick Actions */}
-            <div className="bg-accent/5 rounded-2xl p-8">
+          {/* Quick Actions */}
+          <div className="lg:flex lg:justify-end lg:items-start mt-12 lg:mt-0">
+            <div className="bg-accent/5 rounded-2xl p-8 w-full lg:w-80">
               <h3 className="text-xl font-playfair font-bold mb-6">Quick Actions</h3>
               <div className="space-y-4">
                 <a href="tel:+15551234567" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
@@ -128,20 +118,11 @@ const Contact = () => {
               </div>
             </div>
           </div>
-
-          {/* Contact Form */}
-          <div>
-            
-          </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="mt-20">
-          
-
-          
-        </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Contact;
