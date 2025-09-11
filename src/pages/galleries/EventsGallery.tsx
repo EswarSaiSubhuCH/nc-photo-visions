@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import eventsImage1 from "../../assets/samples/events-1.jpg";
 const EventsGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const images = [{
+  const images = [
+    /* 
+    {
     id: 1,
     src: eventsImage1,
     title: "Corporate Conference",
@@ -32,7 +34,8 @@ const EventsGallery = () => {
     description: "Elegant charity gala with formal event photography",
     camera: "Canon EOS R6",
     settings: "85mm, f/2.8, 1/200s, ISO 800"
-  }];
+  } */
+    ];
   return <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to="/galleries" className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors mb-8">
