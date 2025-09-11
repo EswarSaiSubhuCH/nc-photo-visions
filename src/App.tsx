@@ -38,11 +38,11 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        {/* Flex column layout to keep footer at bottom */}
-        <div className="flex flex-col min-h-screen">
+        {/* Flex column layout */}
+        <div className="flex flex-col min-h-screen overflow-x-hidden">
           <Navigation />
 
-          {/* Main content grows to push footer down */}
+          {/* Main content fills space and pushes footer down */}
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -63,11 +63,11 @@ const App = () => (
               <Route path="/gear/accessories" element={<AccessoriesGear />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              {/* Catch-all route points to the clean 404 page */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
 
+          {/* Footer stays at the bottom */}
           <Footer />
         </div>
       </BrowserRouter>
