@@ -38,30 +38,36 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen">
+        {/* Flex column layout to keep footer at bottom */}
+        <div className="flex flex-col min-h-screen">
           <Navigation />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/social" element={<SocialMedia />} />
-            <Route path="/social/highlights" element={<SocialHighlights />} />
-            <Route path="/social/:platform" element={<SocialMedia />} />
-            <Route path="/galleries" element={<Galleries />} />
-            <Route path="/galleries/aerial" element={<AerialGallery />} />
-            <Route path="/galleries/portraits" element={<PortraitGallery />} />
-            <Route path="/galleries/weddings" element={<WeddingGallery />} />
-            <Route path="/galleries/commercial" element={<CommercialGallery />} />
-            <Route path="/galleries/landscape" element={<LandscapeGallery />} />
-            <Route path="/galleries/events" element={<EventsGallery />} />
-            <Route path="/gear" element={<Gear />} />
-            <Route path="/gear/cameras" element={<CameraGear />} />
-            <Route path="/gear/lenses" element={<LensGear />} />
-            <Route path="/gear/drones" element={<DroneGear />} />
-            <Route path="/gear/accessories" element={<AccessoriesGear />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Catch-all route points to the clean 404 page */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+
+          {/* Main content grows to push footer down */}
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/social" element={<SocialMedia />} />
+              <Route path="/social/highlights" element={<SocialHighlights />} />
+              <Route path="/social/:platform" element={<SocialMedia />} />
+              <Route path="/galleries" element={<Galleries />} />
+              <Route path="/galleries/aerial" element={<AerialGallery />} />
+              <Route path="/galleries/portraits" element={<PortraitGallery />} />
+              <Route path="/galleries/weddings" element={<WeddingGallery />} />
+              <Route path="/galleries/commercial" element={<CommercialGallery />} />
+              <Route path="/galleries/landscape" element={<LandscapeGallery />} />
+              <Route path="/galleries/events" element={<EventsGallery />} />
+              <Route path="/gear" element={<Gear />} />
+              <Route path="/gear/cameras" element={<CameraGear />} />
+              <Route path="/gear/lenses" element={<LensGear />} />
+              <Route path="/gear/drones" element={<DroneGear />} />
+              <Route path="/gear/accessories" element={<AccessoriesGear />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* Catch-all route points to the clean 404 page */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+
           <Footer />
         </div>
       </BrowserRouter>
