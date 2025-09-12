@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { Camera, Plane, Heart, Building, Grid, List } from "lucide-react";
+import React from "react";
+import { Camera, Plane, Heart, Building } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Galleries = () => {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-
   const galleries = [
     {
       id: "aerial",
@@ -72,10 +70,8 @@ const Galleries = () => {
     },
   ];
 
-  // Featured remains unchanged
   const featuredGalleries = galleries.filter((gallery) => gallery.featured);
 
-  // Move commercial to the end in All Collections
   const allGalleries = [
     ...galleries.filter((g) => g.id !== "commercial"),
     galleries.find((g) => g.id === "commercial"),
@@ -92,34 +88,6 @@ const Galleries = () => {
             excellence that defines NC Photography & Aerials. Each gallery tells
             a unique story.
           </p>
-        </div>
-
-        {/* View Toggle */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-muted rounded-lg p-1 flex">
-            <button
-              onClick={() => setViewMode("grid")}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
-                viewMode === "grid"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <Grid size={16} />
-              <span>Grid View</span>
-            </button>
-            <button
-              onClick={() => setViewMode("list")}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
-                viewMode === "list"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <List size={16} />
-              <span>List View</span>
-            </button>
-          </div>
         </div>
 
         {/* Featured Galleries */}
@@ -144,23 +112,14 @@ const Galleries = () => {
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <gallery.icon size={32} className="text-accent" />
                   </div>
-
                   <div className="flex-1">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="text-xl font-playfair font-semibold">
-                          {gallery.title}
-                        </h3>
-                        <p className="text-accent font-medium">
-                          {gallery.category}
-                        </p>
-                      </div>
-                    </div>
-
+                    <h3 className="text-xl font-playfair font-semibold">
+                      {gallery.title}
+                    </h3>
+                    <p className="text-accent font-medium">{gallery.category}</p>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {gallery.description}
                     </p>
-
                     <div className="flex flex-wrap gap-2">
                       <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
                         Featured
@@ -181,113 +140,47 @@ const Galleries = () => {
           <h2 className="text-3xl font-playfair font-bold mb-8 text-center">
             All Collections
           </h2>
-
-          {viewMode === "grid" ? (
-            <div className="grid md:grid-cols-2 gap-8">
-              {allGalleries.map(
-                (gallery) =>
-                  gallery && (
-                    <Link
-                      key={gallery.id}
-                      to={`/galleries/${gallery.id}`}
-                      onClick={() =>
-                        window.scrollTo({
-                          top: 0,
-                          behavior: "smooth",
-                        })
-                      }
-                      className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer"
-                    >
-                      <div className="flex items-start space-x-6">
-                        <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                          <gallery.icon size={32} className="text-accent" />
-                        </div>
-
-                        <div className="flex-1">
-                          <div className="flex items-start justify-between mb-3">
-                            <div>
-                              <h3 className="text-xl font-playfair font-semibold">
-                                {gallery.title}
-                              </h3>
-                              <p className="text-accent font-medium">
-                                {gallery.category}
-                              </p>
-                            </div>
-                          </div>
-
-                          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                            {gallery.description}
-                          </p>
-
-                          <div className="flex flex-wrap gap-2">
-                            <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
-                              {gallery.category}
-                            </span>
-                            <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
-                              View Gallery
-                            </span>
-                          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {allGalleries.map(
+              (gallery) =>
+                gallery && (
+                  <Link
+                    key={gallery.id}
+                    to={`/galleries/${gallery.id}`}
+                    onClick={() =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      })
+                    }
+                    className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="flex items-start space-x-6">
+                      <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <gallery.icon size={32} className="text-accent" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-playfair font-semibold">
+                          {gallery.title}
+                        </h3>
+                        <p className="text-accent font-medium">{gallery.category}</p>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                          {gallery.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                            {gallery.category}
+                          </span>
+                          <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
+                            View Gallery
+                          </span>
                         </div>
                       </div>
-                    </Link>
-                  )
-              )}
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {allGalleries.map(
-                (gallery) =>
-                  gallery && (
-                    <Link
-                      key={gallery.id}
-                      to={`/galleries/${gallery.id}`}
-                      onClick={() =>
-                        window.scrollTo({
-                          top: 0,
-                          behavior: "smooth",
-                        })
-                      }
-                      className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300 cursor-pointer"
-                    >
-                      <div className="flex items-start space-x-6">
-                        <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                          <gallery.icon size={32} className="text-accent" />
-                        </div>
-
-                        <div className="flex-1">
-                          <div className="flex items-start justify-between mb-3">
-                            <div>
-                              <h3 className="text-xl font-playfair font-semibold">
-                                {gallery.title}
-                              </h3>
-                              <p className="text-accent font-medium">
-                                {gallery.category}
-                              </p>
-                            </div>
-                            <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                              {gallery.imageCount} images
-                            </span>
-                          </div>
-
-                          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                            {gallery.description}
-                          </p>
-
-                          <div className="flex flex-wrap gap-2">
-                            <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
-                              {gallery.category}
-                            </span>
-                            <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full hover:bg-accent/20 transition-colors">
-                              View Gallery
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  )
-              )}
-            </div>
-          )}
+                    </div>
+                  </Link>
+                )
+            )}
+          </div>
         </div>
       </div>
     </div>
