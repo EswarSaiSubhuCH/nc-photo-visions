@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import { FaPinterestP } from "react-icons/fa";
-import { SiX } from "react-icons/si"; // X logo
+import { SiX } from "react-icons/si"; // X (Twitter) logo
 
 const Footer = () => {
   const quickLinks = [
@@ -15,8 +15,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-neutral-900 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
           {/* Brand Section */}
           <div>
             <Link
@@ -28,15 +28,16 @@ const Footer = () => {
             >
               NC Photography & Aerials
             </Link>
-            <p className="text-gray-400 text-sm mt-2 max-w-sm">
-              Capturing life's beautiful moments from every angle.
-              Professional photography and aerial services.
+            <p className="text-gray-400 text-sm mt-3 max-w-sm leading-relaxed">
+              Capturing life's beautiful moments from every angle —
+              professional photography and aerial services tailored
+              to preserve your memories.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="text-center md:text-left">
-            <h4 className="text-base font-semibold mb-3">Quick Links</h4>
+          <div>
+            <h4 className="text-base font-semibold mb-4">Quick Links</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {quickLinks.map((item, idx) => (
                 <Link
@@ -54,9 +55,9 @@ const Footer = () => {
           </div>
 
           {/* Follow Us */}
-          <div className="text-center md:text-left">
-            <h4 className="text-base font-semibold mb-3">Follow Us</h4>
-            <div className="flex flex-wrap justify-center md:justify-start gap-3">
+          <div>
+            <h4 className="text-base font-semibold mb-4">Follow Us</h4>
+            <div className="flex flex-wrap gap-3">
               <a
                 href="https://www.instagram.com/nc_photography_galleryz/"
                 target="_blank"
@@ -102,7 +103,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 pt-3 text-center text-gray-500 text-xs">
+        <div className="border-t border-gray-700 pt-4 text-center text-gray-500 text-xs">
           &copy; {new Date().getFullYear()} NC Photography & Aerials. All rights reserved.
         </div>
       </div>

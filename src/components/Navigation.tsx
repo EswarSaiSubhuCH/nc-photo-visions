@@ -49,7 +49,7 @@ const Navigation = () => {
     { name: "Wedding Photography", path: "/galleries/weddings" },
     { name: "Landscape & Nature", path: "/galleries/landscape" },
     { name: "Event Photography", path: "/galleries/events" },
-    { name: "Commercial Work", path: "/galleries/commercial" }, // moved last
+    { name: "Commercial Work", path: "/galleries/commercial" },
   ];
 
   const gearLinks = [
@@ -174,66 +174,26 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden glass-effect rounded-lg mt-2 p-4 mx-2">
             <div className="space-y-3">
-              <Link
-                to="/"
-                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                Home
-              </Link>
-              <Link
-                to="/social"
-                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                Social Media
-              </Link>
-              <Link
-                to="/galleries"
-                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                Galleries
-              </Link>
-              <Link
-                to="/gear"
-                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                Gear
-              </Link>
-              <Link
-                to="/about"
-                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                Contact
-              </Link>
+              {[
+                { to: "/", label: "Home" },
+                { to: "/social", label: "Social Media" },
+                { to: "/galleries", label: "Galleries" },
+                { to: "/gear", label: "Gear" },
+                { to: "/about", label: "About" },
+                { to: "/contact", label: "Contact" },
+              ].map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  className="block text-foreground hover:text-accent transition-colors py-2 px-3 rounded-md hover:bg-accent/10"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
           </div>
         )}
