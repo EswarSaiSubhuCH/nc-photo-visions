@@ -59,7 +59,7 @@ const Footer = () => {
             <h4 className="text-base font-semibold mb-4">Follow Us</h4>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://www.instagram.com/nc_photography_galleryz/"
+                href="https://www.instagram.com/nc_photography_snaps/" // ✅ Updated link
                 target="_blank"
                 rel="noreferrer noopener"
                 className="w-9 h-9 bg-gray-700 rounded-full flex items-center justify-center hover:bg-accent transition-all"
