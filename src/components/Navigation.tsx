@@ -1,3 +1,4 @@
+// src/components/Navigation.tsx
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -35,7 +36,7 @@ const Navigation = () => {
 
   const socialLinks = [
     { name: "All Platforms", path: "/social", internal: true },
-    { name: "Instagram", path: "https://www.instagram.com/nc_photography_galleryz/", internal: false },
+    { name: "Instagram", path: "https://www.instagram.com/nc_photography_snaps/", internal: false }, // ✅ Updated
     { name: "YouTube", path: "https://www.youtube.com/@NCPhotographyAerials", internal: false },
     { name: "Pinterest", path: "https://pin.it/3ZKWi8vw2", internal: false },
     { name: "X", path: "https://x.com/ncphotographys", internal: false },
