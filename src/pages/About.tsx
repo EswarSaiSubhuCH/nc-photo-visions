@@ -91,51 +91,53 @@ const About = () => {
           </div>
         </div>
 
-        {/* Contact Section */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-playfair font-bold mb-4">
-            Get In Touch
-          </h2>
-          <p className="opacity-90 max-w-2xl mx-auto px-2">
-            Ready to work with our team? We'd love to hear about your project
-            and discuss how we can bring your vision to life.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
-          {/* Visit Studio */}
-          <div className="flex flex-col items-center">
-            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-              <MapPin size={24} className="text-primary-foreground" />
-            </div>
-            <h3 className="font-semibold mb-2">Visit Our Studio</h3>
-            <p className="opacity-90 text-sm">
-              Bhimavaram, West Godavari <br />
-              Andhra Pradesh <br />
-              PIN: 534201
+        {/* Contact Section with background */}
+        <div className="bg-primary text-primary-foreground rounded-2xl p-6 sm:p-8 lg:p-12">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-playfair font-bold mb-4">
+              Get In Touch
+            </h2>
+            <p className="opacity-90 max-w-2xl mx-auto px-2">
+              Ready to work with our team? We'd love to hear about your project
+              and discuss how we can bring your vision to life.
             </p>
           </div>
 
-          {/* Phone */}
-          <div className="flex flex-col items-center">
-            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-              <Phone size={24} className="text-primary-foreground" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
+            {/* Visit Studio */}
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+                <MapPin size={24} className="text-primary-foreground" />
+              </div>
+              <h3 className="font-semibold mb-2">Visit Our Studio</h3>
+              <p className="opacity-90 text-sm">
+                Bhimavaram, West Godavari <br />
+                Andhra Pradesh <br />
+                PIN: 534201
+              </p>
             </div>
-            <h3 className="font-semibold mb-2">Call Us</h3>
-            <p className="opacity-90 text-sm">
-              +91 8247268476
-            </p>
-          </div>
 
-          {/* Email */}
-          <div className="flex flex-col items-center">
-            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-              <Mail size={24} className="text-primary-foreground" />
+            {/* Phone */}
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+                <Phone size={24} className="text-primary-foreground" />
+              </div>
+              <h3 className="font-semibold mb-2">Call Us</h3>
+              <p className="opacity-90 text-sm">
+                +91 8247268476
+              </p>
             </div>
-            <h3 className="font-semibold mb-2">Email Us</h3>
-            <p className="opacity-90 text-sm">
-              ncphotography.aerials@gmail.com
-            </p>
+
+            {/* Email */}
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+                <Mail size={24} className="text-primary-foreground" />
+              </div>
+              <h3 className="font-semibold mb-2">Email Us</h3>
+              <p className="opacity-90 text-sm">
+                ncphotography.aerials@gmail.com
+              </p>
+            </div>
           </div>
         </div>
       </div>
