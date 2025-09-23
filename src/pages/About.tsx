@@ -1,52 +1,24 @@
 import React from "react";
-import { Camera, MapPin, Mail, Phone } from "lucide-react";
+import { Camera, Mail } from "lucide-react"; // Removed unused imports
 
 const About = () => {
   const teamMembers = [
     {
       id: "1",
-      name: "Narasimha Chennam",
+      name: "Narasimha",
       role: "Founder & Lead Photographer",
-      bio: "With 5 years of experience in professional photography, Narasimha specializes in portrait photography, wedding photography, and editing. His creative vision and technical expertise bring stories to life through stunning imagery.",
-      specialties: [
-        "Portrait Photography",
-        "Wedding Photography",
-        "Photo Editing",
-        "Color Grading",
-      ],
+      bio: "With 5 years of experience in professional photography, Narasimha specializes in portrait and wedding photography. His keen eye for detail, editing expertise, and storytelling skills bring out the best in every shot.",
+      specialties: ["Portrait Photography", "Wedding Photography", "Photo Editing", "Color Grading"],
       experience: "5+ years",
     },
     {
       id: "2",
       name: "Sai",
       role: "Drone Operations Specialist",
-      bio: "Sai is our certified drone operations specialist with expertise in aerial videography and complex flight operations. He ensures safe, stunning aerial captures and also provides professional event coverage.",
-      specialties: [
-        "Drone Operations",
-        "Aerial Videography",
-        "Technical Planning",
-        "Event Coverage",
-      ],
+      bio: "Sai is our certified drone pilot with expertise in aerial videography and complex flight operations. He ensures safe and stunning aerial captures for all our projects while also covering events with precision.",
+      specialties: ["Drone Operations", "Aerial Videography", "Technical Planning", "Event Coverage"],
       experience: "5+ years",
     },
-    /*
-    {
-      id: "3",
-      name: "Sarah Mitchell",
-      role: "Senior Photographer",
-      bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
-      specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
-      experience: "7+ years",
-    },
-    {
-      id: "4",
-      name: "Emma Davis",
-      role: "Post-Production Manager",
-      bio: "Emma's expertise in post-production and digital artistry brings our images to life. She ensures every photo meets our high standards of quality and artistic vision.",
-      specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
-      experience: "6+ years",
-    },
-    */
   ];
 
   return (
@@ -131,48 +103,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-                <MapPin size={24} className="text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Visit Our Studio</h3>
-              <p className="opacity-90 text-sm">
-                123 Photography Lane
-                <br />
-                Creative District
-                <br />
-                Photo City, PC 12345
-              </p>
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+              <Mail size={24} className="text-primary-foreground" />
             </div>
-
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-                <Phone size={24} className="text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Call Us</h3>
-              <p className="opacity-90 text-sm">
-                +1 (555) 123-4567
-                <br />
-                Available 9 AM - 6 PM
-                <br />
-                Monday - Saturday
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-                <Mail size={24} className="text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Email Us</h3>
-              <p className="opacity-90 text-sm">
-                info@ncphotography.com
-                <br />
-                bookings@ncphotography.com
-                <br />
-                We respond within 24 hours
-              </p>
-            </div>
+            <h3 className="font-semibold mb-2">Email Us</h3>
+            <p className="opacity-90 text-sm">ncphotography.aerials@gmail.com</p>
           </div>
         </div>
       </div>
