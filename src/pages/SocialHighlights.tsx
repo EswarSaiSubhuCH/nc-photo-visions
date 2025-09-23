@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SocialHighlights = () => {
   const highlights = [
-    {
+    /* {
       id: 1,
       platform: "Instagram",
       type: "Reel",
@@ -81,8 +81,10 @@ const SocialHighlights = () => {
       shares: 789,
       date: "3 weeks ago",
       color: "text-red-600"
-    }
+    } */
   ];
+
+  const isLoading = highlights.length === 0;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -103,88 +105,98 @@ const SocialHighlights = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {highlights.map((highlight) => (
-            <div 
-              key={highlight.id} 
-              className="bg-card rounded-2xl border border-border overflow-hidden hover:border-accent transition-all duration-300 group"
-            >
-              <div className="aspect-[4/5] relative overflow-hidden">
-                <img 
-                  src={highlight.thumbnail} 
-                  alt={highlight.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 select-none"
-                  draggable={false}
-                  onContextMenu={(e) => e.preventDefault()}
-                />
-                <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  {highlight.type}
-                </div>
-                <div className={`absolute top-4 right-4 ${highlight.color}`}>
-                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                    {highlight.platform === 'Instagram' && (
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
-                      </svg>
-                    )}
-                    {highlight.platform === 'YouTube' && (
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19.615 3.184A3.994 3.994 0 0122 6.13v11.74a3.994 3.994 0 01-2.385 2.946C18.057 21.5 12 21.5 12 21.5s-6.057 0-7.615-.684A3.994 3.994 0 012 17.87V6.13a3.994 3.994 0 012.385-2.946C5.943 2.5 12 2.5 12 2.5s6.057 0 7.615.684zM10 8.5v7l6-3.5-6-3.5z" />
-                      </svg>
-                    )}
-                    {highlight.platform === 'Pinterest' && (
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2a10 10 0 00-3.515 19.36c-.05-.824-.095-2.09.02-2.99.104-.807.672-5.13.672-5.13s-.17-.34-.17-.84c0-.79.46-1.38 1.03-1.38.49 0 .72.37.72.82 0 .5-.32 1.24-.48 1.93-.14.59.3 1.07.89 1.07 1.07 0 1.9-1.13 1.9-2.77 0-1.45-1.04-2.46-2.52-2.46-1.71 0-2.71 1.28-2.71 2.6 0 .52.2 1.08.45 1.38.05.06.06.1.04.16-.04.18-.14.59-.16.67-.03.11-.1.15-.22.09-.82-.38-1.33-1.56-1.33-2.51 0-2.04 1.48-3.92 4.28-3.92 2.25 0 4 1.61 4 3.76 0 2.23-1.41 4.02-3.36 4.02-.65 0-1.26-.34-1.47-.74l-.4 1.53c-.14.53-.52 1.2-.77 1.61A9.96 9.96 0 1012 2z" />
-                      </svg>
-                    )}
-                    {highlight.platform === 'TikTok' && (
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19.321 5.562a5.123 5.123 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.849-1.349-1.849-1.562-2.849C16.116 1.256 16.063 1 16 1h-3v16c0 1.5-1.2 2.7-2.7 2.7S7.6 18.5 7.6 17s1.2-2.7 2.7-2.7c.3 0 .6.1.8.2V11c-.3-.1-.5-.1-.8-.1C7.1 10.9 4.9 13.1 4.9 16s2.2 5.1 5.1 5.1 5.1-2.3 5.1-5.1V8.4c1.4 1 3.1 1.5 4.9 1.5V6.9c-1-.1-1.9-.6-2.6-1.338z" />
-                      </svg>
-                    )}
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-accent"></div>
+            <p className="text-lg text-muted-foreground">No social highlights uploaded yet. Loading...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {highlights.map((highlight) => (
+              <div 
+                key={highlight.id} 
+                className="bg-card rounded-2xl border border-border overflow-hidden hover:border-accent transition-all duration-300 group"
+              >
+                {/* Thumbnail and platform badge */}
+                <div className="aspect-[4/5] relative overflow-hidden">
+                  <img 
+                    src={highlight.thumbnail} 
+                    alt={highlight.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 select-none"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                  />
+                  <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    {highlight.type}
                   </div>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-muted-foreground">{highlight.platform}</span>
-                  <span className="text-sm text-muted-foreground">{highlight.date}</span>
-                </div>
-
-                <h3 className="font-playfair font-semibold text-lg mb-2 line-clamp-2">
-                  {highlight.title}
-                </h3>
-
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-                  {highlight.description}
-                </p>
-
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <Heart size={14} />
-                      <span>{highlight.likes.toLocaleString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <MessageCircle size={14} />
-                      <span>{highlight.comments}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Share2 size={14} />
-                      <span>{highlight.shares}</span>
+                  <div className={`absolute top-4 right-4 ${highlight.color}`}>
+                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+                      {/* SVG icons based on platform */}
+                      {highlight.platform === 'Instagram' && (
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
+                        </svg>
+                      )}
+                      {highlight.platform === 'YouTube' && (
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19.615 3.184A3.994 3.994 0 0122 6.13v11.74a3.994 3.994 0 01-2.385 2.946C18.057 21.5 12 21.5 12 21.5s-6.057 0-7.615-.684A3.994 3.994 0 012 17.87V6.13a3.994 3.994 0 012.385-2.946C5.943 2.5 12 2.5 12 2.5s6.057 0 7.615.684zM10 8.5v7l6-3.5-6-3.5z" />
+                        </svg>
+                      )}
+                      {highlight.platform === 'Pinterest' && (
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2a10 10 0 00-3.515 19.36c-.05-.824-.095-2.09.02-2.99.104-.807.672-5.13.672-5.13s-.17-.34-.17-.84c0-.79.46-1.38 1.03-1.38.49 0 .72.37.72.82 0 .5-.32 1.24-.48 1.93-.14.59.3 1.07.89 1.07 1.07 0 1.9-1.13 1.9-2.77 0-1.45-1.04-2.46-2.52-2.46-1.71 0-2.71 1.28-2.71 2.6 0 .52.2 1.08.45 1.38.05.06.06.1.04.16-.04.18-.14.59-.16.67-.03.11-.1.15-.22.09-.82-.38-1.33-1.56-1.33-2.51 0-2.04 1.48-3.92 4.28-3.92 2.25 0 4 1.61 4 3.76 0 2.23-1.41 4.02-3.36 4.02-.65 0-1.26-.34-1.47-.74l-.4 1.53c-.14.53-.52 1.2-.77 1.61A9.96 9.96 0 1012 2z" />
+                        </svg>
+                      )}
+                      {highlight.platform === 'TikTok' && (
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19.321 5.562a5.123 5.123 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.849-1.349-1.849-1.562-2.849C16.116 1.256 16.063 1 16 1h-3v16c0 1.5-1.2 2.7-2.7 2.7S7.6 18.5 7.6 17s1.2-2.7 2.7-2.7c.3 0 .6.1.8.2V11c-.3-.1-.5-.1-.8-.1C7.1 10.9 4.9 13.1 4.9 16s2.2 5.1 5.1 5.1 5.1-2.3 5.1-5.1V8.4c1.4 1 3.1 1.5 4.9 1.5V6.9c-1-.1-1.9-.6-2.6-1.338z" />
+                        </svg>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                <button className="w-full bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-4 rounded-lg flex items-center justify-center space-x-2">
-                  <span>View on {highlight.platform}</span>
-                  <ExternalLink size={14} />
-                </button>
+                {/* Details */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground">{highlight.platform}</span>
+                    <span className="text-sm text-muted-foreground">{highlight.date}</span>
+                  </div>
+
+                  <h3 className="font-playfair font-semibold text-lg mb-2 line-clamp-2">
+                    {highlight.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+                    {highlight.description}
+                  </p>
+
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-1">
+                        <Heart size={14} />
+                        <span>{highlight.likes.toLocaleString()}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <MessageCircle size={14} />
+                        <span>{highlight.comments}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Share2 size={14} />
+                        <span>{highlight.shares}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button className="w-full bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors py-2 px-4 rounded-lg flex items-center justify-center space-x-2">
+                    <span>View on {highlight.platform}</span>
+                    <ExternalLink size={14} />
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
