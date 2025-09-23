@@ -1,5 +1,5 @@
 import React from "react";
-import { Camera, MapPin, Mail } from "lucide-react"; // Removed unused imports
+import { Camera, MapPin, Mail, Phone } from "lucide-react";
 
 const About = () => {
   const teamMembers = [
@@ -19,24 +19,6 @@ const About = () => {
       specialties: ["Drone Operations", "Aerial Videography", "Technical Planning", "Event Coverage"],
       experience: "5+ years",
     },
-    /*
-    {
-      id: "3",
-      name: "Sarah Mitchell",
-      role: "Senior Photographer",
-      bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
-      specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
-      experience: "7+ years"
-    },
-    {
-      id: "4",
-      name: "Emma Davis",
-      role: "Post-Production Manager",
-      bio: "Emma's expertise in post-production and digital artistry brings our images to life. She ensures every photo meets our high standards of quality and artistic vision.",
-      specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
-      experience: "6+ years"
-    }
-    */
   ];
 
   return (
@@ -109,54 +91,51 @@ const About = () => {
           </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="bg-primary text-primary-foreground rounded-2xl p-6 sm:p-8 lg:p-12">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl font-playfair font-bold mb-4">
-              Get In Touch
-            </h2>
-            <p className="opacity-90 max-w-2xl mx-auto px-2">
-              Ready to work with our team? We'd love to hear about your project
-              and discuss how we can bring your vision to life.
+        {/* Contact Section */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-playfair font-bold mb-4">
+            Get In Touch
+          </h2>
+          <p className="opacity-90 max-w-2xl mx-auto px-2">
+            Ready to work with our team? We'd love to hear about your project
+            and discuss how we can bring your vision to life.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
+          {/* Visit Studio */}
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+              <MapPin size={24} className="text-primary-foreground" />
+            </div>
+            <h3 className="font-semibold mb-2">Visit Our Studio</h3>
+            <p className="opacity-90 text-sm">
+              Bhimavaram, West Godavari <br />
+              Andhra Pradesh <br />
+              PIN: 534201
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-                <MapPin size={24} className="text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Visit Our Studio</h3>
-              <p className="opacity-90 text-sm">
-                Bhimavaram, West Godavari <br />
-                Andhra Pradesh <br />
-                PIN: 534201
-              </p>
+          {/* Phone */}
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+              <Phone size={24} className="text-primary-foreground" />
             </div>
+            <h3 className="font-semibold mb-2">Call Us</h3>
+            <p className="opacity-90 text-sm">
+              +91 8247268476
+            </p>
+          </div>
 
-            {/*
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-                <Phone size={24} className="text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Call Us</h3>
-              <p className="opacity-90 text-sm">
-                +1 (555) 123-4567 <br />
-                Available 9 AM - 6 PM <br />
-                Monday - Saturday
-              </p>
+          {/* Email */}
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+              <Mail size={24} className="text-primary-foreground" />
             </div>
-            */}
-
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-                <Mail size={24} className="text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold mb-2">Email Us</h3>
-              <p className="opacity-90 text-sm">
-                ncphotography.aerials@gmail.com
-              </p>
-            </div>
+            <h3 className="font-semibold mb-2">Email Us</h3>
+            <p className="opacity-90 text-sm">
+              ncphotography.aerials@gmail.com
+            </p>
           </div>
         </div>
       </div>
