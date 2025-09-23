@@ -1,86 +1,55 @@
 import React from "react";
-import { Camera, Award, Users, MapPin, Mail, Phone } from "lucide-react";
+import { Camera, MapPin, Mail, Phone } from "lucide-react";
+
 const About = () => {
-  const teamMembers = [{
-    id: "1",
-    name: "Nick Carter",
-    role: "Founder & Lead Photographer",
-    bio: "With over 10 years of experience in professional photography, Nick specializes in aerial photography and portrait sessions. His artistic vision and technical expertise have earned recognition from industry professionals.",
-    specialties: ["Aerial Photography", "Portrait Photography", "Commercial Work"],
-    experience: "10+ years"
-  }, {
-    id: "2",
-    name: "Sarah Mitchell",
-    role: "Senior Photographer",
-    bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
-    specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
-    experience: "7+ years"
-  }, {
-    id: "3",
-    name: "Mike Johnson",
-    role: "Drone Operations Specialist",
-    bio: "Mike is our certified drone pilot with expertise in aerial videography and complex flight operations. He ensures safe and stunning aerial captures for all our projects.",
-    specialties: ["Drone Operations", "Aerial Videography", "Technical Planning"],
-    experience: "5+ years"
-  }, {
-    id: "4",
-    name: "Emma Davis",
-    role: "Post-Production Manager",
-    bio: "Emma's expertise in post-production and digital artistry brings our images to life. She ensures every photo meets our high standards of quality and artistic vision.",
-    specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
-    experience: "6+ years"
-  }];
-  const achievements = [{
-    icon: Award,
-    title: "Professional Excellence Awards",
-    description: "Recognized by the National Photography Association for outstanding aerial photography"
-  }, {
-    icon: Camera,
-    title: "1000+ Successful Projects",
-    description: "Completed over 1000 photography projects with 100% client satisfaction"
-  }, {
-    icon: Users,
-    title: "Certified Team",
-    description: "All team members are certified professionals with specialized training and expertise"
-  }];
-  return <div className="min-h-screen pt-24 pb-16">
+  const teamMembers = [
+    {
+      id: "1",
+      name: "Nick Carter",
+      role: "Founder & Lead Photographer",
+      bio: "With over 10 years of experience in professional photography, Nick specializes in aerial photography and portrait sessions. His artistic vision and technical expertise have earned recognition from industry professionals.",
+      specialties: ["Aerial Photography", "Portrait Photography", "Commercial Work"],
+      experience: "10+ years"
+    },
+    {
+      id: "2",
+      name: "Sarah Mitchell",
+      role: "Senior Photographer",
+      bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
+      specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
+      experience: "7+ years"
+    },
+    {
+      id: "3",
+      name: "Mike Johnson",
+      role: "Drone Operations Specialist",
+      bio: "Mike is our certified drone pilot with expertise in aerial videography and complex flight operations. He ensures safe and stunning aerial captures for all our projects.",
+      specialties: ["Drone Operations", "Aerial Videography", "Technical Planning"],
+      experience: "5+ years"
+    },
+    {
+      id: "4",
+      name: "Emma Davis",
+      role: "Post-Production Manager",
+      bio: "Emma's expertise in post-production and digital artistry brings our images to life. She ensures every photo meets our high standards of quality and artistic vision.",
+      specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
+      experience: "6+ years"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-bold mb-4 sm:mb-6 px-2">About NC Photography & Aerials</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-bold mb-4 sm:mb-6 px-2">
+            About NC Photography & Aerials
+          </h1>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-2">
             We are a passionate team of professional photographers dedicated to capturing life's most precious moments 
             from every angle. Our expertise spans from intimate portraits to breathtaking aerial perspectives.
           </p>
         </div>
-
-        {/* Story Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-16 sm:mb-20">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-playfair font-bold mb-4 sm:mb-6 text-center lg:text-left">Our Story</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Founded in 2014, NC Photography & Aerials began as a passion project by Nick Carter, 
-                who saw the untapped potential of combining traditional photography with emerging drone technology.
-              </p>
-              <p>
-                What started as weekend aerial photography sessions has grown into a full-service photography studio 
-                serving clients across the region. We've captured everything from intimate family moments to 
-                large-scale commercial projects, always with the same commitment to excellence.
-              </p>
-              <p>
-                Today, our team combines years of experience with cutting-edge technology to deliver 
-                stunning visual content that tells your unique story. Whether it's a wedding, corporate event, 
-                or architectural project, we approach each assignment with creativity and professionalism.
-              </p>
-            </div>
-          </div>
-
-          
-        </div>
-
-        {/* Achievements */}
-        
 
         {/* Team Section */}
         <div className="mb-16 sm:mb-20">
@@ -93,33 +62,40 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {teamMembers.map(member => <div key={member.id} className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300">
+            {teamMembers.map(member => (
+              <div
+                key={member.id}
+                className="group bg-card rounded-2xl border border-border p-8 hover:border-accent transition-all duration-300"
+              >
                 <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Camera size={28} className="text-accent sm:w-8 sm:h-8" />
                   </div>
-                  
+
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-                      <div className="text-center sm:text-left">
-                        <h3 className="text-xl font-playfair font-semibold">{member.name}</h3>
-                        <p className="text-accent font-medium">{member.role}</p>
-                      </div>
-                      
+                    <div className="text-center sm:text-left mb-3">
+                      <h3 className="text-xl font-playfair font-semibold">{member.name}</h3>
+                      <p className="text-accent font-medium">{member.role}</p>
                     </div>
-                    
+
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4 text-center sm:text-left">
                       {member.bio}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                      {member.specialties.map((specialty, index) => <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                      {member.specialties.map((specialty, index) => (
+                        <span
+                          key={index}
+                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full"
+                        >
                           {specialty}
-                        </span>)}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -169,12 +145,10 @@ const About = () => {
               </p>
             </div>
           </div>
-
-          <div className="text-center mt-6 sm:mt-8">
-            
-          </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default About;
