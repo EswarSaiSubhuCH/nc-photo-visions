@@ -1,5 +1,5 @@
 import React from "react";
-import { Camera, MapPin, Mail } from "lucide-react";
+import { Camera, MapPin, Mail, Phone } from "lucide-react"; // Added Phone icon
 
 const About = () => {
   const teamMembers = [
@@ -116,7 +116,22 @@ const About = () => {
             </p>
           </div>
 
-          {/* Email Only */}
+          {/* Phone (Commented Out) */}
+          {/*
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+              <Phone size={24} className="text-primary-foreground" />
+            </div>
+            <h3 className="font-semibold mb-2">Call Us</h3>
+            <p className="opacity-90 text-sm">
+              +1 (555) 123-4567 <br />
+              Available 9 AM - 6 PM <br />
+              Monday - Saturday
+            </p>
+          </div>
+          */}
+
+          {/* Email */}
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
               <Mail size={24} className="text-primary-foreground" />
