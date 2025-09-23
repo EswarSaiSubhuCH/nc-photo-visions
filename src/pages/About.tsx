@@ -7,25 +7,36 @@ const About = () => {
       id: "1",
       name: "Narasimha Chennam",
       role: "Founder & Lead Photographer",
-      bio: "With over 5 years of professional photography experience, Narasimha specializes in portrait and wedding photography. His creative vision, technical skills, and expertise in editing bring authenticity and artistry to every project.",
-      specialties: ["Portrait Photography", "Wedding Photography", "Editor"],
+      bio: "With 5 years of experience in professional photography, Narasimha specializes in portrait photography, wedding photography, and editing. His creative vision and technical expertise bring stories to life through stunning imagery.",
+      specialties: [
+        "Portrait Photography",
+        "Wedding Photography",
+        "Photo Editing",
+        "Color Grading",
+      ],
       experience: "5+ years",
     },
     {
       id: "2",
+      name: "Sai",
+      role: "Drone Operations Specialist",
+      bio: "Sai is our certified drone operations specialist with expertise in aerial videography and complex flight operations. He ensures safe, stunning aerial captures and also provides professional event coverage.",
+      specialties: [
+        "Drone Operations",
+        "Aerial Videography",
+        "Technical Planning",
+        "Event Coverage",
+      ],
+      experience: "5+ years",
+    },
+    /*
+    {
+      id: "3",
       name: "Sarah Mitchell",
       role: "Senior Photographer",
       bio: "Sarah brings a creative eye and passion for storytelling to every shoot. Specializing in wedding photography and event coverage, she captures authentic moments with artistic flair.",
       specialties: ["Wedding Photography", "Event Coverage", "Family Portraits"],
       experience: "7+ years",
-    },
-    {
-      id: "3",
-      name: "Mike Johnson",
-      role: "Drone Operations Specialist",
-      bio: "Mike is our certified drone pilot with expertise in aerial videography and complex flight operations. He ensures safe and stunning aerial captures for all our projects.",
-      specialties: ["Drone Operations", "Aerial Videography", "Technical Planning"],
-      experience: "5+ years",
     },
     {
       id: "4",
@@ -35,6 +46,7 @@ const About = () => {
       specialties: ["Photo Editing", "Color Grading", "Digital Artistry"],
       experience: "6+ years",
     },
+    */
   ];
 
   return (
@@ -162,8 +174,6 @@ const About = () => {
               </p>
             </div>
           </div>
-
-          <div className="text-center mt-6 sm:mt-8"></div>
         </div>
       </div>
     </div>
