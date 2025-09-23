@@ -44,9 +44,9 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: MapPin, title: "Studio Location", details: ["123 Photography Lane", "Creative District", "Photo City, PC 12345"] },
-    { icon: Phone, title: "Phone Numbers", details: ["Main: +1 (555) 123-4567", "Mobile: +1 (555) 987-6543", "Emergency: +1 (555) 456-7890"] },
-    { icon: Mail, title: "Email Addresses", details: ["info@ncphotography.com", "bookings@ncphotography.com", "support@ncphotography.com"] },
+    { icon: MapPin, title: "Studio Location", details: ["Bhimavaram, West Godavari", "Andhra Pradesh", "PIN: 534201"] },
+    { icon: Phone, title: "Phone Numbers", details: ["+91 8247268476"] },
+    { icon: Mail, title: "Email Address", details: ["ncphotography.aerials@gmail.com"] },
     { icon: Clock, title: "Business Hours", details: ["Monday - Friday: 9 AM - 6 PM", "Saturday: 10 AM - 4 PM", "Sunday: By Appointment Only"] }
   ];
 
@@ -92,7 +92,7 @@ const Contact = () => {
             <div className="bg-accent/5 rounded-2xl p-8 w-full lg:w-80">
               <h3 className="text-xl font-playfair font-bold mb-6">Quick Actions</h3>
               <div className="space-y-4">
-                <a href="tel:+15551234567" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                <a href="tel:+918247268476" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
                   <Phone size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">Call Now</p>
@@ -100,7 +100,7 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a href="mailto:info@ncphotography.com" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                <a href="mailto:ncphotography.aerials@gmail.com" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
                   <Mail size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">Send Email</p>
@@ -108,7 +108,7 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                <a href="https://wa.me/918247268476" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
                   <MessageSquare size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">WhatsApp</p>
