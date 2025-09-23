@@ -1,5 +1,5 @@
 import React from "react";
-import { Camera, Mail } from "lucide-react"; // Removed unused imports
+import { Camera, MapPin, Mail } from "lucide-react"; // Keep only used icons
 
 const About = () => {
   const teamMembers = [
@@ -103,12 +103,28 @@ const About = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center">
-            <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
-              <Mail size={24} className="text-primary-foreground" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
+            {/* Visit Studio */}
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+                <MapPin size={24} className="text-primary-foreground" />
+              </div>
+              <h3 className="font-semibold mb-2">Visit Our Studio</h3>
+              <p className="opacity-90 text-sm">
+                Bhimavaram, West Godavari <br />
+                Andhra Pradesh <br />
+                PIN: 534201
+              </p>
             </div>
-            <h3 className="font-semibold mb-2">Email Us</h3>
-            <p className="opacity-90 text-sm">ncphotography.aerials@gmail.com</p>
+
+            {/* Email Only */}
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mb-3">
+                <Mail size={24} className="text-primary-foreground" />
+              </div>
+              <h3 className="font-semibold mb-2">Email Us</h3>
+              <p className="opacity-90 text-sm">ncphotography.aerials@gmail.com</p>
+            </div>
           </div>
         </div>
       </div>
