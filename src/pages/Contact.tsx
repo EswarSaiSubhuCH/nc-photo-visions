@@ -45,8 +45,8 @@ const Contact = () => {
 
   const contactInfo = [
     { icon: MapPin, title: "Studio Location", details: ["Bhimavaram, West Godavari", "Andhra Pradesh", "PIN: 534201"] },
-    { icon: Mail, title: "Email Address", details: ["ncphotography.aerials@gmail.com"] },
     { icon: Phone, title: "Phone Numbers", details: ["+91 8247268476"] },
+    { icon: Mail, title: "Email Address", details: ["ncphotography.aerials@gmail.com"] },
     { icon: Clock, title: "Business Hours", details: ["Monday - Friday: 9 AM - 6 PM", "Saturday: 10 AM - 4 PM", "Sunday: By Appointment Only"] }
   ];
 
@@ -67,17 +67,22 @@ const Contact = () => {
           {/* Get In Touch */}
           <div>
             <h2 className="text-3xl font-playfair font-bold mb-8">Get In Touch</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 return (
-                  <div key={index} className="flex flex-col items-center text-center space-y-3">
+                  <div
+                    key={index}
+                    className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-3"
+                  >
                     <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
                       <Icon size={24} className="text-accent" />
                     </div>
                     <h3 className="font-semibold text-lg">{info.title}</h3>
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-muted-foreground text-sm">{detail}</p>
+                      <p key={idx} className="text-muted-foreground text-sm">
+                        {detail}
+                      </p>
                     ))}
                   </div>
                 );
@@ -90,7 +95,10 @@ const Contact = () => {
             <div className="bg-accent/5 rounded-2xl p-8 w-full lg:w-80">
               <h3 className="text-xl font-playfair font-bold mb-6">Quick Actions</h3>
               <div className="space-y-4">
-                <a href="tel:+918247268476" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                <a
+                  href="tel:+918247268476"
+                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors"
+                >
                   <Phone size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">Call Now</p>
@@ -98,7 +106,10 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a href="mailto:ncphotography.aerials@gmail.com" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                <a
+                  href="mailto:ncphotography.aerials@gmail.com"
+                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors"
+                >
                   <Mail size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">Send Email</p>
@@ -106,7 +117,12 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a href="https://wa.me/918247268476" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                <a
+                  href="https://wa.me/918247268476"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors"
+                >
                   <MessageSquare size={20} className="text-accent" />
                   <div>
                     <p className="font-medium">WhatsApp</p>
