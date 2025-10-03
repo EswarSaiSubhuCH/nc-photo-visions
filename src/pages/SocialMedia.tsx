@@ -14,7 +14,7 @@ const SocialMedia = () => {
           <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
         </svg>
       ),
-      link: "https://www.instagram.com/nc_photography_snaps/", // ✅ Updated
+      link: "https://www.instagram.com/nc_aerialshots?igsh=ZGgyejk1dzkxdXgy", // ✅ Updated
     },
     {
       name: "YouTube",
@@ -24,7 +24,7 @@ const SocialMedia = () => {
       color: "text-red-600",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.615 3.184A3.994 3.994 0 0122 6.13v11.74a3.994 3.994 0 01-2.385 2.946C18.057 21.5 12 21.5 12 21.5s-6.057 0-7.615-.684A3.994 3.994 0 012 17.87V6.13a3.994 3.994 0 012.385-2.946C5.943 2.5 12 2.5 12 2.5s6.057 0 7.615.684zM10 8.5v7l6-3.5-6-3.5z" />
+          <path d="M19.615 3.184A3.994 3.994 0 0122 6.13v11.74a3.994 3.994 0 01-2.385 2.946C18.057 21.5 12 21.5s-6.057 0-7.615-.684A3.994 3.994 0 012 17.87V6.13a3.994 3.994 0 012.385-2.946C5.943 2.5 12 2.5 12 2.5s6.057 0 7.615.684zM10 8.5v7l6-3.5-6-3.5z" />
         </svg>
       ),
       link: "https://www.youtube.com/@NCPhotographyAerials",
